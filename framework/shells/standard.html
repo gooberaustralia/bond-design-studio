@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><!-- TITLE --></title>
+  <meta name="description" content="<!-- META_DESC -->">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="<!-- OG_TITLE -->">
+  <meta property="og:description" content="<!-- OG_DESC -->">
+  <meta property="og:image" content="<!-- OG_IMAGE -->">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="<!-- CANONICAL -->">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="<!-- TWITTER_HANDLE -->">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="<!-- CANONICAL -->">
+
+  <!-- Theme -->
+  <meta name="theme-color" content="<!-- PRIMARY_COLOR -->">
+  <meta name="color-scheme" content="light">
+
+  <!-- Performance hints -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+
+  <!-- Framework CSS (never changes between projects) -->
+  <link rel="stylesheet" href="/framework/css/core.css">
+  <link rel="stylesheet" href="/framework/css/components.css">
+  <link rel="stylesheet" href="/framework/css/sections.css">
+
+  <!-- Brand tokens (12 values, generated per project by AI) -->
+  <link rel="stylesheet" href="/css/tokens.css">
+
+  <!-- Schema markup (LocalBusiness) -->
+  <!-- SCHEMA_MARKUP -->
+
+  <!-- Integration head code (injected by deploy-to-vercel) -->
+  <!-- INTEGRATIONS_HEAD -->
+
+  <!-- Custom head code (from Project Settings) -->
+  <!-- HEAD_CODE -->
+</head>
+<body>
+
+  <!-- Body start code (analytics, tag managers, etc.) -->
+  <!-- BODY_START_CODE -->
+
+  <!-- Header — chosen template, hydrated by runtime.js -->
+  <!-- HEADER_HTML -->
+
+  <!-- Page content — Claude generates ONLY this -->
+  <main id="page-content" data-page="<!-- SLUG -->">
+    <!-- SECTIONS_HTML -->
+  </main>
+
+  <!-- Footer — chosen template, hydrated by runtime.js -->
+  <!-- FOOTER_HTML -->
+
+  <!-- Mobile CTA bar (fixed bottom, mobile only) -->
+  <!-- MOBILE_CTA_HTML -->
+
+  <!-- Site config — runtime.js reads this instead of fetching JSON -->
+  <script>
+  window.__SITE_CONFIG__ = <!-- SITE_CONFIG_JSON -->;
+  </script>
+
+  <!-- Framework runtime (nav hydration, hamburger, accordions, etc.) -->
+  <script src="/framework/js/runtime.js"></script>
+
+  <!-- CMS layer — only loaded in edit/preview mode -->
+  <!-- CMS_SCRIPT -->
+
+  <!-- Integration body end codes -->
+  <!-- INTEGRATIONS_FOOTER -->
+
+  <!-- Custom footer code (from Project Settings) -->
+  <!-- FOOTER_CODE -->
+
+</body>
+</html>

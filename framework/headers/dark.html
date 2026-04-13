@@ -1,0 +1,48 @@
+<!--
+  GOOBER FRAMEWORK — Header: Dark
+
+  Dark background nav using var(--section-dark-bg).
+  White text, white logo. Bold and confident.
+  Best for: gyms, automotive, security, construction, bold brands.
+
+  Required IDs (populated by runtime.js):
+    nav-logo-img, nav-logo-text, nav-links, nav-mobile, nav-phone, nav-cta
+  Required data attrs:
+    data-toggle-mobile-nav, data-mobile-nav
+-->
+<header id="site-header" class="header-shell header-dark" role="banner">
+  <nav class="nav-container" aria-label="Main navigation">
+
+    <!-- Logo -->
+    <a href="/" class="nav-logo" aria-label="Go to homepage">
+      <img id="nav-logo-img" src="" alt="" width="160" height="40" style="display:none;" />
+      <span id="nav-logo-text" style="display:none;"></span>
+    </a>
+
+    <!-- Desktop nav links -->
+    <ul id="nav-links" class="nav-links" role="list"></ul>
+
+    <!-- Actions -->
+    <div class="nav-actions">
+      <a id="nav-phone" href="#" class="nav-phone" style="display:none; color:#FFFFFF;" aria-label="Call us"></a>
+      <a id="nav-cta" href="/contact" class="btn btn-primary btn-sm">Get a Quote</a>
+    </div>
+
+    <!-- Hamburger -->
+    <button
+      class="nav-hamburger"
+      data-toggle-mobile-nav
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="nav-mobile"
+      style="--hamburger-color: #FFFFFF;"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile nav panel -->
+  <ul id="nav-mobile" class="nav-mobile" data-mobile-nav role="list" style="background: var(--section-dark-bg, #0F172A);"></ul>
+</header>

@@ -1,0 +1,84 @@
+<!--
+  GOOBER FRAMEWORK — Header: Centered
+
+  Logo centred at top, navigation centred below logo.
+  Elegant, boutique feel. Slightly taller header.
+  Best for: restaurants, boutiques, beauty salons, cafes, spas.
+
+  Required IDs (populated by runtime.js):
+    nav-logo-img, nav-logo-text, nav-links, nav-mobile, nav-phone, nav-cta
+  Required data attrs:
+    data-toggle-mobile-nav, data-mobile-nav
+-->
+<style>
+  /* Centered header overrides */
+  #site-header.header-centered {
+    height: auto;
+    min-height: var(--nav-height, 72px);
+  }
+  #site-header.header-centered .nav-container {
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    padding-block: 12px;
+    height: auto;
+  }
+  #site-header.header-centered .nav-logo {
+    justify-content: center;
+  }
+  #site-header.header-centered #nav-links {
+    display: flex;
+    justify-content: center;
+    flex: none;
+  }
+  #site-header.header-centered .nav-actions {
+    display: none; /* phone shown in top row on mobile */
+  }
+  #site-header.header-centered .nav-hamburger {
+    position: absolute;
+    right: var(--container-padding, 16px);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  @media (min-width: 768px) {
+    #site-header.header-centered .nav-hamburger { display: none; }
+    #site-header.header-centered .nav-actions { display: flex; position: absolute; right: var(--container-padding, 24px); top: 16px; }
+  }
+  body { padding-top: 96px; }
+</style>
+
+<header id="site-header" class="header-shell header-solid header-centered" role="banner">
+  <nav class="nav-container" aria-label="Main navigation" style="position:relative;">
+
+    <!-- Logo (centred) -->
+    <a href="/" class="nav-logo" aria-label="Go to homepage">
+      <img id="nav-logo-img" src="" alt="" width="160" height="48" style="display:none;" />
+      <span id="nav-logo-text" style="display:none;"></span>
+    </a>
+
+    <!-- Centered nav links -->
+    <ul id="nav-links" class="nav-links" role="list"></ul>
+
+    <!-- Actions (phone + CTA) positioned absolutely on desktop -->
+    <div class="nav-actions">
+      <a id="nav-phone" href="#" class="nav-phone" style="display:none;" aria-label="Call us"></a>
+      <a id="nav-cta" href="/contact" class="btn btn-primary btn-sm">Book Now</a>
+    </div>
+
+    <!-- Hamburger -->
+    <button
+      class="nav-hamburger"
+      data-toggle-mobile-nav
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="nav-mobile"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile nav panel -->
+  <ul id="nav-mobile" class="nav-mobile" data-mobile-nav role="list"></ul>
+</header>

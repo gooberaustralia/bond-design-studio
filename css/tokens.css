@@ -1,0 +1,20 @@
+:root {
+  /* Brand Colors */
+  --color-primary: #2563EB;
+  --color-secondary: #1E293B;
+  --color-cta: #F97316;
+
+  /* Derived Colors */
+  --color-primary-light: #2563EB22;
+  --color-primary-dark: #2563EB;
+  --color-cta-hover: #F97316dd;
+
+  /* Typography */
+  --font-heading: 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Shape */
+  --radius: 0.5rem;
+  --radius-sm: calc(0.5rem * 0.5);
+  --radius-lg: calc(0.5rem * 2);
+}

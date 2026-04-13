@@ -1,0 +1,106 @@
+<!--
+  GOOBER FRAMEWORK — Footer: Comprehensive
+
+  4-column grid: logo+about, services, contact, social.
+  Dark background. Full business details.
+  Best for: most service businesses.
+
+  Required IDs (populated by runtime.js):
+    footer-business-name, footer-tagline, footer-phone, footer-email,
+    footer-address, footer-copyright, footer-links, footer-social
+-->
+<footer class="site-footer section-dark section-sm" id="site-footer" role="contentinfo">
+  <div class="container">
+
+    <!-- Footer grid: 4 columns on desktop -->
+    <div class="footer-grid" style="display:grid; grid-template-columns:1fr; gap:var(--space-xl); margin-bottom:var(--space-xl);">
+
+      <!-- Column 1: Logo + About -->
+      <div class="footer-brand">
+        <a href="/" class="footer-logo-link" style="display:inline-block; margin-bottom:var(--space-md);">
+          <img id="footer-logo-img" src="" alt="" width="140" height="36" style="display:none;" />
+          <span id="footer-logo-text" style="font-family:var(--font-heading,sans-serif); font-weight:700; font-size:1.25rem; color:#FFFFFF;"></span>
+        </a>
+        <p id="footer-tagline" style="color:rgba(255,255,255,0.7); font-size:0.9375rem; line-height:1.6; margin-bottom:var(--space-md);"></p>
+        <!-- Social links -->
+        <div id="footer-social" class="footer-social-links" style="display:flex; gap:12px; flex-wrap:wrap;" aria-label="Social media links"></div>
+      </div>
+
+      <!-- Column 2: Services (static — filled by page content) -->
+      <div class="footer-services">
+        <h4 class="footer-heading" style="color:#FFFFFF; font-size:0.875rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:var(--space-md);">Our Services</h4>
+        <ul id="footer-services-list" style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px;">
+          <!-- Populated by page section content -->
+        </ul>
+      </div>
+
+      <!-- Column 3: Quick Links -->
+      <div class="footer-nav">
+        <h4 class="footer-heading" style="color:#FFFFFF; font-size:0.875rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:var(--space-md);">Quick Links</h4>
+        <ul id="footer-links" style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px;" role="list"></ul>
+      </div>
+
+      <!-- Column 4: Contact -->
+      <div class="footer-contact">
+        <h4 class="footer-heading" style="color:#FFFFFF; font-size:0.875rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:var(--space-md);">Contact Us</h4>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div class="footer-contact-item" style="display:flex; align-items:flex-start; gap:10px;">
+            <svg width="16" height="16" style="color:var(--color-primary,#2563EB); flex-shrink:0; margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.36 12 19.79 19.79 0 0 1 1.21 3.38 2 2 0 0 1 3.18 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a id="footer-phone" href="#" style="color:rgba(255,255,255,0.85); text-decoration:none; font-weight:600;"></a>
+          </div>
+          <div class="footer-contact-item" style="display:flex; align-items:flex-start; gap:10px;">
+            <svg width="16" height="16" style="color:var(--color-primary,#2563EB); flex-shrink:0; margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a id="footer-email" href="#" style="color:rgba(255,255,255,0.85); text-decoration:none;"></a>
+          </div>
+          <div class="footer-contact-item" style="display:flex; align-items:flex-start; gap:10px;">
+            <svg width="16" height="16" style="color:var(--color-primary,#2563EB); flex-shrink:0; margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <address id="footer-address" style="color:rgba(255,255,255,0.85); font-style:normal;"></address>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:var(--space-lg); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:var(--space-sm);">
+      <p id="footer-copyright" style="color:rgba(255,255,255,0.5); font-size:0.8125rem; margin:0;"></p>
+      <p id="footer-abn" style="color:rgba(255,255,255,0.5); font-size:0.8125rem; margin:0;"></p>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  .footer-links a, .footer-services-list a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.9375rem;
+    transition: color var(--transition, 200ms ease);
+  }
+  .footer-links a:hover, .footer-services-list a:hover {
+    color: #FFFFFF;
+  }
+  .footer-social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-full, 9999px);
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.75rem;
+    transition: background var(--transition, 200ms ease), color var(--transition, 200ms ease);
+  }
+  .footer-social-links a:hover {
+    background: var(--color-primary, #2563EB);
+    color: #FFFFFF;
+  }
+  @media (min-width: 640px) {
+    .footer-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  }
+  @media (min-width: 1024px) {
+    .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.5fr !important; }
+  }
+</style>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><!-- TITLE --></title>
+  <meta name="description" content="<!-- META_DESC -->">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="<!-- OG_TITLE -->">
+  <meta property="og:description" content="<!-- OG_DESC -->">
+  <meta property="og:image" content="<!-- OG_IMAGE -->">
+  <meta property="og:type" content="website">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="<!-- CANONICAL -->">
+
+  <!-- Theme -->
+  <meta name="theme-color" content="<!-- PRIMARY_COLOR -->">
+  <meta name="robots" content="noindex, follow">
+
+  <!-- Fonts preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Framework CSS -->
+  <link rel="stylesheet" href="/framework/css/core.css">
+  <link rel="stylesheet" href="/framework/css/components.css">
+  <link rel="stylesheet" href="/framework/css/sections.css">
+
+  <!-- Brand tokens -->
+  <link rel="stylesheet" href="/css/tokens.css">
+
+  <!-- Integration head code -->
+  <!-- INTEGRATIONS_HEAD -->
+
+  <!-- Custom head code -->
+  <!-- HEAD_CODE -->
+
+  <style>
+    /* Landing page: no header, no footer nav, no mobile CTA bar */
+    body { padding-top: 0; }
+    .lp-logo-bar {
+      padding: var(--space-md) var(--container-padding);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--color-bg, #FFFFFF);
+      border-bottom: 1px solid var(--color-border, #E2E8F0);
+    }
+    .lp-logo-bar img { height: 36px; width: auto; }
+    .lp-logo-text {
+      font-family: var(--font-heading, sans-serif);
+      font-weight: 700;
+      font-size: 1.125rem;
+      color: var(--color-text, #1E293B);
+    }
+    .lp-minimal-footer {
+      padding: var(--space-lg) var(--container-padding);
+      text-align: center;
+      border-top: 1px solid var(--color-border, #E2E8F0);
+      color: var(--color-text-light, #94A3B8);
+      font-size: 0.8125rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Body start code -->
+  <!-- BODY_START_CODE -->
+
+  <!-- Minimal logo bar (no nav links) -->
+  <div class="lp-logo-bar">
+    <a href="/" aria-label="Go to homepage">
+      <img id="nav-logo-img" src="" alt="" style="display:none;" />
+      <span id="nav-logo-text" class="lp-logo-text" style="display:none;"></span>
+    </a>
+    <a id="nav-cta" href="/contact" class="btn btn-primary btn-sm">Get a Quote</a>
+  </div>
+
+  <!-- Page content -->
+  <main id="page-content" data-page="<!-- SLUG -->">
+    <!-- SECTIONS_HTML -->
+  </main>
+
+  <!-- Minimal footer: copyright only -->
+  <div class="lp-minimal-footer">
+    <p id="footer-copyright"></p>
+  </div>
+
+  <!-- Site config -->
+  <script>
+  window.__SITE_CONFIG__ = <!-- SITE_CONFIG_JSON -->;
+  </script>
+
+  <!-- Framework runtime (hydrates logo, CTA, copyright) -->
+  <script src="/framework/js/runtime.js"></script>
+
+  <!-- Integration body end codes -->
+  <!-- INTEGRATIONS_FOOTER -->
+
+  <!-- Custom footer code -->
+  <!-- FOOTER_CODE -->
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!--
+  GOOBER FRAMEWORK — Footer: Simple
+
+  2-column: logo+nav left, contact right.
+  Light background with optional dark variant (add .section-dark class).
+  Best for: consultants, minimal brands, professional services.
+
+  Required IDs (populated by runtime.js):
+    footer-business-name, footer-tagline, footer-phone, footer-email,
+    footer-address, footer-copyright, footer-links, footer-social
+-->
+<footer class="site-footer section-alt section-sm" id="site-footer" role="contentinfo">
+  <div class="container">
+
+    <!-- Footer grid: 2-col -->
+    <div class="footer-simple-grid" style="display:grid; grid-template-columns:1fr; gap:var(--space-xl); margin-bottom:var(--space-xl);">
+
+      <!-- Left: Logo + nav -->
+      <div>
+        <a href="/" style="display:inline-block; margin-bottom:var(--space-md);">
+          <img id="footer-logo-img" src="" alt="" width="140" height="36" style="display:none;" />
+          <span id="footer-logo-text" style="font-family:var(--font-heading,sans-serif); font-weight:700; font-size:1.125rem; color:var(--color-text,#1E293B);"></span>
+        </a>
+        <p id="footer-tagline" style="color:var(--color-text-muted,#475569); font-size:0.9375rem; max-width:300px; margin-bottom:var(--space-md);"></p>
+        <nav aria-label="Footer navigation">
+          <ul id="footer-links" style="list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap; gap:8px 24px;" role="list"></ul>
+        </nav>
+      </div>
+
+      <!-- Right: Contact -->
+      <div>
+        <h4 id="footer-business-name" style="font-size:1rem; font-weight:700; margin-bottom:var(--space-md); color:var(--color-text,#1E293B);"></h4>
+        <div style="display:flex; flex-direction:column; gap:10px; color:var(--color-text-muted,#475569); font-size:0.9375rem;">
+          <div class="footer-contact-item">
+            <a id="footer-phone" href="#" style="color:var(--color-primary,#2563EB); font-weight:600; text-decoration:none;"></a>
+          </div>
+          <div class="footer-contact-item">
+            <a id="footer-email" href="#" style="color:var(--color-text-muted,#475569); text-decoration:none;"></a>
+          </div>
+          <div class="footer-contact-item">
+            <address id="footer-address" style="font-style:normal;"></address>
+          </div>
+        </div>
+        <div id="footer-social" style="display:flex; gap:12px; margin-top:var(--space-md);" aria-label="Social media links"></div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div style="border-top:1px solid var(--color-border,#E2E8F0); padding-top:var(--space-md); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:var(--space-sm);">
+      <p id="footer-copyright" style="color:var(--color-text-light,#94A3B8); font-size:0.8125rem; margin:0;"></p>
+      <p id="footer-abn" style="color:var(--color-text-light,#94A3B8); font-size:0.8125rem; margin:0;"></p>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  #footer-links a {
+    color: var(--color-text-muted, #475569);
+    text-decoration: none;
+    font-size: 0.9375rem;
+    transition: color var(--transition, 200ms ease);
+  }
+  #footer-links a:hover { color: var(--color-primary, #2563EB); }
+  #footer-social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-full, 9999px);
+    border: 1px solid var(--color-border, #E2E8F0);
+    color: var(--color-text-muted, #475569);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.75rem;
+    transition: border-color var(--transition, 200ms ease), color var(--transition, 200ms ease);
+  }
+  #footer-social a:hover { border-color: var(--color-primary, #2563EB); color: var(--color-primary, #2563EB); }
+  @media (min-width: 768px) {
+    .footer-simple-grid { grid-template-columns: 1fr 1fr !important; }
+  }
+</style>

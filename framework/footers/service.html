@@ -1,0 +1,98 @@
+<!--
+  GOOBER FRAMEWORK — Footer: Service
+
+  Focuses on contact info and service area.
+  Large phone number, address, hours.
+  Best for: trades, plumbers, electricians, local service businesses.
+
+  Required IDs (populated by runtime.js):
+    footer-business-name, footer-tagline, footer-phone, footer-email,
+    footer-address, footer-copyright, footer-links, footer-social
+-->
+<footer class="site-footer section-dark section-sm" id="site-footer" role="contentinfo">
+  <div class="container">
+
+    <!-- Top section: big phone CTA + business name -->
+    <div style="text-align:center; padding-bottom:var(--space-xl); margin-bottom:var(--space-xl); border-bottom:1px solid rgba(255,255,255,0.1);">
+      <p class="label" style="color:rgba(255,255,255,0.6);">Call Us Today</p>
+      <a id="footer-phone" href="#"
+         style="display:inline-block; font-size:clamp(2rem,5vw,3rem); font-weight:800; color:#FFFFFF; text-decoration:none; font-family:var(--font-heading,sans-serif); margin-bottom:var(--space-sm);">
+      </a>
+      <p id="footer-tagline" style="color:rgba(255,255,255,0.65); font-size:1rem; margin:0;"></p>
+    </div>
+
+    <!-- 3-col grid: about, contact, links -->
+    <div class="footer-service-grid" style="display:grid; grid-template-columns:1fr; gap:var(--space-xl); margin-bottom:var(--space-xl);">
+
+      <!-- About -->
+      <div>
+        <a href="/" style="display:inline-block; margin-bottom:var(--space-md);">
+          <img id="footer-logo-img" src="" alt="" width="140" height="40" style="display:none;" />
+          <span id="footer-logo-text" style="font-family:var(--font-heading,sans-serif); font-weight:700; font-size:1.25rem; color:#FFFFFF;"></span>
+        </a>
+        <p id="footer-business-name" style="font-weight:600; color:#FFFFFF; margin-bottom:8px;"></p>
+        <div id="footer-social" style="display:flex; gap:10px; margin-top:var(--space-md);" aria-label="Social media links"></div>
+      </div>
+
+      <!-- Contact details -->
+      <div>
+        <h4 style="color:#FFFFFF; font-size:0.875rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:var(--space-md);">Contact Details</h4>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div class="footer-contact-item" style="display:flex; align-items:flex-start; gap:10px; color:rgba(255,255,255,0.75);">
+            <svg width="16" height="16" style="flex-shrink:0; margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a id="footer-email" href="#" style="color:rgba(255,255,255,0.75); text-decoration:none;"></a>
+          </div>
+          <div class="footer-contact-item" style="display:flex; align-items:flex-start; gap:10px; color:rgba(255,255,255,0.75);">
+            <svg width="16" height="16" style="flex-shrink:0; margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <address id="footer-address" style="font-style:normal;"></address>
+          </div>
+          <div id="footer-hours-row" class="footer-contact-item" style="display:none; align-items:flex-start; gap:10px; color:rgba(255,255,255,0.75);">
+            <svg width="16" height="16" style="flex-shrink:0; margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span id="footer-hours"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick links -->
+      <div>
+        <h4 style="color:#FFFFFF; font-size:0.875rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:var(--space-md);">Quick Links</h4>
+        <ul id="footer-links" style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px;" role="list"></ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:var(--space-md); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:var(--space-sm);">
+      <p id="footer-copyright" style="color:rgba(255,255,255,0.4); font-size:0.8125rem; margin:0;"></p>
+      <p id="footer-abn" style="color:rgba(255,255,255,0.4); font-size:0.8125rem; margin:0;"></p>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  #site-footer #footer-links a {
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    font-size: 0.9375rem;
+    transition: color var(--transition, 200ms ease);
+  }
+  #site-footer #footer-links a:hover { color: #FFFFFF; }
+  #site-footer #footer-social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-full, 9999px);
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.75rem;
+    transition: background var(--transition, 200ms ease);
+  }
+  #site-footer #footer-social a:hover { background: var(--color-primary, #2563EB); color: #FFFFFF; }
+  @media (min-width: 768px) {
+    .footer-service-grid { grid-template-columns: repeat(3, 1fr) !important; }
+  }
+</style>

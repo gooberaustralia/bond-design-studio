@@ -1,0 +1,74 @@
+<!--
+  GOOBER FRAMEWORK — Footer: Centered
+
+  Everything centred: logo → tagline → nav → social → copyright.
+  Clean and simple. Light background.
+  Best for: simple brands, restaurants, boutiques.
+
+  Required IDs (populated by runtime.js):
+    footer-business-name, footer-tagline, footer-phone, footer-email,
+    footer-address, footer-copyright, footer-links, footer-social
+-->
+<footer class="site-footer section-sm section-alt" id="site-footer" role="contentinfo" style="text-align:center;">
+  <div class="container" style="max-width:640px;">
+
+    <!-- Logo -->
+    <a href="/" style="display:inline-block; margin-bottom:var(--space-md);">
+      <img id="footer-logo-img" src="" alt="" width="140" height="40" style="display:none;" />
+      <span id="footer-logo-text" style="font-family:var(--font-heading,sans-serif); font-weight:700; font-size:1.25rem; color:var(--color-text,#1E293B);"></span>
+    </a>
+
+    <!-- Tagline -->
+    <p id="footer-tagline" style="color:var(--color-text-muted,#475569); font-size:1rem; margin-bottom:var(--space-md);"></p>
+
+    <!-- Contact summary -->
+    <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:var(--space-sm) var(--space-lg); margin-bottom:var(--space-md); font-size:0.9375rem; color:var(--color-text-muted,#475569);">
+      <div class="footer-contact-item"><a id="footer-phone" href="#" style="color:var(--color-primary,#2563EB); font-weight:600; text-decoration:none;"></a></div>
+      <div class="footer-contact-item"><a id="footer-email" href="#" style="color:var(--color-text-muted,#475569); text-decoration:none;"></a></div>
+      <div class="footer-contact-item"><address id="footer-address" style="font-style:normal;"></address></div>
+    </div>
+
+    <!-- Nav links -->
+    <nav aria-label="Footer navigation" style="margin-bottom:var(--space-md);">
+      <ul id="footer-links" style="list-style:none; padding:0; margin:0; display:inline-flex; flex-wrap:wrap; justify-content:center; gap:8px 24px;" role="list"></ul>
+    </nav>
+
+    <!-- Social icons -->
+    <div id="footer-social" style="display:flex; justify-content:center; gap:10px; margin-bottom:var(--space-lg);" aria-label="Social media links"></div>
+
+    <!-- Divider -->
+    <hr style="border:none; border-top:1px solid var(--color-border,#E2E8F0); margin:0 0 var(--space-md);" />
+
+    <!-- Bottom -->
+    <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:var(--space-sm);">
+      <p id="footer-copyright" style="color:var(--color-text-light,#94A3B8); font-size:0.8125rem; margin:0;"></p>
+      <p id="footer-abn" style="color:var(--color-text-light,#94A3B8); font-size:0.8125rem; margin:0;"></p>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  #site-footer #footer-links a {
+    color: var(--color-text-muted, #475569);
+    text-decoration: none;
+    font-size: 0.9375rem;
+    transition: color var(--transition, 200ms ease);
+  }
+  #site-footer #footer-links a:hover { color: var(--color-primary, #2563EB); }
+  #site-footer #footer-social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-full, 9999px);
+    border: 1px solid var(--color-border, #E2E8F0);
+    color: var(--color-text-muted, #475569);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.75rem;
+    transition: border-color var(--transition, 200ms ease), color var(--transition, 200ms ease);
+  }
+  #site-footer #footer-social a:hover { border-color: var(--color-primary, #2563EB); color: var(--color-primary, #2563EB); }
+</style>
