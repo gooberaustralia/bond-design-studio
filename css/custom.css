@@ -1,0 +1,701 @@
+/*
+ * Bond Design Studio — Custom Styles
+ * Extends the framework for brand-specific and scroll-hero behaviour.
+ * No generic component overrides — only what the framework cannot provide.
+ */
+
+/* ============================================================
+   BASE TYPOGRAPHY — Georgia throughout
+   ============================================================ */
+
+body {
+  font-family: var(--font-body);
+  color: #1a1a1a;
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Ensure Georgia propagates to all inputs, buttons, textareas */
+input,
+textarea,
+button,
+select {
+  font-family: var(--font-body);
+}
+
+/* ============================================================
+   NAVIGATION — transparent over hero, solid after
+   ============================================================ */
+
+#site-header {
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Transparent state (over dark video) */
+#site-header.header-transparent {
+  background: transparent;
+  box-shadow: none;
+}
+
+#site-header.header-transparent .nav-logo,
+#site-header.header-transparent #nav-links a {
+  color: #ffffff;
+}
+
+#site-header.header-transparent .nav-hamburger span {
+  background: #ffffff;
+}
+
+/* Solid state (after hero) */
+body.hero-exited #site-header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 1px 0 #e8e8e8;
+}
+
+body.hero-exited #site-header .nav-logo,
+body.hero-exited #site-header #nav-links a {
+  color: #000000;
+}
+
+body.hero-exited #site-header .nav-hamburger span {
+  background: #000000;
+}
+
+/* Keep transparent clean during hero scroll */
+body:not(.hero-exited) #site-header.scrolled {
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Nav logo — all-caps wordmark */
+.nav-logo {
+  font-size: 0.8125rem;
+  letter-spacing: 0.18em;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+#nav-links a {
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+#nav-links a:hover {
+  opacity: 1;
+}
+
+/* Mobile nav — fullscreen black overlay */
+#nav-mobile {
+  background: #000000;
+  gap: 2.5rem;
+}
+
+#nav-mobile a {
+  color: #ffffff;
+  font-size: 1.75rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+#nav-mobile a:hover {
+  opacity: 1;
+}
+
+/* ============================================================
+   HERO LOGO — centered wordmark, JS-animated scale + opacity
+   ============================================================ */
+
+.hero-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* initial state: small. JS updates transform as user scrolls */
+  transform: translate(-50%, -50%) scale(0.6);
+  transform-origin: center center;
+  text-align: center;
+  will-change: transform, opacity;
+}
+
+.hero-logo-word {
+  display: block;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.1rem, 6.3vw, 5.6rem);
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: 1.05;
+  text-align: center;
+}
+
+/* ============================================================
+   HERO TEXT CONTAINER — subtitle + body, JS-animated
+   ============================================================ */
+
+.hero-text-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 680px;
+  padding: 0 2.5rem;
+  text-align: center;
+  opacity: 0;
+  will-change: opacity, filter;
+  pointer-events: none;
+}
+
+/* ============================================================
+   HERO — Scroll-Driven Video Scrub
+   ============================================================ */
+
+#hero-section {
+  position: relative;
+  /* height injected by JS: video.duration × 300px  (fallback: 3000px) */
+}
+
+#hero-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+  background: #000000;
+}
+
+.hero-overlay-gradient {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.45) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+#hero-fade-white {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #ffffff;
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Preload loader ───────────────────────────────────────── */
+#hero-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #000000;
+  z-index: 100;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+}
+
+#hero-loader.loaded {
+  opacity: 0;
+}
+
+#hero-loader-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 0%;
+  background: rgba(255, 255, 255, 0.5);
+  transition: width 0.1s linear;
+}
+
+.hero-text-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  pointer-events: none;
+  /* No flex — children are absolutely positioned */
+}
+
+.hero-text-1 {
+  font-size: clamp(1.25rem, 2.8vw, 2.25rem);
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+  color: #ffffff;
+  margin: 0 0 1.25rem;
+}
+
+.hero-text-2 {
+  font-size: 0.875rem;
+  line-height: 1.85;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0;
+}
+
+/* ============================================================
+   SCROLL HINT
+   ============================================================ */
+
+#scroll-hint {
+  position: fixed;
+  bottom: 2.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 11;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.scroll-hint-line {
+  width: 1px;
+  height: 3rem;
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 100%);
+}
+
+.scroll-hint-label {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.625rem;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+body.hero-exited #scroll-hint {
+  visibility: hidden;
+}
+
+.hero-sentinel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  pointer-events: none;
+}
+
+/* After scrolling past hero — hide all fixed hero elements */
+body.hero-exited #hero-canvas,
+body.hero-exited #hero-fade-white,
+body.hero-exited .hero-overlay-gradient,
+body.hero-exited .hero-text-overlay {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ============================================================
+   Z-STACK — content sits above fixed hero elements
+   ============================================================ */
+
+.above-hero {
+  position: relative;
+  z-index: 20;
+  background: #ffffff; /* must be explicit — sections are transparent over fixed video */
+}
+
+/* ============================================================
+   HERO-TO-WHITE TRANSITION
+   ============================================================ */
+
+.section-hero-transition {
+  height: 50vh;
+  /* transparent top edge → solid white: video dissolves softly into the content */
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #ffffff 30%, #ffffff 100%);
+  position: relative;
+  z-index: 20;
+}
+
+/* Services section merges the transition — fades in from transparent */
+.hero-join {
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 0px, #ffffff 220px) !important;
+  padding-top: clamp(14rem, 28vh, 20rem);
+}
+
+/* ============================================================
+   SCROLL-REVEAL ANIMATIONS
+   ============================================================ */
+
+.reveal,
+.reveal-left,
+.reveal-right {
+  opacity: 0;
+  transition: opacity 0.75s ease, transform 0.75s ease;
+  will-change: opacity, transform;
+}
+
+.reveal {
+  transform: translateY(22px);
+}
+
+.reveal-left {
+  transform: translateX(-28px);
+}
+
+.reveal-right {
+  transform: translateX(28px);
+}
+
+.reveal.in-view,
+.reveal-left.in-view,
+.reveal-right.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-left,
+  .reveal-right {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ============================================================
+   SECTION SPACING — generous whitespace
+   ============================================================ */
+
+.section-xl {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+@media (max-width: 768px) {
+  .section-xl {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+/* ============================================================
+   SECTION LABELS & HEADINGS
+   ============================================================ */
+
+.eyebrow {
+  display: block;
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-muted, #888);
+  font-weight: 400;
+  margin-bottom: 1.25rem;
+}
+
+.display-heading {
+  font-size: clamp(1.375rem, 2.5vw, 2.25rem);
+  font-weight: 300;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  color: #000000;
+  margin: 0 0 1.25rem;
+}
+
+.display-heading-lg {
+  font-size: clamp(1.75rem, 3.75vw, 3.25rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: #000000;
+  margin: 0 0 2rem;
+}
+
+.body-copy {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  font-weight: 300;
+  color: #555555;
+}
+
+.body-copy-dark {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  font-weight: 300;
+  color: #1a1a1a;
+}
+
+/* ============================================================
+   SERVICES — top-border only cards
+   ============================================================ */
+
+.services-intro {
+  max-width: 620px;
+  margin-bottom: 4rem;
+}
+
+.service-card {
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--color-border, #e8e8e8);
+}
+
+.service-card:last-child {
+  border-bottom: 1px solid var(--color-border, #e8e8e8);
+}
+
+.service-card h3 {
+  font-size: 1.1875rem;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  color: #000000;
+  margin: 0 0 0.875rem;
+}
+
+.service-card p {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  font-weight: 300;
+  color: #666666;
+  margin: 0;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+@media (min-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5rem;
+  }
+}
+
+/* ============================================================
+   PRINCIPAL — two-column split
+   ============================================================ */
+
+.principal-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .principal-split {
+    grid-template-columns: 1fr 1.1fr;
+    gap: 6rem;
+  }
+}
+
+.portrait-img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.principal-bio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.principal-bio p + p {
+  margin-top: 1.375rem;
+}
+
+/* ============================================================
+   CONTACT — section + underline form
+   ============================================================ */
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+}
+
+@media (min-width: 768px) {
+  .contact-layout {
+    grid-template-columns: 1fr 1.4fr;
+    gap: 6rem;
+    align-items: start;
+  }
+}
+
+.contact-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contact-detail-label {
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted, #888);
+  font-weight: 400;
+  margin-bottom: 0.25rem;
+}
+
+.contact-detail-value {
+  font-size: 1rem;
+  font-weight: 300;
+  color: #1a1a1a;
+  line-height: 1.6;
+  text-decoration: none;
+}
+
+a.contact-detail-value:hover {
+  color: #000000;
+}
+
+.contact-details-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding-top: 1rem;
+}
+
+/* Floating-label form fields */
+.floating-field {
+  position: relative;
+  margin-bottom: 2.25rem;
+}
+
+.floating-input,
+.floating-textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #cccccc;
+  border-radius: 0;
+  padding: 1.25rem 0 0.625rem;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: #1a1a1a;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.3s ease;
+  resize: none;
+}
+
+.floating-input:focus,
+.floating-textarea:focus {
+  border-bottom-color: #000000;
+}
+
+.floating-label {
+  position: absolute;
+  top: 1.25rem;
+  left: 0;
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: #aaaaaa;
+  pointer-events: none;
+  transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease, letter-spacing 0.2s ease;
+}
+
+.floating-input:focus + .floating-label,
+.floating-input:not(:placeholder-shown) + .floating-label,
+.floating-textarea:focus + .floating-label,
+.floating-textarea:not(:placeholder-shown) + .floating-label {
+  top: 0;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #1a1a1a;
+}
+
+.field-error-state .floating-input,
+.field-error-state .floating-textarea {
+  border-bottom-color: #cc3333;
+}
+
+.field-error-state .floating-label {
+  color: #cc3333;
+}
+
+.field-error-msg {
+  display: none;
+  font-size: 0.75rem;
+  color: #cc3333;
+  margin-top: 0.375rem;
+  letter-spacing: 0.03em;
+}
+
+.field-error-state .field-error-msg {
+  display: block;
+}
+
+.form-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  color: #ffffff;
+  border: 1px solid #000000;
+  padding: 1rem 2.5rem;
+  font-size: 0.8125rem;
+  font-family: var(--font-body);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+  margin-top: 0.5rem;
+}
+
+.form-submit-btn:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.form-submit-btn:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 3px;
+}
+
+.form-success-msg {
+  font-size: 1.0625rem;
+  font-weight: 300;
+  color: #000000;
+  padding: 2rem 0;
+  letter-spacing: 0.02em;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.footer-wrap {
+  padding: 3.5rem 0 3rem;
+  border-top: 1px solid var(--color-border, #e8e8e8);
+  text-align: center;
+}
+
+.footer-text {
+  font-size: 0.8125rem;
+  color: var(--color-muted, #888);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+}

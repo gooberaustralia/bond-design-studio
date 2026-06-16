@@ -32,5 +32,7 @@
   "socialLinks": [],
   "createdAt": "2026-04-13T03:58:01.185Z",
   "lastOpened": "2026-04-13T03:58:01.185Z",
-  "schemaVersion": "1.0"
+  "schemaVersion": "1.0",
+  "vercelUrl": "https://bond-design-studio.vercel.app",
+  "gitRemote": "https://github.com/gooberaustralia/bond-design-studio.git"
 }

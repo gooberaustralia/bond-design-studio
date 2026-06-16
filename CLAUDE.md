@@ -5,6 +5,7 @@ These folders are **in the repo** under `.claude/skills/`. Goober copies them fr
 
 | Skill | SKILL.md |
 |-------|----------|
+| `animated-website` | `.claude/skills/animated-website/SKILL.md` |
 | `banner-design` | `.claude/skills/banner-design/SKILL.md` |
 | `brand` | `.claude/skills/brand/SKILL.md` |
 | `design` | `.claude/skills/design/SKILL.md` |
@@ -18,7 +19,10 @@ Additional skills installed under `~/.claude/skills/`. Use when they match the t
 
 | Skill | SKILL.md path |
 |-------|---------------|
+| `cinematic-scroll-hero` | `~/.claude/skills/cinematic-scroll-hero/SKILL.md` |
+| `financial-analyst` | `~/.claude/skills/financial-analyst/SKILL.md` |
 | `frontend-design` | `~/.claude/skills/frontend-design/SKILL.md` |
+| `pdf` | `~/.claude/skills/pdf/SKILL.md` |
 
 **How to use:** **Initial full-site build (wizard / empty pages):** mandatory — read **ui-ux-pro-max** `SKILL.md`, then use **21st.dev** MCP before implementing nav, hero, feature grids, and service/marketing sections (see workflow below). **Google Stitch** MCP: use **when installed and helpful** for UI/design work. **Later:** small copy or single-line fixes can skip MCP/skill; **new pages, redesigns, or multi-section UI** still follow the workflow.
 

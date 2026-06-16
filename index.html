@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bond Design Studio — Refined Residential Architecture, Sydney</title>
+  <meta name="description" content="Bond Design Studio creates residential spaces designed for clarity, light, and life. Custom homes, interior design, and sustainable architecture in Sydney.">
+
+  <!-- Framework -->
+  <link rel="stylesheet" href="/framework/css/core.css">
+  <link rel="stylesheet" href="/framework/css/components.css">
+  <link rel="stylesheet" href="/framework/css/sections.css">
+
+  <!-- Brand tokens + custom -->
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       HERO — Scroll-Driven Video Scrub
+       ============================================================ -->
+  <section id="hero-section" aria-label="Hero" role="region">
+
+    <!--
+      Canvas-based frame scrubbing. Frames extracted via ffmpeg — see README.md.
+      Poster image shows until frames are loaded or as fallback.
+    -->
+    <canvas
+      id="hero-canvas"
+      aria-hidden="true"
+    ></canvas>
+
+    <!-- Dark overlay gradient always present -->
+    <div class="hero-overlay-gradient" aria-hidden="true"></div>
+
+    <!-- White fade-out overlay — JS drives opacity during hold zone -->
+    <div id="hero-fade-white" aria-hidden="true"></div>
+
+    <!-- Frame preload overlay — hidden once frames are ready -->
+    <div id="hero-loader" aria-hidden="true">
+      <div id="hero-loader-bar"></div>
+    </div>
+
+    <!-- Logo + text overlay -->
+    <div class="hero-text-overlay">
+
+      <!-- Studio wordmark — scales in, then fades out via JS -->
+      <div class="hero-logo" id="hero-logo" aria-label="Bond Design Studio">
+        <span class="hero-logo-word">Bond</span>
+        <span class="hero-logo-word">Design</span>
+        <span class="hero-logo-word">Studio</span>
+      </div>
+
+      <!-- Subtitle + description — blur-focus in after logo fades, then out -->
+      <div class="hero-text-container" id="hero-text-container">
+        <p class="hero-text-1" id="hero-text-1">
+          Refined residential spaces designed for clarity, light, and life.
+        </p>
+        <p class="hero-text-2" id="hero-text-2">
+          To create residential spaces that inspire, nurture, and enrich the lives of those who live in them. We believe every home should be a sanctuary that feels as good as it looks.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Scroll hint — fades out as user begins scrolling -->
+    <div id="scroll-hint" aria-hidden="true">
+      <div class="scroll-hint-line"></div>
+      <span class="scroll-hint-label">Scroll</span>
+    </div>
+
+    <!-- Sentinel: IntersectionObserver watches this to detect when we scroll past the hero -->
+    <div class="hero-sentinel" id="hero-sentinel" aria-hidden="true"></div>
+
+  </section>
+
+
+  <!-- ============================================================
+       SERVICES — hero fade dissolves into the top of this section
+       ============================================================ -->
+  <section
+    class="section above-hero hero-join"
+    id="services"
+    aria-labelledby="services-heading"
+  >
+    <div class="container">
+
+      <span class="eyebrow reveal" data-delay="0">Our Services</span>
+      <h2 class="display-heading reveal" id="services-heading" data-delay="1">What We Do</h2>
+
+      <p class="body-copy services-intro reveal" data-delay="2">
+        At Bond Design Studio, we offer a comprehensive range of services to help you create your perfect home. Our approach is collaborative, ensuring that every step of the design process is in line with your vision.
+      </p>
+
+      <div class="services-grid">
+
+        <div class="service-card reveal" data-delay="3">
+          <h3>Custom Home Design</h3>
+          <p>We collaborate with you from the very first sketch to the final detail — crafting a home that reflects your personality, lifestyle, and long-term vision. Every decision is considered. Nothing is incidental.</p>
+        </div>
+
+        <div class="service-card reveal" data-delay="4">
+          <h3>Interior Design</h3>
+          <p>From spatial planning and material selection to lighting and furniture, we design interiors that are harmonious, functional, and enduring. Spaces that feel as good as they look.</p>
+        </div>
+
+        <div class="service-card reveal" data-delay="3">
+          <h3>Home Transformations</h3>
+          <p>We see the potential in existing homes. Whether a single room or a whole-home redesign, we bring fresh eyes and careful thinking to spaces that deserve a new chapter.</p>
+        </div>
+
+        <div class="service-card reveal" data-delay="4">
+          <h3>Sustainable Design</h3>
+          <p>Beautiful design and responsible practice are not in opposition. We integrate sustainable materials, passive principles, and considered detailing to create homes that tread lightly and last.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       PRINCIPAL — Monica Vogel
+       ============================================================ -->
+  <section
+    class="section section-xl above-hero"
+    id="principal"
+    aria-labelledby="principal-heading"
+    data-section
+  >
+    <div class="container">
+      <div class="principal-split">
+
+        <!-- Portrait -->
+        <img
+          class="portrait-img reveal-left"
+          src="/assets/images/Monica Vogel Image.jpg"
+          alt="Monica Vogel, Lead Designer at Bond Design Studio"
+          loading="lazy"
+          data-delay="0"
+        >
+
+        <!-- Bio -->
+        <div class="principal-bio reveal-right" data-delay="1">
+          <span class="eyebrow">Lead Designer</span>
+          <h2 class="display-heading-lg" id="principal-heading">Monica Vogel</h2>
+
+          <p class="body-copy-dark">
+            Monica founded Bond Design Studio on a single conviction: that a home should be an honest expression of the life lived in it. With over two decades of practice across Sydney's most thoughtful residential projects, she has developed a design language defined by restraint, craft, and clarity.
+          </p>
+          <p class="body-copy-dark">
+            Her training in architecture and her enduring interest in the way people inhabit space inform every project — from the first meeting to the day the keys are handed over. Monica has been recognised by the Australian Institute of Architects and her work has been published in&nbsp;<em>Vogue Living</em>, <em>Belle</em>, and <em>Architectural Digest Australia</em>.
+          </p>
+          <p class="body-copy-dark">
+            She believes the quietest rooms are often the most memorable.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CONTACT
+       ============================================================ -->
+  <section
+    class="section section-xl above-hero"
+    id="contact"
+    aria-labelledby="contact-heading"
+    data-section
+  >
+      <div class="container">
+
+        <h2 class="display-heading-lg reveal" id="contact-heading" data-delay="0">Get in touch.</h2>
+
+        <div class="contact-layout">
+
+          <!-- Contact details -->
+          <div class="contact-details-stack reveal-left" aria-label="Contact information" data-delay="1">
+
+            <div class="contact-detail">
+              <span class="contact-detail-label">Studio</span>
+              <span class="contact-detail-value">
+                100 Barangaroo Avenue<br>
+                Sydney NSW 2000
+              </span>
+            </div>
+
+            <div class="contact-detail">
+              <span class="contact-detail-label">Email</span>
+              <a
+                href="mailto:admin@bonddesignstudio.com.au"
+                class="contact-detail-value"
+              >admin@bonddesignstudio.com.au</a>
+            </div>
+
+          </div>
+
+          <!-- Contact form -->
+          <form
+            id="contact-form"
+            class="reveal-right"
+            novalidate
+            aria-label="Contact form"
+            data-delay="2"
+          >
+
+            <div class="floating-field" id="field-wrap-name">
+              <input
+                class="floating-input"
+                type="text"
+                id="field-name"
+                name="name"
+                placeholder=" "
+                autocomplete="name"
+                aria-required="true"
+                aria-describedby="error-name"
+              >
+              <label class="floating-label" for="field-name">Full Name</label>
+              <span class="field-error-msg" id="error-name" role="alert">Please enter your name.</span>
+            </div>
+
+            <div class="floating-field" id="field-wrap-email">
+              <input
+                class="floating-input"
+                type="email"
+                id="field-email"
+                name="email"
+                placeholder=" "
+                autocomplete="email"
+                aria-required="true"
+                aria-describedby="error-email"
+              >
+              <label class="floating-label" for="field-email">Email Address</label>
+              <span class="field-error-msg" id="error-email" role="alert">Please enter a valid email address.</span>
+            </div>
+
+            <div class="floating-field" id="field-wrap-phone">
+              <input
+                class="floating-input"
+                type="tel"
+                id="field-phone"
+                name="phone"
+                placeholder=" "
+                autocomplete="tel"
+              >
+              <label class="floating-label" for="field-phone">Phone (optional)</label>
+            </div>
+
+            <div class="floating-field" id="field-wrap-message">
+              <textarea
+                class="floating-textarea"
+                id="field-message"
+                name="message"
+                rows="4"
+                placeholder=" "
+                aria-required="true"
+                aria-describedby="error-message"
+              ></textarea>
+              <label class="floating-label" for="field-message">Message</label>
+              <span class="field-error-msg" id="error-message" role="alert">Please enter a message.</span>
+            </div>
+
+            <button type="submit" class="form-submit-btn">Send Message</button>
+
+          </form>
+
+        </div>
+      </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="above-hero footer-wrap" role="contentinfo">
+    <div class="container">
+      <p class="footer-text">&copy; 2025 Bond Design Studio. All rights reserved.</p>
+    </div>
+  </footer>
+
+
+  <!-- Framework runtime (nav, accordion, scroll-reveal) -->
+  <script src="/framework/js/runtime.js" defer></script>
+
+  <!-- Custom: canvas frame scrubbing hero, cinematic overlays, scroll-reveal -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ─── Elements ─────────────────────────────────────────── */
+      var heroSection   = document.getElementById('hero-section');
+      var canvas        = document.getElementById('hero-canvas');
+      var heroLogo      = document.getElementById('hero-logo');
+      var textContainer = document.getElementById('hero-text-container');
+      var sentinel      = document.getElementById('hero-sentinel');
+      var fadeWhite     = document.getElementById('hero-fade-white');
+
+      if (!heroSection || !canvas) return;
+
+      var ctx = canvas.getContext('2d');
+
+      /* ─── Frame config ──────────────────────────────────────── */
+      /*
+       * FRAME_COUNT must match the actual number of files in /frames/.
+       * Run the ffmpeg command in README.md to extract frames, then
+       * set this value to the output of: ls frames/*.jpg | wc -l
+       *
+       * Currently 0 → fallback mode (poster shown, no scrubbing).
+       */
+      var FRAME_COUNT = 120;
+      var FRAME_PATH  = '/frames/frame';  /* files are frame0001.jpg … */
+
+      var SCROLL_SPEED = 380;   /* px of scroll per second-equivalent of frames */
+      var HOLD_SCROLL  = 800;   /* px to hold final frame before section exits */
+      var FPS          = 15;    /* must match ffmpeg fps= value */
+
+      if (FRAME_COUNT === 0) {
+        console.warn('[Hero] Frames not found — run ffmpeg command in README.md first.');
+      }
+
+      /* ─── Resize canvas to fill viewport ────────────────────── */
+      function resizeCanvas () {
+        canvas.width  = window.innerWidth;
+        canvas.height = window.innerHeight;
+        /* Redraw current frame after resize */
+        if (currentImage) drawImage(currentImage);
+      }
+      window.addEventListener('resize', resizeCanvas, { passive: true });
+      resizeCanvas();
+
+      /* ─── Hero scroll height ─────────────────────────────────── */
+      var totalScrollHeight = (FRAME_COUNT > 0)
+        ? (FRAME_COUNT / FPS) * SCROLL_SPEED + HOLD_SCROLL
+        : 10 * SCROLL_SPEED + HOLD_SCROLL;  /* 10s fallback */
+
+      heroSection.style.height = totalScrollHeight + 'px';
+
+      /* ─── Image pool ─────────────────────────────────────────── */
+      var frames       = [];   /* all frames, indexed 1..FRAME_COUNT */
+      var currentImage = null;
+      var lastFrameIdx = -1;
+      var drawPending  = false;
+      var targetVP     = 0;   /* raw scroll progress (updated on scroll) */
+      var smoothVP     = 0;   /* lerped toward targetVP each rAF tick */
+      var LERP         = 0.10; /* 0=no smoothing, 1=instant; 0.10 = gentle glide */
+      var scrollHint   = document.getElementById('scroll-hint');
+      var loaderEl     = document.getElementById('hero-loader');
+      var loaderBarEl  = document.getElementById('hero-loader-bar');
+
+      /* Pad index to 4 digits: 1 → "0001" */
+      function pad4 (n) { return ('000' + n).slice(-4); }
+
+      /* Draw an image covering the canvas (object-fit:cover equivalent).
+         srcH = 95% of image height to crop the Veo watermark at the bottom. */
+      function drawImage (img) {
+        if (!img || !img.complete) return;
+        var cw = canvas.width,  ch = canvas.height;
+        var iw = img.naturalWidth, ih = img.naturalHeight;
+        var srcH = ih * 0.95;
+        var scale = Math.max(cw / iw, ch / srcH);
+        var sw = iw * scale, sh = srcH * scale;
+        var dx = (cw - sw) / 2, dy = (ch - sh) / 2;
+        ctx.drawImage(img, 0, 0, iw, srcH, dx, dy, sw, sh);
+      }
+
+      /* Load and draw frame at index i (1-based) */
+      function showFrame (i) {
+        if (i === lastFrameIdx) return;
+        lastFrameIdx = i;
+
+        if (frames[i]) {
+          currentImage = frames[i];
+          drawImage(frames[i]);
+          return;
+        }
+
+        var img = new Image();
+        img.onload = function () {
+          frames[i]    = img;
+          currentImage = img;
+          /* Only paint if this is still the target frame */
+          if (lastFrameIdx === i) drawImage(img);
+        };
+        img.src = FRAME_PATH + pad4(i) + '.jpg';
+      }
+
+      /* ─── Eager preload — all frames at startup ─────────────── */
+      var loadedCount = 0;
+
+      function preloadAllFrames () {
+        if (FRAME_COUNT === 0) {
+          /* No frames — dismiss loader immediately */
+          if (loaderEl) loaderEl.classList.add('loaded');
+          return;
+        }
+
+        for (var i = 1; i <= FRAME_COUNT; i++) {
+          (function (idx) {
+            var img = new Image();
+            frames[idx] = img; /* reserve slot so showFrame doesn't double-load */
+            img.onload = img.onerror = function () {
+              loadedCount++;
+              var pct = (loadedCount / FRAME_COUNT) * 100;
+              if (loaderBarEl) loaderBarEl.style.width = pct + '%';
+
+              /* Draw first frame as soon as it arrives */
+              if (idx === 1 && img.complete && img.naturalWidth > 0) {
+                currentImage = img;
+                drawImage(img);
+              }
+
+              /* Dismiss loader once all frames are settled */
+              if (loadedCount >= FRAME_COUNT) {
+                if (loaderEl) loaderEl.classList.add('loaded');
+              }
+            };
+            img.src = FRAME_PATH + pad4(idx) + '.jpg';
+          }(i));
+        }
+      }
+
+      /* prefetchAround is now a no-op — all frames already loading */
+      function prefetchAround () {}
+
+      /* ─── Continuous lerp loop ───────────────────────────────── */
+      function rafLoop () {
+        requestAnimationFrame(rafLoop);
+
+        var delta = targetVP - smoothVP;
+        /* Stop updating when close enough — avoids endless micro-draws */
+        if (Math.abs(delta) < 0.0001) {
+          smoothVP = targetVP;
+          return;
+        }
+        smoothVP += delta * LERP;
+
+        /* Canvas frame */
+        if (FRAME_COUNT > 0) {
+          var idx = Math.max(1, Math.min(FRAME_COUNT, Math.round(smoothVP * (FRAME_COUNT - 1)) + 1));
+          showFrame(idx);
+          prefetchAround(idx);
+        }
+
+        /* Cinematic overlays */
+        updateOverlays(smoothVP);
+
+        /* White fade-out during hold zone
+           smoothVP is capped at 1.0; map raw scrollY through smoothed equivalent */
+        if (fadeWhite) {
+          var smoothScrollY = smoothVP * videoScrollHeight;
+          var hp = HOLD_SCROLL > 0
+            ? clamp((smoothScrollY - (videoScrollHeight - HOLD_SCROLL)) / HOLD_SCROLL, 0, 1)
+            : 0;
+          fadeWhite.style.opacity = hp.toFixed(4);
+        }
+      }
+
+      /* ─── rAF draw tick (legacy — kept for resize redraws) ──── */
+      function doDraw () {
+        drawPending = false;
+      }
+
+      /* ─── Helpers ────────────────────────────────────────────── */
+      function clamp (v, lo, hi) { return v < lo ? lo : v > hi ? hi : v; }
+      function inv (a, b, v) {
+        return a === b ? 0 : clamp((v - a) / (b - a), 0, 1);
+      }
+
+      /* ─── Cinematic overlay animation ───────────────────────── */
+      function updateOverlays (vp) {
+
+        /* ── Scroll hint: visible at rest, fades out by 10% scroll ── */
+        if (scrollHint) {
+          scrollHint.style.opacity = (1 - inv(0, 0.10, vp)).toFixed(4);
+        }
+
+        /* ── Logo: scale 0.60→1.00 (0–25%), stable (25–44%), fade out (44–54%) ── */
+        if (heroLogo) {
+          var logoScale   = 0.60 + inv(0, 0.25, vp) * 0.40;
+          var logoOpacity = vp <= 0.44 ? 1 : 1 - inv(0.44, 0.54, vp);
+          heroLogo.style.opacity   = logoOpacity.toFixed(4);
+          heroLogo.style.transform = 'translate(-50%, -50%) scale(' + logoScale.toFixed(4) + ')';
+        }
+
+        /* ── Text: blur-focus in (46–60%), stable (60–76%), fade out (76–95%) ── */
+        if (textContainer) {
+          var textOpacity;
+          if      (vp < 0.46) { textOpacity = 0; }
+          else if (vp < 0.60) { textOpacity = inv(0.46, 0.60, vp); }
+          else if (vp < 0.76) { textOpacity = 1; }
+          else                { textOpacity = 1 - inv(0.76, 0.95, vp); }
+
+          var blurPx = (1 - clamp(textOpacity * 1.5, 0, 1)) * 9;
+          textContainer.style.opacity = textOpacity.toFixed(4);
+          textContainer.style.filter  = blurPx > 0.1
+            ? 'blur(' + blurPx.toFixed(1) + 'px)'
+            : 'none';
+        }
+      }
+
+      /* ─── Scroll handler ─────────────────────────────────────── */
+      var videoScrollHeight = totalScrollHeight - HOLD_SCROLL;
+
+      window.addEventListener('scroll', function () {
+        var scrollY = window.scrollY || window.pageYOffset;
+
+        /* targetVP drives the lerp loop — capped at 1 (hold zone handled separately) */
+        targetVP = videoScrollHeight > 0
+          ? clamp(scrollY / videoScrollHeight, 0, 1)
+          : 0;
+
+      }, { passive: true });
+
+      /* Preload all frames, then kick off the lerp loop */
+      preloadAllFrames();
+      rafLoop();
+
+      /* ─── Hero exit (IntersectionObserver) ───────────────────── */
+      if (sentinel && 'IntersectionObserver' in window) {
+        var heroObserver = new IntersectionObserver(function (entries) {
+          var entry    = entries[0];
+          var pastHero = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+          document.body.classList.toggle('hero-exited', pastHero);
+        }, { threshold: 0 });
+
+        heroObserver.observe(sentinel);
+      }
+
+      /* ─── Reduced motion ─────────────────────────────────────── */
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        if (heroLogo)      { heroLogo.style.opacity = '1'; }
+        if (textContainer) { textContainer.style.opacity = '1'; textContainer.style.filter = 'none'; }
+      }
+
+      /* ─── Scroll-reveal IntersectionObserver ────────────────── */
+      if ('IntersectionObserver' in window) {
+        var revealObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var el    = entry.target;
+            var delay = parseFloat(el.getAttribute('data-delay') || '0');
+            el.style.transitionDelay = (delay * 0.12) + 's';
+            el.classList.add('in-view');
+            revealObserver.unobserve(el);
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function (el) {
+          revealObserver.observe(el);
+        });
+      } else {
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function (el) {
+          el.classList.add('in-view');
+        });
+      }
+
+      /* ─── Contact form — validate + send via /api/contact ──────── */
+      var form = document.getElementById('contact-form');
+
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+
+          var nameEl    = document.getElementById('field-name');
+          var emailEl   = document.getElementById('field-email');
+          var phoneEl   = document.getElementById('field-phone');
+          var messageEl = document.getElementById('field-message');
+
+          var fields = [
+            { wrap: 'field-wrap-name',    el: nameEl,    check: function (v) { return v.length > 0; } },
+            { wrap: 'field-wrap-email',   el: emailEl,   check: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); } },
+            { wrap: 'field-wrap-message', el: messageEl, check: function (v) { return v.length > 0; } }
+          ];
+
+          var valid = true;
+          fields.forEach(function (f) {
+            var w = document.getElementById(f.wrap);
+            if (w) w.classList.remove('field-error-state');
+            if (!f.check(f.el.value.trim())) {
+              if (w) w.classList.add('field-error-state');
+              valid = false;
+            }
+          });
+
+          if (!valid) return;
+
+          var btn = form.querySelector('.form-submit-btn');
+          if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+
+          fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name:    nameEl.value.trim(),
+              email:   emailEl.value.trim(),
+              phone:   phoneEl ? phoneEl.value.trim() : '',
+              message: messageEl.value.trim()
+            })
+          })
+          .then(function (res) { return res.json().then(function (d) { return { ok: res.ok, data: d }; }); })
+          .then(function (r) {
+            if (r.ok) {
+              form.innerHTML = '<p class="form-success-msg">Thank you. We\'ll be in touch soon.</p>';
+            } else {
+              if (btn) { btn.disabled = false; btn.textContent = 'Send Message'; }
+              alert('Sorry, something went wrong. Please email us directly at admin@bonddesignstudio.com.au');
+            }
+          })
+          .catch(function () {
+            if (btn) { btn.disabled = false; btn.textContent = 'Send Message'; }
+            alert('Sorry, something went wrong. Please email us directly at admin@bonddesignstudio.com.au');
+          });
+        });
+      }
+
+    }());
+  </script>
+
+</body>
+</html>
