@@ -699,3 +699,21 @@ a.contact-detail-value:hover {
   font-weight: 300;
   letter-spacing: 0.04em;
 }
+
+
+/* ============================================================
+   REDESIGN PREVIEW — quiet eye link beside the copyright.
+   Temporary while /new-home is being reviewed.
+   ============================================================ */
+
+.preview-peek {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.7rem;
+  vertical-align: -0.22em;
+  color: inherit;
+  opacity: 0.35;
+  transition: opacity 0.35s ease;
+}
+.preview-peek:hover,
+.preview-peek:focus-visible { opacity: 1; }
