@@ -1,0 +1,18 @@
+{
+  "count": 2,
+  "generated_by": "siteState",
+  "pages": [
+    {
+      "is_draft": false,
+      "path": "pages/index.html",
+      "slug": "/",
+      "title": "index"
+    },
+    {
+      "is_draft": false,
+      "path": "pages/new-home.html",
+      "slug": "/new-home/",
+      "title": "new-home"
+    }
+  ]
+}

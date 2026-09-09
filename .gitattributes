@@ -1,0 +1,26 @@
+* text=auto eol=lf
+*.html text
+*.css text
+*.js text
+*.md text
+*.json text
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.svg binary
+*.ico binary
+*.pdf binary
+
+# Generated state — re-derived by `node tools/stitch.js`. Mark generated so
+# diffs collapse in review, and merge=ours so concurrent agent/human runs never
+# hand-merge derived JSON (re-run stitch to regenerate after a merge).
+site/pages.json          linguist-generated merge=ours
+site/blog.json           linguist-generated merge=ours
+site/internal-links.json linguist-generated merge=ours
+site/blocks.json         linguist-generated merge=ours
+site/sections.json       linguist-generated merge=ours
+site/assets.json         linguist-generated merge=ours
+site/drafts.json         linguist-generated merge=ours
+assets/css/tokens.css    linguist-generated merge=ours

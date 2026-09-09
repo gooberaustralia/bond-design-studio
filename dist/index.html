@@ -7,9 +7,9 @@
   <meta name="description" content="Bond Design Studio creates residential spaces designed for clarity, light, and life. Custom homes, interior design, and sustainable architecture in Sydney.">
 
   <!-- Framework -->
-  <link rel="stylesheet" href="/framework/css/core.css">
-  <link rel="stylesheet" href="/framework/css/components.css">
-  <link rel="stylesheet" href="/framework/css/sections.css">
+  <link rel="stylesheet" href="/css/framework/core.css">
+  <link rel="stylesheet" href="/css/framework/components.css">
+  <link rel="stylesheet" href="/css/framework/sections.css">
 
   <!-- Brand tokens + custom -->
   <link rel="stylesheet" href="/css/tokens.css">
@@ -139,7 +139,7 @@
           alt="Monica Vogel, Lead Designer at Bond Design Studio"
           loading="lazy"
           data-delay="0"
-        >
+         decoding="async">
 
         <!-- Bio -->
         <div class="principal-bio reveal-right" data-delay="1">
@@ -283,7 +283,7 @@
 
 
   <!-- Framework runtime (nav, accordion, scroll-reveal) -->
-  <script src="/framework/js/runtime.js" defer></script>
+  <script src="/js/framework/runtime.js" defer></script>
 
   <!-- Custom: canvas frame scrubbing hero, cinematic overlays, scroll-reveal -->
   <script>
@@ -304,14 +304,14 @@
 
       /* ─── Frame config ──────────────────────────────────────── */
       /*
-       * FRAME_COUNT must match the actual number of files in /frames/.
+       * FRAME_COUNT must match the actual number of files in /media/frames/.
        * Run the ffmpeg command in README.md to extract frames, then
-       * set this value to the output of: ls frames/*.jpg | wc -l
+       * set this value to the output of: ls media/frames/*.jpg | wc -l
        *
        * Currently 0 → fallback mode (poster shown, no scrubbing).
        */
       var FRAME_COUNT = 120;
-      var FRAME_PATH  = '/frames/frame';  /* files are frame0001.jpg … */
+      var FRAME_PATH  = '/media/frames/frame';  /* files are frame0001.jpg … */
 
       var SCROLL_SPEED = 380;   /* px of scroll per second-equivalent of frames */
       var HOLD_SCROLL  = 800;   /* px to hold final frame before section exits */

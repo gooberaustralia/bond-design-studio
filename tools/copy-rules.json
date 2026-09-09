@@ -1,0 +1,95 @@
+{
+  "$schema": "https://goober.app/schemas/copy-rules.v1.json",
+  "bannedPhrases": [
+    { "phrase": "in today's fast-paced world", "suggestion": "Cut the throat-clearing opener. Open with the specific claim." },
+    { "phrase": "look no further", "suggestion": "Say what the reader gets, not that the search is over." },
+    { "phrase": "elevate", "suggestion": "Name the specific improvement instead." },
+    { "phrase": "unlock", "suggestion": "Say what becomes possible, plainly." },
+    { "phrase": "seamless", "suggestion": "Describe what actually happens, specifically." },
+    { "phrase": "game-changer", "suggestion": "Say what changes and for whom." },
+    { "phrase": "game changer", "suggestion": "Say what changes and for whom." },
+    { "phrase": "delve", "suggestion": "Use a plain verb: look at, cover, explain." },
+    { "phrase": "landscape", "suggestion": "Only keep this if literal. A metaphorical landscape (\"the industry landscape\") reads as filler; name the actual thing." }
+  ],
+  "dash": {
+    "message": "No dashes as punctuation. Restructure with a comma, colon, full stop, or parentheses."
+  },
+  "shapes": [
+    {
+      "id": "whether-opener",
+      "message": "Two-option \"whether\" opener reads as filler. State the one thing that matters.",
+      "pattern": "\\bwhether\\s+you'?re\\b[^.?!]*?\\bor\\b"
+    },
+    {
+      "id": "not-x-its-y",
+      "message": "\"Not X, it's Y\" contrast is an AI tell. State the claim plainly.",
+      "pattern": "\\b(?:it'?s|that'?s|this\\s+is)\\s+not\\s+(?:just\\s+)?[a-z0-9 '’]+?,\\s*(?:it'?s|that'?s)\\b"
+    },
+    {
+      "id": "rhetorical-opener",
+      "message": "Rhetorical question used as a filler opener. Open with the answer instead.",
+      "pattern": "(?:^|[.!?]\\s+)(?:Ever\\s+wonder|Looking\\s+for|Need\\s+(?:a|some)|Want\\s+(?:a|to)|Tired\\s+of|Struggling\\s+with)\\b[^.?!]*\\?"
+    }
+  ],
+  "australianSpelling": [
+    { "us": "organize", "au": "organise" }, { "us": "organizes", "au": "organises" },
+    { "us": "organized", "au": "organised" }, { "us": "organizing", "au": "organising" },
+    { "us": "organization", "au": "organisation" }, { "us": "organizations", "au": "organisations" },
+    { "us": "color", "au": "colour" }, { "us": "colors", "au": "colours" },
+    { "us": "colored", "au": "coloured" }, { "us": "coloring", "au": "colouring" },
+    { "us": "favor", "au": "favour" }, { "us": "favors", "au": "favours" },
+    { "us": "favorite", "au": "favourite" }, { "us": "favorites", "au": "favourites" },
+    { "us": "center", "au": "centre" }, { "us": "centers", "au": "centres" }, { "us": "centered", "au": "centred" },
+    { "us": "realize", "au": "realise" }, { "us": "realizes", "au": "realises" },
+    { "us": "realized", "au": "realised" }, { "us": "realizing", "au": "realising" },
+    { "us": "analyze", "au": "analyse" }, { "us": "analyzes", "au": "analyses" },
+    { "us": "analyzed", "au": "analysed" }, { "us": "analyzing", "au": "analysing" },
+    { "us": "behavior", "au": "behaviour" }, { "us": "behaviors", "au": "behaviours" },
+    { "us": "neighbor", "au": "neighbour" }, { "us": "neighbors", "au": "neighbours" },
+    { "us": "labor", "au": "labour" }, { "us": "honor", "au": "honour" }, { "us": "honors", "au": "honours" },
+    { "us": "humor", "au": "humour" }, { "us": "rumor", "au": "rumour" }, { "us": "harbor", "au": "harbour" },
+    { "us": "endeavor", "au": "endeavour" },
+    { "us": "specialize", "au": "specialise" }, { "us": "specializes", "au": "specialises" },
+    { "us": "specialized", "au": "specialised" }, { "us": "specializing", "au": "specialising" },
+    { "us": "specialty", "au": "speciality" },
+    { "us": "personalize", "au": "personalise" }, { "us": "personalized", "au": "personalised" },
+    { "us": "personalizing", "au": "personalising" },
+    { "us": "optimize", "au": "optimise" }, { "us": "optimized", "au": "optimised" },
+    { "us": "optimizing", "au": "optimising" }, { "us": "optimization", "au": "optimisation" },
+    { "us": "customize", "au": "customise" }, { "us": "customized", "au": "customised" },
+    { "us": "customizing", "au": "customising" },
+    { "us": "recognize", "au": "recognise" }, { "us": "recognized", "au": "recognised" },
+    { "us": "recognizes", "au": "recognises" },
+    { "us": "catalog", "au": "catalogue" }, { "us": "catalogs", "au": "catalogues" },
+    { "us": "mold", "au": "mould" }, { "us": "jewelry", "au": "jewellery" },
+    { "us": "aluminum", "au": "aluminium" }, { "us": "tire", "au": "tyre" }, { "us": "tires", "au": "tyres" },
+    { "us": "curb", "au": "kerb" }, { "us": "gray", "au": "grey" },
+    { "us": "fiber", "au": "fibre" }, { "us": "fibers", "au": "fibres" },
+    { "us": "theater", "au": "theatre" }, { "us": "liter", "au": "litre" }, { "us": "liters", "au": "litres" },
+    { "us": "skeptical", "au": "sceptical" }, { "us": "artifact", "au": "artefact" }, { "us": "artifacts", "au": "artefacts" },
+    { "us": "pajamas", "au": "pyjamas" },
+    { "us": "capitalize", "au": "capitalise" }, { "us": "utilize", "au": "utilise" },
+    { "us": "utilizes", "au": "utilises" }, { "us": "utilized", "au": "utilised" }, { "us": "utilizing", "au": "utilising" },
+    { "us": "minimize", "au": "minimise" }, { "us": "minimized", "au": "minimised" }, { "us": "minimizing", "au": "minimising" },
+    { "us": "maximize", "au": "maximise" }, { "us": "maximized", "au": "maximised" }, { "us": "maximizing", "au": "maximising" },
+    { "us": "summarize", "au": "summarise" },
+    { "us": "prioritize", "au": "prioritise" }, { "us": "prioritized", "au": "prioritised" }, { "us": "prioritizing", "au": "prioritising" },
+    { "us": "apologize", "au": "apologise" }, { "us": "criticize", "au": "criticise" },
+    { "us": "emphasize", "au": "emphasise" }, { "us": "emphasized", "au": "emphasised" },
+    { "us": "familiarize", "au": "familiarise" },
+    { "us": "finalize", "au": "finalise" }, { "us": "finalized", "au": "finalised" }, { "us": "finalizing", "au": "finalising" },
+    { "us": "modernize", "au": "modernise" },
+    { "us": "standardize", "au": "standardise" }, { "us": "standardized", "au": "standardised" },
+    { "us": "visualize", "au": "visualise" },
+    { "us": "categorize", "au": "categorise" }, { "us": "categorized", "au": "categorised" },
+    { "us": "socialize", "au": "socialise" }, { "us": "synchronize", "au": "synchronise" }
+  ],
+  "sentenceLength": {
+    "shortWordMax": 8,
+    "longWordMin": 24,
+    "minSentencesForSpreadCheck": 4
+  },
+  "readingGrade": {
+    "warnAbove": 13
+  }
+}

@@ -1,4 +1,5 @@
 {
-  "outputDirectory": ".",
-  "buildCommand": ""
+  "outputDirectory": "dist",
+  "buildCommand": "node tools/stitch.js",
+  "framework": null
 }

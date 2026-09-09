@@ -10,6 +10,9 @@ These folders are **in the repo** under `.claude/skills/`. Goober copies them fr
 | `brand` | `.claude/skills/brand/SKILL.md` |
 | `design` | `.claude/skills/design/SKILL.md` |
 | `design-system` | `.claude/skills/design-system/SKILL.md` |
+| `goober-content-writing` | `.claude/skills/goober-content-writing/SKILL.md` |
+| `goober-design-pro` | `.claude/skills/goober-design-pro/SKILL.md` |
+| `goober-llm-seo` | `.claude/skills/goober-llm-seo/SKILL.md` |
 | `slides` | `.claude/skills/slides/SKILL.md` |
 | `ui-styling` | `.claude/skills/ui-styling/SKILL.md` |
 | `ui-ux-pro-max` | `.claude/skills/ui-ux-pro-max/SKILL.md` |
@@ -20,11 +23,11 @@ Additional skills installed under `~/.claude/skills/`. Use when they match the t
 | Skill | SKILL.md path |
 |-------|---------------|
 | `cinematic-scroll-hero` | `~/.claude/skills/cinematic-scroll-hero/SKILL.md` |
-| `financial-analyst` | `~/.claude/skills/financial-analyst/SKILL.md` |
-| `frontend-design` | `~/.claude/skills/frontend-design/SKILL.md` |
-| `pdf` | `~/.claude/skills/pdf/SKILL.md` |
+| `goober-site-scaffold` | `~/.claude/skills/goober-site-scaffold/SKILL.md` |
+| `goober-web-design` | `~/.claude/skills/goober-web-design/SKILL.md` |
+| `llm-seo` | `~/.claude/skills/llm-seo/SKILL.md` |
 
-**How to use:** **Initial full-site build (wizard / empty pages):** mandatory — read **ui-ux-pro-max** `SKILL.md`, then use **21st.dev** MCP before implementing nav, hero, feature grids, and service/marketing sections (see workflow below). **Google Stitch** MCP: use **when installed and helpful** for UI/design work. **Later:** small copy or single-line fixes can skip MCP/skill; **new pages, redesigns, or multi-section UI** still follow the workflow.
+**How to use:** **Initial full-site build (wizard / empty pages):** mandatory — read **goober-design-pro** (governing design system, rules win) and **goober-content-writing** `SKILL.md` in full, derive + save the design context, then use **21st.dev** MCP (when installed) before implementing nav, hero, feature grids, and service/marketing sections (see workflow below). **Google Stitch** MCP: use **when installed and helpful** for UI/design work. **Later:** small copy or single-line fixes can skip MCP/skill; **new pages, redesigns, or multi-section UI** still follow the workflow.
 
 ## Build focus (wizard)
 - UI/UX polish: spacing, visual hierarchy, responsive layout, and accessibility (WCAG-minded).
@@ -32,39 +35,59 @@ Additional skills installed under `~/.claude/skills/`. Use when they match the t
 - SEO: unique titles and meta descriptions per page, semantic HTML, crawlable content.
 - Brand consistency: colors, typography, and tone match project.json / CLAUDE.md.
 
-## Design, motion & MCP workflow
+## How to build this site (design quality is the product)
 
-### A. Initial full-site build (mandatory)
-Use this when you are **creating most or all pages** from an empty or nearly empty scaffold (typical **first run** after Goober creates the project).
+You are this client's **in-house website designer**. The bar is **high-end agency quality** — a committed, business-derived design DNA, real visual hierarchy, distinctive (not templated) sections, depth (layered backgrounds, imagery, orchestrated motion), and copy that flows. Your standing design system is the **goober-design-pro** skill (`.claude/skills/goober-design-pro/SKILL.md`) — read it first and follow its seven-phase process; its rules override this file when they conflict. The scaffolded pages and partials are placeholder-grade structure, **not a design** — never ship them as-is. Treat every build like it goes to a paying client tomorrow.
 
-**Before writing** nav, hero, primary marketing sections, **feature grids**, or **service / pricing cards**:
+### A. Initial full-site build (mandatory order — HOME PAGE FIRST)
+Use this on the **first run** (creating pages from the scaffold). Do these **in order**:
 
-1. **Read** `.claude/skills/ui-ux-pro-max/SKILL.md` **in full** (or follow its `search.py` / data steps if it defers to scripts). Use it to pick patterns, hierarchy, and spacing discipline — do **not** skip this on the first build.
-2. **21st.dev (Magic) MCP — required when configured:** Use `/mcp` or your tool list to confirm the server is connected. Then **call 21st.dev** to search or fetch **reference patterns** for at least: **site header / nav**, **hero**, **feature or service grid**, and **one secondary marketing block** (e.g. social proof, CTA band, or bento). Treat MCP output as **layout/structure inspiration only** — **translate** every idea into this repo's **framework classes** (`.section-*`, `.card`, grids, `tokens.css`). No raw `<style>`, no inline `style=""`.
-3. **Google Stitch MCP — use when it helps:** If **Stitch** is connected, you **may** use it for **designing the site** — e.g. screen ideas, layout structure, or structured design context — **especially** when you want faster UI ideation, ambiguous layout in the brief, or a clearer spec before writing HTML. Use it **alongside or after** the skill; it is **not** a substitute for reading **ui-ux-pro-max** on the first build. **Translate** everything into static **framework HTML** only (same rules as 21st.dev); never ship raw `<style>`, inline styles, or framework-incompatible component markup.
-4. If **21st.dev is not installed or not connected**, say that **once**, then lean on **ui-ux-pro-max** + **Available Framework Classes** only (still no skipping the skill). **Stitch** may still be used when connected.
+1. **Read the skills chosen for this build IN FULL before writing any markup.** They are listed under **Skills for this build** below (in `.claude/skills/`). **`goober-design-pro` is the GOVERNING design system for this build — read `.claude/skills/goober-design-pro/SKILL.md` in full and treat its rules as overriding anything in this file when they conflict**; `goober-content-writing` governs all copy. After reading, output one line per skill — `✓ read <skill>: <its core rule in your words>` — BEFORE your first page edit. No line, no build. If a path is missing, say so once and continue.
+2. **Derive the Design DNA, then lock it (goober-design-pro Phases 0–2).** Work through `references/design-strategy.md` (character direction, typography, colour system, shape, texture, motion signature, imagery art direction, layout attitude + the deviation rule and signature moment), then **write `design-guide/current.md` (the full design context) and `design-guide/tokens.json` BEFORE any markup**. Run `node tools/stitch.js` so `assets/css/tokens.css` regenerates from tokens.json. Baseline: `node tools/stitch.js --checkpoint baseline`.
+3. **Source imagery BEFORE building (no flat-colour-only pages).** Follow `goober-design-pro/references/imagery.md`: inventory `assets/images/`, then generate what's missing with the shared art-direction prompt prefix from your design context.
+   - Key: `. ~/.goober/goober-secrets.sh` → `$REPLICATE_API_TOKEN` (if the file or key is missing, say so once, build with art-directed CSS fields + placeholders, and list the images to supply).
+   - Primary model: `POST https://api.replicate.com/v1/models/openai/gpt-image-2/predictions` with header `Prefer: wait` and body `{"input":{"prompt":"<your prompt-prefix>, <image-specific suffix>","aspect_ratio":"3:2","output_format":"webp","quality":"high"}}` (fallback: `google/nano-banana-pro`).
+   - Save to `assets/images/<purpose>.webp`, **look at every generated image** (Read tool — reject text artifacts / palette drift), keep files under ~300KB, and write alt text in the brand voice.
+4. **Design the site chrome FRESH — replace, never patch.** Rewrite the ENTIRE contents of `partials/header.html`, `partials/header-home.html`, `partials/nav.html`, and `partials/footer.html` from scratch for THIS brand (keep only the `@use:` includes and `data-block` attributes). Do not reuse or tweak the starter markup or its class structure — design the chrome from the brand guide like a blank canvas, with its own CSS classes added to `components.css`. Requirements: real logo from `assets/images/` (check which logo files exist and use those exact paths — never a broken img), a deliberate mobile menu, CTA treatment, and a footer with hierarchy + trust signals. **NAV CONTRACT (multi-page, not a one-pager):** nav and footer links MUST point to the real page routes that exist in `pages/` — e.g. `/about/`, `/services/`, `/contact/` — and NEVER to in-page anchors like `#services`. Do not fold the other pages into anchor sections on the home page; each `pages/*.html` is its own route.
+5. **Plan architecture + content flow BEFORE markup.** For each page write a one-line intent and an ordered section list. Each page reads top-to-bottom as a narrative: **hook → value props → proof → objection handling → one clear primary CTA**. No two pages share the same section sequence.
+6. **Build the HOME PAGE ONLY, then STOP for approval.** Make it the standard-setter: distinctive hero (imagery/gradient depth, not a flat fill), varied section layouts, scroll-reveal/hover motion that respects `prefers-reduced-motion`, real copy. **Every `<section>` you write must carry a unique `data-block` attribute** (e.g. `data-block="hero-v2"`) — the visual editor and the `site/` registries depend on it. Stitch + verify it, present a short summary, and **wait for the user to approve before building any other page.** When approved, build EVERY other stubbed page in `pages/` as a full standalone route matching the locked design — do not skip pages and do not convert them into anchor sections of the home page.
+7. **Verify every page:** `node tools/stitch.js --changed <file>` after each, and `node tools/stitch.js --verify` reporting `ok: true` — fix oversize images, broken links, and missing alt before moving on.
 
-After the first build, see **B** for smaller follow-ups.
+You may add **reusable** classes to `assets/css/components.css` (gradients, animations, new section patterns) — that's how the framework grows. Never `<style>` tags, never inline `style=""`, never edit generated `tokens.css`.
 
-### B. Smaller changes after the site exists (optional unless UI-heavy)
-When the site **already has real pages** and you are doing **localized work** — typo/copy fixes, a single link, one paragraph, a small HTML tweak with **no new section types** — you **do not** have to re-run the full MCP sweep.
+### B. Surgical edits after the site exists
+For localized work (copy, one link, a single section), don't rebuild. Find the exact spot via `site/sections.json` (every section → `src_file` + `start_line`/`end_line`), edit in place, then `node tools/stitch.js --changed <file>`. Re-run the full design pass (step A) only when adding a new page or changing layout/visual structure.
 
-**Still** follow **A** (skill + 21st.dev when installed; **Stitch** when useful) when you: add a **new `*.html`**, redesign a **hero or nav**, replace **multiple sections**, or anything that changes **layout or visual structure** meaningfully.
+### C. Content & copy quality
+- Every word is written **originally for this business** — never lorem ipsum, never copied from example/inspiration sites.
+- Lead with outcomes and specifics, not adjectives. Short scannable lines, one idea per section.
+- Headings carry the message; body supports. CTAs are action-led and consistent in voice.
+- SEO on every page: unique title + meta description in the `@seo` block, one h1, semantic heading order, descriptive internal links.
 
-### C. Other MCP (when installed)
-| Goal | Tooling | Guidance |
-|------|---------|----------|
-| UI ideation, Stitch-led specs, screen concepts | **Google Stitch MCP** | Use **when connected** and when it improves design quality; implement as **framework HTML** only. |
-| Motion, scroll reveals | **Motion (Unframer MCP)** | Fit static HTML + `/framework/js/runtime.js`; respect **prefers-reduced-motion**. |
-| Supplied design | **Figma (remote MCP)** | Pull structure/spec when links/files are in scope. |
-| Deploy, env, logs | **Vercel MCP** | When shipping or debugging hosting. |
+### D. Memory & context for larger builds
+- Treat `CLAUDE.md` + `AGENTS.md` as the standing source of truth — re-read them if context gets long.
+- Read the derived registries (`site/pages.json`, `blog.json`, `sections.json`, `blocks.json`, `internal-links.json`) **instead of re-reading every HTML file** — they're ~20× cheaper and always current after a stitch.
+- Work page-by-page and stitch between pages so derived state + the preview stay in sync.
+- Use `--checkpoint <name>` before a visual-direction change so you can diff drift or revert.
 
-If a listed MCP is **not** installed, note it once and continue with **ui-ux-pro-max** + framework only.
+### E. MCP servers (only when connected — never required)
+| Goal | Server | Use |
+|------|--------|-----|
+| Motion / scroll reveals | **Motion (Unframer)** | Fit static HTML + `/framework/js/runtime.js`; respect `prefers-reduced-motion`. |
+| Supplied design files | **Figma (remote)** | Pull structure/spec when links are in scope. |
+| Deploy / env / logs | **Vercel** | When shipping or debugging hosting. |
+Note a server once if it's missing, then proceed with the skills + framework only. Ignore tooling nudges about Next.js/React/AI-SDK — this is a static HTML site; do not mention them in replies.
 
-### D. Non‑negotiables (always)
-- **Cohesion:** Typography, spacing, and CTAs match **Brand** and **tokens.css**.
-- **No generic filler:** Vary section types; use documented **section** classes; avoid repetitive stacked paragraphs.
-- **Third-party snippets:** Always reconcile with **Available Framework Classes** and **CRITICAL RULES**.
+### F. Non-negotiables (always)
+- **NEVER use emojis anywhere in site output** — headings, lists, buttons, icons, footers, anywhere. Icons are inline SVG (24px grid, `currentColor` strokes/fills) so they inherit brand colour.
+- **Typography restraint — the #1 tell of AI slop is giant bold fonts.** H1 ≤ 56px desktop (≤ 36px mobile), weight 700 max, normal letter-spacing. Use the accent-keyword pattern: ONE phrase per major heading in the brand accent colour, the rest in ink/white. Body 16–18px.
+- **Photo-led, trust-dense sections:** every major section is anchored by a real photo (card tops, split halves, galleries, hero backgrounds). The home page includes at least: an embedded quote form (hero card on desktop, repeated near the footer), a Google-review element, a photo gallery or photo-led grid, one brand-dark band, and a clickable phone number. A section that is just a coloured rectangle with centred text is a failed section.
+- **No flat-colour-only sections as the default look:** heroes and key sections use imagery, gradient depth, or layered patterns. Flat is a deliberate accent, not the whole site.
+- **Custom vanilla-JS components are encouraged** (review carousel, gallery lightbox, FAQ accordion, count-up stats, sticky mobile call/quote bar) — transform/opacity animation only, reveals fire once, `prefers-reduced-motion` respected.
+- **Cohesion:** typography, spacing, radius, and CTA styling match **Brand** + `tokens.css` everywhere.
+- **No generic filler:** vary section types; use documented section classes; never stack identical paragraph blocks.
+- **Accessibility:** AA contrast, visible focus rings, alt text, semantic headings (one h1/page, no level skips).
+- **Reconcile third-party snippets** with **Available Framework Classes** and **CRITICAL RULES**.
 
 ## Business Context
 - Name: Bond Design Studio
@@ -285,7 +308,7 @@ actual CSS or JS — write the full implementation.
 5. Every page must include `<script src="/framework/js/runtime.js" defer></script>`
 6. If **Code injection** (Goober) is used, keep third-party snippets inside the marker comments exactly as placed: `<!-- goober:inject:head -->` … `<!-- /goober:inject:head -->`, `body-start`, and `footer` — do not duplicate or move them casually.
 7. **Deploy shell placeholders:** If you copy `public/framework/shells/*.html`, replace `<!-- SITE_CONFIG_JSON -->` with a valid JSON object inline (or use the page shell in CLAUDE.md without that placeholder). Never ship `window.__SITE_CONFIG__ = <!-- SITE_CONFIG_JSON -->;` — it is invalid JavaScript until replaced.
-8. **Skills & MCP:** Follow **Design, motion & MCP workflow** (section A vs B). **Initial full-site build:** mandatory **ui-ux-pro-max** `SKILL.md` + **21st.dev** MCP when connected (see A); **Google Stitch** MCP **when connected — use as needed** for design ideation/specs (see A step 3 and section C). **Small later edits:** optional unless the change is visual/structural. **Unframer/Motion**, **Figma**, and **Vercel** MCP: use **when installed** and relevant. Other project `SKILL.md` files apply when listed above.
+8. **Skills & MCP:** Follow **How to build this site** (section A vs B). **Initial full-site build:** read every skill listed under **Skills for this build** in full, lock the design system, plan content flow, build page-by-page, `--verify` each. **Small later edits:** use `site/sections.json` to jump to the line; skills optional unless visual/structural. **Motion (Unframer)**, **Figma**, and **Vercel** MCP: use **when installed** and relevant.
 9. **Example sites are not content sources:** When **Example sites** are listed above, use those URLs **only** for layout and visual patterns — never copy their wording, claims, or imitate their copy structure. All user-visible text must come from this project's brief, site content, documents, and brand — written originally for **Bond Design Studio**.
 10. **Inspiration files are not page assets:** Files under `references/inspiration/` (when listed above) must never appear in `<img src>` or as CSS background images on **shipped** HTML. Real imagery: `assets/images/` and **Media & image sources** only; otherwise placeholders or layout without those reference files.
 
@@ -357,10 +380,10 @@ Every page must follow this structure:
 
 Every service this site needs is provisioned as a Vercel environment variable, never as a literal value in HTML, JS, or this repo. Read this before wiring any form, lead hook, or third-party call.
 
-### Hosting: on Vercel
+### Hosting: verified
 - The site deploys to Vercel from this folder. `.vercel/project.json` links it to the right Vercel project. Never delete it or hand-edit the ids.
 
-### Email: saved locally
+### Email: on Vercel
 Env vars: `EMAIL_PROVIDER`, `SENDGRID_API_KEY`, `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL`
 - Every contact or quote form POSTs to `/api/enquiry`. Never a third-party form service, never a `mailto:` action.
 - Never hardcode an email address or an API key in HTML or JS. `api/enquiry.js` and `api/_autoreply.js` already read these env vars, with the baked defaults kept as a fallback.

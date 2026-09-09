@@ -1,0 +1,22 @@
+{
+  "broken": [],
+  "edges": [
+    {
+      "anchor": "",
+      "from": "/",
+      "to": "/new-home"
+    },
+    {
+      "anchor": "",
+      "from": "/new-home/",
+      "to": "/new-home"
+    },
+    {
+      "anchor": "",
+      "from": "/new-home/",
+      "to": "/new-home"
+    }
+  ],
+  "generated_by": "siteState",
+  "orphans": []
+}

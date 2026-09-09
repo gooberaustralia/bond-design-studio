@@ -1,12 +1,12 @@
-# Animated Website — Cinematic Hero Orchestrator
+# Animated Website, Cinematic Hero Orchestrator
 
 **Purpose:** This skill orchestrates the full build pipeline for animated websites: it generates a cinematic background image via Replicate (Nano Banana), converts it to a video via kie.ai (Google Veo), extracts frames with FFmpeg, builds a canvas scroll-scrubber hero section, then builds the full site following standard design quality rules.
 
-**CRITICAL:** Read this file top-to-bottom and execute every step in order. Do not skip steps. Do not start building HTML until Steps 1–4 are complete.
+**CRITICAL:** Read this file top-to-bottom and execute every step in order. Do not skip steps. Do not start building HTML until Steps 1 to 4 are complete.
 
 ---
 
-## Pre-flight — Read design skills first
+## Pre-flight: Read design skills first
 
 Before any step below, read both of these in full:
 
@@ -17,9 +17,9 @@ These govern typography, layout, spacing, and visual quality for the full site. 
 
 ---
 
-## Pre-flight — Load API keys
+## Pre-flight: Load API keys
 
-API keys are written by Goober Builder to `~/.goober/goober-secrets.sh` whenever you save them in the Integrations tab. Source that file — **no Keychain password prompts**:
+API keys are written by Goober Builder to `~/.goober/goober-secrets.sh` whenever you save them in the Integrations tab. Source that file: **no Keychain password prompts**.
 
 ```bash
 SECRETS_FILE="$HOME/.goober/goober-secrets.sh"
@@ -50,7 +50,7 @@ echo "✓ API keys loaded from ~/.goober/goober-secrets.sh"
 
 ---
 
-## Pre-flight — Create required directories
+## Pre-flight: Create required directories
 
 Run these commands before anything else:
 
@@ -63,19 +63,19 @@ Print: `✓ Directories ready`
 
 ---
 
-## STEP 1 — Analyse the hero image (or brand brief) and craft the Replicate prompt
+## STEP 1: Analyse the hero image (or brand brief) and craft the Replicate prompt
 
-**Goal:** Write a detailed image generation prompt that will produce a cinematic, full-bleed 16:9 background optimised for video animation. Source material is the uploaded hero image if one exists — otherwise derive everything from the brand brief in CLAUDE.md.
+**Goal:** Write a detailed image generation prompt that will produce a cinematic, full-bleed 16:9 background optimised for video animation. Source material is the uploaded hero image if one exists. Otherwise derive everything from the brand brief in CLAUDE.md.
 
 **1a. Check whether a hero image exists:**
 
 ```bash
 HERO_IMAGE=$(ls assets/images/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP} 2>/dev/null | head -1)
 if [ -n "$HERO_IMAGE" ]; then
-  echo "✓ Hero image found: $HERO_IMAGE — will use as Nano Banana reference"
+  echo "✓ Hero image found: $HERO_IMAGE, will use as Nano Banana reference"
   HAS_HERO_IMAGE=true
 else
-  echo "⚠ No hero image found — will generate from brand brief (text-only)"
+  echo "⚠ No hero image found, will generate from brand brief (text-only)"
   HAS_HERO_IMAGE=false
 fi
 ```
@@ -98,21 +98,21 @@ fi
 
 Craft a prompt that:
 - Describes a **cinematic widescreen scene** matching the subject or brand (16:9, full-bleed)
-- Specifies **clear negative space** in the centre and lower third — where hero text will sit — no clutter in those zones
+- Specifies **clear negative space** in the centre and lower third, where hero text will sit, no clutter in those zones
 - Uses photorealistic, ultra-high-detail language appropriate to the subject
 - Includes the brand's visual tone
 - **Explicitly states: no text, no words, no captions, no watermarks, no logos in the image**
 - Ends with: `cinematic lighting, 8K resolution, award-winning photography, ultra-detailed, no text`
 
-Also note in the prompt that the image will be used as the **first frame of a video** — it should have inherent motion potential (e.g. moving clouds, flowing water, swaying trees, dynamic light).
+Also note in the prompt that the image will be used as the **first frame of a video**. It should have inherent motion potential (e.g. moving clouds, flowing water, swaying trees, dynamic light).
 
 **Save the prompt to `assets/video/replicate-prompt.txt`**
 
-Print: `✓ Step 1: Replicate prompt crafted — source: [hero image / brand brief] — saved to assets/video/replicate-prompt.txt`
+Print: `✓ Step 1: Replicate prompt crafted, source: [hero image / brand brief], saved to assets/video/replicate-prompt.txt`
 
 ---
 
-## STEP 2 — Generate background image via Replicate (Nano Banana)
+## STEP 2: Generate background image via Replicate (Nano Banana)
 
 **Goal:** Call Nano Banana to generate the cinematic background image. If a hero image was uploaded, send it as a reference so Nano Banana re-imagines it. If no image was uploaded, generate from the text prompt alone.
 
@@ -129,7 +129,7 @@ if [ "$HAS_HERO_IMAGE" = "true" ]; then
   # Base64-encode the hero image and pass it as the reference input.
   HERO_MIME=$(file --mime-type -b "$HERO_IMAGE")
   HERO_B64=$(base64 -i "$HERO_IMAGE" | tr -d '\n')
-  echo "✓ Hero image encoded — sending as reference to Nano Banana"
+  echo "✓ Hero image encoded, sending as reference to Nano Banana"
 
   REQUEST_JSON=$(jq -n \
     --arg prompt "$PROMPT" \
@@ -151,8 +151,8 @@ if [ "$HAS_HERO_IMAGE" = "true" ]; then
 
 else
   # ── TEXT-ONLY GENERATION ─────────────────────────────────
-  # No hero image provided — generate entirely from the brand brief prompt.
-  echo "⚠ No hero image — generating from text prompt only"
+  # No hero image provided, generate entirely from the brand brief prompt.
+  echo "⚠ No hero image, generating from text prompt only"
 
   REQUEST_JSON=$(jq -n \
     --arg prompt "$PROMPT" \
@@ -210,7 +210,7 @@ else
 fi
 ```
 
-**2d. Visually verify the generated image — REQUIRED before proceeding to kie.ai:**
+**2d. Visually verify the generated image REQUIRED before proceeding to kie.ai:**
 
 Open `assets/images/hero-bg-generated.png` and inspect it. Check ALL of the following:
 
@@ -223,23 +223,43 @@ Open `assets/images/hero-bg-generated.png` and inspect it. Check ALL of the foll
 | No artefacts | No obvious AI artefacts, corruption, blank patches, or distorted areas |
 | Motion potential | Scene has elements that could animate naturally (light, atmosphere, texture, depth) |
 
-- If ALL checks pass → print `✓ Step 2: Image verified — proceeding to video generation` and continue.
+- If ALL checks pass → print `✓ Step 2: Image verified, proceeding to video generation` and continue.
 - If ANY check fails → print a description of what failed, then use the fallback:
   ```bash
   cp "$HERO_IMAGE" assets/images/hero-bg-generated.png
   echo "FALLBACK" > assets/video/replicate-image-url.txt
-  echo "⚠ Verification failed — using original hero image as fallback for video generation"
+  echo "⚠ Verification failed, using original hero image as fallback for video generation"
   ```
 
 Print: `✓ Step 2: Background image ready → assets/images/hero-bg-generated.png`
 
 ---
 
-## STEP 3 — Generate video via kie.ai (Google Veo)
+## STEP 3: Generate video via kie.ai (Google Veo)
 
 **Goal:** Convert the verified background image into a cinematic video using Google Veo via the kie.ai API.
 
 `$KIE_API_KEY` is already set in the environment from the pre-flight source step.
+
+**Higgsfield first (try this before 3a):** if the session's MCP tools include
+Higgsfield's `generate_video`, `models_explore`, `media_import_url` and
+`media_upload`, use it for the hero loop instead of kie.ai and skip ahead to
+Step 4 once the video is downloaded.
+
+1. Upload the approved hero still with `media_upload` (or `media_import_url`
+   if it already has a URL) and use the returned media id as both
+   `start_image` and `end_image`, so the video returns to its own first
+   frame and repeats cleanly.
+2. Call `generate_video` for 5 to 8 seconds at 16:9, `generate_audio` set to
+   false, trying models in this order: `minimax_h3` (2K), `seedance_2_5`
+   (mode `omni_reference`, resolution 1080p), `flux_3_video` (1080p).
+3. Preflight every attempt with `get_cost true` and state the credits to the
+   user before running. Never set `use_unlim` yourself.
+4. Download the result to `assets/video/hero-bg.mp4` and continue at Step 4
+   (frame extraction).
+
+If Higgsfield is not connected, or none of its models succeed, fall through
+to the kie.ai path below unchanged.
 
 **3a. Resolve the image URL for kie.ai:**
 
@@ -266,9 +286,9 @@ echo "Image URL for kie.ai: $IMAGE_URL"
 
 **3b. Submit the generation job:**
 
-Pass the same image as both first and last frame so Veo animates the scene and returns to the same composition — creating a natural loop that never feels like it restarts.
+Pass the same image as both first and last frame so Veo animates the scene and returns to the same composition, creating a natural loop that never feels like it restarts.
 
-Craft a video motion prompt that matches the mood of the hero image from Step 1. Use the subject and atmosphere you identified (e.g. dramatic push for landscapes, sweeping pan for architecture, slow drift for abstract). The prompt below is the **base template** — tailor the specific motion style to the subject:
+Craft a video motion prompt that matches the mood of the hero image from Step 1. Use the subject and atmosphere you identified (e.g. dramatic push for landscapes, sweeping pan for architecture, slow drift for abstract). The prompt below is the **base template**, tailor the specific motion style to the subject:
 
 ```bash
 # ── CHOOSE CAMERA MOVEMENT ───────────────────────────────────────────────────
@@ -321,7 +341,7 @@ KIE_RESPONSE=$(curl -s -X POST \
 echo "$KIE_RESPONSE"
 ```
 
-> **Note:** If you receive a 404, check the kie.ai API dashboard for the correct endpoint base path — the query endpoint uses the same base.
+> **Note:** If you receive a 404, check the kie.ai API dashboard for the correct endpoint base path, the query endpoint uses the same base.
 
 Extract `data.taskId` from the response JSON. Save to `assets/video/kie-task-id.txt`.
 
@@ -338,7 +358,7 @@ while true; do
   
   STATUS=$(echo "$QUERY" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('data',{}).get('status','unknown'))")
   
-  echo "⏳ Step 3: Video generating... (${ELAPSED}s elapsed) — status: $STATUS"
+  echo "⏳ Step 3: Video generating... (${ELAPSED}s elapsed), status: $STATUS"
   
   if [ "$STATUS" = "completed" ] || [ "$STATUS" = "succeed" ] || [ "$STATUS" = "success" ]; then
     VIDEO_URL=$(echo "$QUERY" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('data',{}).get('videoUrl','') or d.get('data',{}).get('video_url',''))")
@@ -373,7 +393,7 @@ Print: `✓ Step 3: Video downloaded → assets/video/hero-bg.mp4`
 
 ---
 
-## STEP 4 — Extract frames with FFmpeg
+## STEP 4: Extract frames with FFmpeg
 
 **Goal:** Convert the video to individual JPEG frames for canvas scroll scrubbing.
 
@@ -454,13 +474,13 @@ Print: `✓ Step 4: ${FRAME_COUNT} frames extracted → assets/frames/ | Fade co
 
 ---
 
-## STEP 5 — Plan visual story strategy, then build the canvas hero
+## STEP 5: Plan visual story strategy, then build the canvas hero
 
-**Goal:** Design the scroll-driven visual narrative first, then implement it. The hero must feel like a cinematic experience — the video plays on scroll, and text layers reveal in choreographed phases that match the motion and mood.
+**Goal:** Design the scroll-driven visual narrative first, then implement it. The hero must feel like a cinematic experience, the video plays on scroll, and text layers reveal in choreographed phases that match the motion and mood.
 
 ---
 
-### 5a — Visual story planning (do this before writing any code)
+### 5a: Visual story planning (do this before writing any code)
 
 Read CLAUDE.md. Extract:
 - Business name
@@ -491,7 +511,7 @@ Write out your plan as a comment block at the top of the `<script>` before the c
 
 ---
 
-### 5b — Canvas scroll-scrubber JavaScript
+### 5b: Canvas scroll-scrubber JavaScript
 
 Read `FRAME_COUNT` from `assets/frames/frame-count.txt`.
 Read `DOMINANT_COLOUR` from `assets/video/dominant-colour.txt`.
@@ -504,14 +524,14 @@ Replace `%%FRAME_COUNT%%` and `%%DOMINANT_COLOUR%%` with the actual values befor
   /* ─────────────────────────────────────────────────────────────────
      VISUAL STORY PLAN  (Claude fills this in from 5a)
      ─────────────────────────────────────────────────────────────────
-     Phase 0 — 0–8%:    Video breathes. Nothing yet. Scroll indicator visible.
-     Phase 1 — 8–20%:   Industry label fades in.
-     Phase 2 — 15–38%:  Primary headline ZOOMS IN from large (1.18→1.0).
-                         Bold luxury title card — takes up most of the viewport.
-     Phase 3 — 42–58%:  [h2 or skip]. h1 yields if h2 exists.
-     Phase 4 — 55–70%:  Tagline drifts up softly beneath headline.
-     Phase 5 — 68–82%:  CTA buttons appear — the payoff.
-     Phase 6 — 80–100%: ALL text fades OUT as video dissolves to flat colour.
+     Phase 0, 0–8%:    Video breathes. Nothing yet. Scroll indicator visible.
+     Phase 1, 8–20%:   Industry label fades in.
+     Phase 2, 15–38%:  Primary headline ZOOMS IN from large (1.18→1.0).
+                         Bold luxury title card, takes up most of the viewport.
+     Phase 3, 42–58%:  [h2 or skip]. h1 yields if h2 exists.
+     Phase 4, 55–70%:  Tagline drifts up softly beneath headline.
+     Phase 5, 68–82%:  CTA buttons appear, the payoff.
+     Phase 6, 80–100%: ALL text fades OUT as video dissolves to flat colour.
                          Colour overlay ramps in. Everything exits gracefully.
      ───────────────────────────────────────────────────────────────── */
 
@@ -585,15 +605,15 @@ Replace `%%FRAME_COUNT%%` and `%%DOMINANT_COLOUR%%` with the actual values befor
     var labelOp = phaseIn(progress, 0.08, 0.20) * exitFade;
     setPhase('hero-label', labelOp, 14, 0);
 
-    /* Primary headline — ZOOM IN: starts at scale 1.18, settles to 1.0
-       Luxury title card — dominant, fills the screen, zooms deliberately */
+    /* Primary headline ZOOM IN: starts at scale 1.18, settles to 1.0
+       Luxury title card, dominant, fills the screen, zooms deliberately */
     var h1InOp = hasH2
       ? phaseInOut(progress, 0.15, 0.36, 0.44, 0.57)
       : phaseIn(progress, 0.15, 0.36);
     var h1Op = h1InOp * exitFade;
     setPhaseZoomIn('hero-h1', h1Op, 1.18, 1.0);   /* ZOOM IN from large */
 
-    /* Secondary headline — rises up after h1 exits */
+    /* Secondary headline, rises up after h1 exits */
     if (hasH2) {
       var h2Op = phaseIn(progress, 0.50, 0.64) * exitFade;
       setPhaseZoomIn('hero-h2', h2Op, 1.08, 1.0);
@@ -614,7 +634,7 @@ Replace `%%FRAME_COUNT%%` and `%%DOMINANT_COLOUR%%` with the actual values befor
 
     /* ── COLOUR OVERLAY: fades in from 78% → fully opaque at 100% ─── */
     /* The video dissolves into the dominant colour extracted from its last frame.
-       The section below the hero starts with this same colour — seamless blend. */
+       The section below the hero starts with this same colour, seamless blend. */
     if (colourOverlay) {
       var colourOp = smoothstep(clamp((progress - 0.78) / 0.22, 0, 1));
       colourOverlay.style.opacity = colourOp;
@@ -672,13 +692,13 @@ Replace `%%FRAME_COUNT%%` and `%%DOMINANT_COLOUR%%` with the actual values befor
 
 ---
 
-### 5c — Hero section HTML
+### 5c: Hero section HTML
 
-The hero goes at the **very top of `<body>`** (after `<nav>`). Every text element is a `.hero-phase` with `opacity:0` as its default — the JS drives them from there. Replace all bracketed placeholders from CLAUDE.md.
+The hero goes at the **very top of `<body>`** (after `<nav>`). Every text element is a `.hero-phase` with `opacity:0` as its default, the JS drives them from there. Replace all bracketed placeholders from CLAUDE.md.
 
 ```html
 <!-- ═══════════════════════════════════════════════════════
-     ANIMATED HERO — canvas scroll scrubber
+     ANIMATED HERO, canvas scroll scrubber
      300vh scroll driver = animation space.
      Sticky inner keeps canvas in viewport the whole time.
      Text phases are driven by scroll progress via JS.
@@ -696,7 +716,7 @@ The hero goes at the **very top of `<body>`** (after `<nav>`). Every text elemen
       background-size:cover;background-position:center;
     "></div>
 
-    <!-- Cinematic gradient — fades top and bottom for depth and legibility -->
+    <!-- Cinematic gradient, fades top and bottom for depth and legibility -->
     <div style="
       position:absolute;inset:0;pointer-events:none;z-index:1;
       background:linear-gradient(
@@ -708,7 +728,7 @@ The hero goes at the **very top of `<body>`** (after `<nav>`). Every text elemen
       );
     "></div>
 
-    <!-- COLOUR FADE OVERLAY — dissolves video into flat colour at scroll end.
+    <!-- COLOUR FADE OVERLAY, dissolves video into flat colour at scroll end.
          JS ramps opacity 0→1 over the last 22% of scroll progress.
          Replace %%DOMINANT_COLOUR%% with value from assets/video/dominant-colour.txt -->
     <div id="hero-colour-fade" style="
@@ -717,14 +737,14 @@ The hero goes at the **very top of `<body>`** (after `<nav>`). Every text elemen
       opacity:0;
     "></div>
 
-    <!-- Text stage — all children start hidden; JS reveals them via scroll -->
+    <!-- Text stage, all children start hidden; JS reveals them via scroll -->
     <div style="
       position:absolute;inset:0;z-index:3;
       display:flex;flex-direction:column;align-items:center;justify-content:center;
       text-align:center;padding:2rem;
     ">
 
-      <!-- Phase 0: Industry label — spaced caps, whisper before the statement -->
+      <!-- Phase 0: Industry label, spaced caps, whisper before the statement -->
       <p id="hero-label" class="hero-phase" style="
         opacity:0;
         font-family:var(--font-body);
@@ -735,8 +755,8 @@ The hero goes at the **very top of `<body>`** (after `<nav>`). Every text elemen
         [INDUSTRY / SHORT DESCRIPTOR]
       </p>
 
-      <!-- Phase 1: Primary headline — LUXURY BOLD. Huge. Zooms in. Owns the screen.
-           Font size is intentionally oversized — this is the cinematic title card moment. -->
+      <!-- Phase 1: Primary headline LUXURY BOLD. Huge. Zooms in. Owns the screen.
+           Font size is intentionally oversized, this is the cinematic title card moment. -->
       <h1 id="hero-h1" class="hero-phase" style="
         opacity:0;
         font-family:var(--font-heading);
@@ -753,8 +773,8 @@ The hero goes at the **very top of `<body>`** (after `<nav>`). Every text elemen
         [PRIMARY HEADLINE FROM BRIEF]
       </h1>
 
-      <!-- Phase 2: Secondary headline — only if brief has a second key message.
-           DELETE this block entirely if not needed — JS auto-detects its absence. -->
+      <!-- Phase 2: Secondary headline, only if brief has a second key message.
+           DELETE this block entirely if not needed JS auto-detects its absence. -->
       <h2 id="hero-h2" class="hero-phase" style="
         opacity:0;
         font-family:var(--font-heading);
@@ -771,7 +791,7 @@ The hero goes at the **very top of `<body>`** (after `<nav>`). Every text elemen
         [SECONDARY HEADLINE / KEY DIFFERENTIATOR]
       </h2>
 
-      <!-- Phase 3: Tagline — refined, restrained, appears after the big statement -->
+      <!-- Phase 3: Tagline, refined, restrained, appears after the big statement -->
       <p id="hero-tagline" class="hero-phase" style="
         opacity:0;
         font-family:var(--font-body);
@@ -787,7 +807,7 @@ The hero goes at the **very top of `<body>`** (after `<nav>`). Every text elemen
         [TAGLINE OR VALUE PROPOSITION]
       </p>
 
-      <!-- Phase 4: CTA buttons — the payoff after the story is told -->
+      <!-- Phase 4: CTA buttons, the payoff after the story is told -->
       <div id="hero-cta" class="hero-phase" style="
         opacity:0;
         display:flex;gap:1.25rem;flex-wrap:wrap;justify-content:center;
@@ -805,7 +825,7 @@ The hero goes at the **very top of `<body>`** (after `<nav>`). Every text elemen
 
     </div>
 
-    <!-- Scroll indicator — fades out as user begins scrolling -->
+    <!-- Scroll indicator, fades out as user begins scrolling -->
     <div id="hero-scroll-indicator" style="
       position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
       z-index:4;color:rgba(255,255,255,0.45);font-size:0.65rem;letter-spacing:0.18em;
@@ -823,7 +843,7 @@ The hero goes at the **very top of `<body>`** (after `<nav>`). Every text elemen
 <!-- END ANIMATED HERO -->
 
 <!-- ═══════════════════════════════════════════════════════════════════
-     BLEND SECTION — immediately follows the hero.
+     BLEND SECTION, immediately follows the hero.
      Background matches dominant-colour so the video dissolve is seamless.
      Transitions to the site's normal background via gradient at the bottom.
      Replace %%DOMINANT_COLOUR%% with value from assets/video/dominant-colour.txt
@@ -838,14 +858,14 @@ The hero goes at the **very top of `<body>`** (after `<nav>`). Every text elemen
 
 ---
 
-### 5d — Required CSS
+### 5d: Required CSS
 
 Add to `css/tokens.css` (or the `<head>` `<style>` block if tokens.css doesn't exist yet):
 
 ```css
-/* Animated hero phases — JS drives opacity/transform, CSS provides the transition feel */
+/* Animated hero phases JS drives opacity/transform, CSS provides the transition feel */
 .hero-phase {
-  transition: none; /* JS controls everything — no CSS transition fighting the scroll */
+  transition: none; /* JS controls everything, no CSS transition fighting the scroll */
   will-change: opacity, transform;
 }
 
@@ -870,39 +890,39 @@ Add to `css/tokens.css` (or the `<head>` `<style>` block if tokens.css doesn't e
 
 ---
 
-### 5e — Script placement
+### 5e: Script placement
 
 Place the canvas `<script>` block **just before `</body>`**, after all other scripts. Replace `%%FRAME_COUNT%%` with the exact integer from `assets/frames/frame-count.txt`.
 
-Print: `✓ Step 5: Animated hero section built — [N] text phases choreographed`
+Print: `✓ Step 5: Animated hero section built, [N] text phases choreographed`
 
 ---
 
-## STEP 6 — Page animation system + full site build
+## STEP 6: Page animation system + full site build
 
-**Goal:** Every section, heading, card, stat, and image on every page animates in as it enters the viewport. The whole site must feel like a living, breathing story — not a static page with a video stuck at the top. The animation language must match the mood and energy of the video generated in Step 3.
+**Goal:** Every section, heading, card, stat, and image on every page animates in as it enters the viewport. The whole site must feel like a living, breathing story, not a static page with a video stuck at the top. The animation language must match the mood and energy of the video generated in Step 3.
 
 ---
 
-### 6a — Design personality: bold, luxury, cinematic
+### 6a: Design personality: bold, luxury, cinematic
 
 This is not a generic website. It must feel expensive, intentional, and alive. Apply these rules before writing any HTML:
 
 **Typography rules (non-negotiable):**
 - Section headings: `font-size: clamp(2.5rem, 5vw, 4.5rem)` minimum. Never small.
-- Letter-spacing on headings: `-0.02em` to `-0.04em` (tight — luxury compresses, not expands)
+- Letter-spacing on headings: `-0.02em` to `-0.04em` (tight, luxury compresses, not expands)
 - Letter-spacing on labels/eyebrows: `0.18em` to `0.28em` (spaced caps whisper before the headline shouts)
-- Heading font-weight: `700` minimum, `800–900` for hero and section statements
-- Body/tagline font-weight: `300` or `400` — light weight creates contrast against heavy headings
-- Line-height on headings: `0.95`–`1.1` (tight — luxury headlines compress vertically)
-- Max paragraph width: `560px` — never let body text stretch full-width
+- Heading font-weight: `700` minimum, `800 to 900` for hero and section statements
+- Body/tagline font-weight: `300` or `400`, light weight creates contrast against heavy headings
+- Line-height on headings: `0.95` to `1.1` (tight, luxury headlines compress vertically)
+- Max paragraph width: `560px`, never let body text stretch full-width
 
 **Colour and space rules:**
-- Generous section padding: `padding: 8rem 0` minimum — luxury breathes
-- The section immediately below the hero MUST use `%%DOMINANT_COLOUR%%` as its background (from `assets/video/dominant-colour.txt`) — this is the seamless blend point
+- Generous section padding: `padding: 8rem 0` minimum, luxury breathes
+- The section immediately below the hero MUST use `%%DOMINANT_COLOUR%%` as its background (from `assets/video/dominant-colour.txt`), this is the seamless blend point
 - Subsequent sections can transition back to the brand's normal background
-- High contrast: near-black on white OR white on dark — no mid-grey muddiness
-- Accent colour used sparingly — one pop per section maximum
+- High contrast: near-black on white OR white on dark, no mid-grey muddiness
+- Accent colour used sparingly, one pop per section maximum
 
 **Animation personality:**
 
@@ -929,13 +949,13 @@ Record in `css/tokens.css`:
 
 ---
 
-### 6b — Animation CSS (add to `css/tokens.css`)
+### 6b: Animation CSS (add to `css/tokens.css`)
 
-These classes are the **only** animation system needed. Apply them as data attributes and classes in HTML — never write one-off keyframes per section.
+These classes are the **only** animation system needed. Apply them as data attributes and classes in HTML, never write one-off keyframes per section.
 
 ```css
 /* ════════════════════════════════════════════════════════════════════
-   ANIMATION SYSTEM — driven by data attributes + JS IntersectionObserver
+   ANIMATION SYSTEM, driven by data attributes + JS IntersectionObserver
    data-anim / data-stagger      → animate IN only (fire once)
    data-anim-out / data-stagger-out → animate IN and OUT (stays observed)
    ════════════════════════════════════════════════════════════════════ */
@@ -1000,7 +1020,7 @@ These classes are the **only** animation system needed. Apply them as data attri
 
 ---
 
-### 6c — Animation JavaScript (one script, all pages)
+### 6c: Animation JavaScript (one script, all pages)
 
 Create `js/animations.js`. Link on **every page** with `<script src="/js/animations.js" defer></script>`.
 
@@ -1011,11 +1031,11 @@ Create `js/animations.js`. Link on **every page** with `<script src="/js/animati
   /* ════════════════════════════════════════════════════════════════
      SCROLL ANIMATION ENGINE
      Supports:
-       [data-anim]      — single element, animates IN on enter
-       [data-anim-out]  — single element, animates IN on enter AND OUT on exit
-       [data-stagger]   — children stagger IN on parent enter
-       [data-stagger-out] — children stagger IN AND OUT
-       [data-count]     — number counts up when element enters viewport
+       [data-anim]     , single element, animates IN on enter
+       [data-anim-out] , single element, animates IN on enter AND OUT on exit
+       [data-stagger]  , children stagger IN on parent enter
+       [data-stagger-out], children stagger IN AND OUT
+       [data-count]    , number counts up when element enters viewport
      ════════════════════════════════════════════════════════════════ */
 
   var root = document.documentElement;
@@ -1029,7 +1049,7 @@ Create `js/animations.js`. Link on **every page** with `<script src="/js/animati
   }
 
   /* ── Observer: animate IN only (fire once, unobserve) ───────────
-     Use [data-anim] for most elements — section headings, images, CTAs.
+     Use [data-anim] for most elements, section headings, images, CTAs.
      Fire-once keeps things clean for content users scroll past once.    */
   var inObserver = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
@@ -1044,7 +1064,7 @@ Create `js/animations.js`. Link on **every page** with `<script src="/js/animati
   /* ── Observer: animate IN + OUT (keeps observing) ───────────────
      Use [data-anim-out] or [data-stagger-out] for cards, grids, and
      sections that should EXIT as the user scrolls past them.
-     This makes the whole page feel alive — nothing is static.         */
+     This makes the whole page feel alive, nothing is static.         */
   var inOutObserver = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       var el = entry.target;
@@ -1111,24 +1131,24 @@ Create `js/animations.js`. Link on **every page** with `<script src="/js/animati
 
 ---
 
-### 6d — Animation map: which element gets which attribute
+### 6d: Animation map: which element gets which attribute
 
 Apply these rules **without exception** on every section of every page. Every element must animate. Nothing is static.
 
-**Animate-IN only** (`data-anim`, `data-stagger`) — fires once as element enters. Use for headings, labels, images, CTAs, and any element the user likely scrolls past only once.
+**Animate-IN only** (`data-anim`, `data-stagger`), fires once as element enters. Use for headings, labels, images, CTAs, and any element the user likely scrolls past only once.
 
-**Animate-IN and OUT** (`data-anim-out`, `data-stagger-out`) — fires on enter AND resets on exit. Use for card grids, feature blocks, and testimonials that should feel alive as the user scrolls through them.
+**Animate-IN and OUT** (`data-anim-out`, `data-stagger-out`), fires on enter AND resets on exit. Use for card grids, feature blocks, and testimonials that should feel alive as the user scrolls through them.
 
 | Element type | Attribute | Notes |
 |---|---|---|
-| Section label / eyebrow | `data-anim="fade-up"` | Whispers first — sets up the heading |
+| Section label / eyebrow | `data-anim="fade-up"` | Whispers first, sets up the heading |
 | Section `<h2>` heading | `data-anim="fade-up"` + `style="transition-delay:80ms"` | Rises just after label |
 | Section intro `<p>` | `data-anim="fade-up"` + `style="transition-delay:160ms"` | Third in sequence |
-| **Card grid / feature grid** | `data-stagger-out` on wrapper | **Animates IN and OUT** — cards breathe with scroll |
-| Individual card (in stagger) | no attribute — parent drives it | |
+| **Card grid / feature grid** | `data-stagger-out` on wrapper | **Animates IN and OUT**, cards breathe with scroll |
+| Individual card (in stagger) | no attribute, parent drives it | |
 | Full-width image or banner | `data-anim="scale-in"` | Grows from 0.93→1.0, cinematic |
-| Split section — image | `data-anim-out="fade-left"` or `"fade-right"` | Slides IN and OUT from its edge |
-| Split section — text block | `data-anim="fade-up"` | Standard enter-only |
+| Split section, image | `data-anim-out="fade-left"` or `"fade-right"` | Slides IN and OUT from its edge |
+| Split section, text block | `data-anim="fade-up"` | Standard enter-only |
 | **Testimonial grid** | `data-stagger-out` on wrapper | Animates IN and OUT |
 | Testimonial single quote | `data-anim-out="fade-up"` | Enters and exits |
 | Stat block wrapper | `data-anim="scale-in"` | |
@@ -1139,11 +1159,11 @@ Apply these rules **without exception** on every section of every page. Every el
 | Process / timeline steps | `data-stagger-out` on wrapper | Steps animate through as user passes |
 | Footer columns | `data-stagger` on inner wrapper | Subtle, fire-once |
 
-**First section below hero — colour blend section:**
-This section MUST have `background: var(--hero-blend-colour)` and transition to the normal background at its base. It is the landing zone after the video dissolve — make it feel intentional, not accidental.
+**First section below hero, colour blend section:**
+This section MUST have `background: var(--hero-blend-colour)` and transition to the normal background at its base. It is the landing zone after the video dissolve, make it feel intentional, not accidental.
 
 ```html
-<!-- First section after hero — BLEND ZONE -->
+<!-- First section after hero BLEND ZONE -->
 <section style="background: var(--hero-blend-colour); padding: 8rem 0 6rem; position: relative;">
   <!-- Gradient to normal bg at bottom -->
   <div style="
@@ -1163,15 +1183,15 @@ This section MUST have `background: var(--hero-blend-colour)` and transition to 
 
 **CRITICAL RULES:**
 1. **Never** leave a section, card grid, or heading without an animation attribute
-2. **Stagger/stagger-out wrappers only** — individual cards inside get no attribute, the parent drives them
+2. **Stagger/stagger-out wrappers only**: individual cards inside get no attribute, the parent drives them
 3. **Label → heading → body** always in that stagger sequence with increasing `transition-delay`
-4. **Card grids and testimonials always use `data-stagger-out`** — they should feel alive as user scrolls past
-5. **Images always use `scale-in`** — scaling feels more cinematic than sliding
-6. **CTAs are always last** in their section — the payoff after the story builds
+4. **Card grids and testimonials always use `data-stagger-out`**: they should feel alive as user scrolls past
+5. **Images always use `scale-in`**: scaling feels more cinematic than sliding
+6. **CTAs are always last** in their section, the payoff after the story builds
 
 ---
 
-### 6e — Nav scroll behaviour CSS (add to `css/tokens.css`)
+### 6e: Nav scroll behaviour CSS (add to `css/tokens.css`)
 
 ```css
 nav, .nav, header {
@@ -1187,29 +1207,29 @@ nav, .nav, header {
 
 ---
 
-### 6f — Build index.html (home page)
+### 6f: Build index.html (home page)
 
 The animated hero from Step 5 is the **first element inside `<body>`** (after `<nav>`).
 
 Below the hero, build all sections from the project brief. Apply the animation map from 6d to **every element**. Sections to include (adapt to brief):
 
-- Trust bar / logo bar — `data-stagger` on logo wrapper
-- Services / features grid — `data-stagger` on card grid
-- Why choose us (split layout) — `data-anim="fade-left"` image, `data-anim="fade-up"` text
-- Stats / numbers — staggered stat cards with `data-count` counters
-- Testimonials — `data-stagger` on testimonial grid
-- CTA band — `data-anim="fade-up"` heading, staggered buttons
-- Footer — subtle `data-stagger` on footer columns
+- Trust bar / logo bar, `data-stagger` on logo wrapper
+- Services / features grid, `data-stagger` on card grid
+- Why choose us (split layout), `data-anim="fade-left"` image, `data-anim="fade-up"` text
+- Stats / numbers, staggered stat cards with `data-count` counters
+- Testimonials, `data-stagger` on testimonial grid
+- CTA band, `data-anim="fade-up"` heading, staggered buttons
+- Footer, subtle `data-stagger` on footer columns
 
 Add `<script src="/js/animations.js" defer></script>` and the canvas script before `</body>`.
 
 ---
 
-### 6g — Build all other pages
+### 6g: Build all other pages
 
 Every page (about, services, contact, etc.) uses:
 1. A **static hero** with the generated background image
-2. The **same animation system** — `js/animations.js` is linked, all sections use `data-anim` and `data-stagger`
+2. The **same animation system**, `js/animations.js` is linked, all sections use `data-anim` and `data-stagger`
 3. The nav scroll behaviour
 
 Static hero for non-home pages:
@@ -1229,13 +1249,13 @@ Static hero for non-home pages:
 </section>
 ```
 
-Note: even the static hero headings get `data-anim` — they'll snap in on page load since they're immediately visible.
+Note: even the static hero headings get `data-anim`, they'll snap in on page load since they're immediately visible.
 
-Print: `✓ Step 6: Full site built — animation system applied to every section`
+Print: `✓ Step 6: Full site built, animation system applied to every section`
 
 ---
 
-## STEP 7 — Verify and polish
+## STEP 7: Verify and polish
 
 Run through this checklist in full. Fix every failure before declaring the build complete.
 
@@ -1246,19 +1266,19 @@ Run through this checklist in full. Fix every failure before declaring the build
 - [ ] `assets/frames/frame-count.txt` has a number > 0
 
 **Hero canvas:**
-- [ ] `index.html` — canvas scroll scrubber plays frames on scroll
-- [ ] `index.html` — hero text phases reveal in sequence as user scrolls through the 300vh driver
+- [ ] `index.html`, canvas scroll scrubber plays frames on scroll
+- [ ] `index.html`, hero text phases reveal in sequence as user scrolls through the 300vh driver
 - [ ] Hero text is legible against the video background at all scroll positions
 - [ ] Mobile fallback (`#hero-static-bg`) shows `hero-bg-generated.png` correctly
 
 **Page animations:**
 - [ ] `js/animations.js` is linked on **every** page with `defer`
-- [ ] Every section on every page has at least one `data-anim` or `data-stagger` attribute — grep to confirm: `grep -r "data-anim\|data-stagger" *.html` — result must not be empty
+- [ ] Every section on every page has at least one `data-anim` or `data-stagger` attribute, grep to confirm: `grep -r "data-anim\|data-stagger" *.html`, result must not be empty
 - [ ] No section, card grid, or heading block is missing an animation attribute
-- [ ] Stagger wrappers (`data-stagger`) contain multiple children — not just one
+- [ ] Stagger wrappers (`data-stagger`) contain multiple children, not just one
 - [ ] Stat numbers that should count up have `data-count` attributes on their `<span>`
 - [ ] Nav gains `.nav-scrolled` class on scroll (check CSS is applied)
-- [ ] `@media (prefers-reduced-motion)` rule is in `css/tokens.css` — animations collapse gracefully
+- [ ] `@media (prefers-reduced-motion)` rule is in `css/tokens.css`, animations collapse gracefully
 
 **All pages:**
 - [ ] All pages listed in CLAUDE.md are built as `.html` files
@@ -1270,7 +1290,7 @@ Run through this checklist in full. Fix every failure before declaring the build
 **Self-review:**
 Open `index.html` mentally and scroll through it section by section. Ask: *does every element earn its place by animating in with intention?* If anything feels static or arbitrary, fix it.
 
-Print: `✓ Build complete — animated website ready`
+Print: `✓ Build complete, animated website ready`
 
 ---
 
@@ -1280,12 +1300,12 @@ Print: `✓ Build complete — animated website ready`
 |---------|----------|
 | Replicate returns `status: failed` | Check `~/.goober/goober-secrets.sh` has `REPLICATE_API_TOKEN` set. Verify account credits. |
 | kie.ai returns 401 | Check `~/.goober/goober-secrets.sh` has `KIE_API_KEY` set. Re-save the key in Goober → Integrations. |
-| kie.ai returns 404 on generate endpoint | Verify the endpoint URL with your kie.ai API dashboard — the path may differ slightly. |
+| kie.ai returns 404 on generate endpoint | Verify the endpoint URL with your kie.ai API dashboard, the path may differ slightly. |
 | Text phases don't animate on scroll | Check `FRAME_COUNT` is > 0 and hero IDs in HTML match the IDs in JS `updatePhases()`. |
-| Headline 2 showing when not needed | Delete the `<h2 id="hero-h2">` block from the HTML — the JS auto-detects its absence. |
-| kie.ai returns 402 | Insufficient credits — top up your kie.ai account. |
+| Headline 2 showing when not needed | Delete the `<h2 id="hero-h2">` block from the HTML, the JS auto-detects its absence. |
+| kie.ai returns 402 | Insufficient credits, top up your kie.ai account. |
 | ffmpeg not found | Install with `brew install ffmpeg` (macOS). |
-| ffprobe not found | Included with ffmpeg — install the same package. |
-| Frame count is 0 | ffmpeg failed silently — re-run `ffmpeg -i assets/video/hero-bg.mp4 ...` manually and check the output. |
+| ffprobe not found | Included with ffmpeg, install the same package. |
+| Frame count is 0 | ffmpeg failed silently, re-run `ffmpeg -i assets/video/hero-bg.mp4 ...` manually and check the output. |
 | Canvas shows black | Frames haven't finished loading. Add a 500ms delay or check that frame paths match exactly (zero-padded 4 digits). |
 | Text unreadable over canvas | Increase the dark overlay opacity: change `rgba(0,0,0,0.45)` to `rgba(0,0,0,0.6)`. |

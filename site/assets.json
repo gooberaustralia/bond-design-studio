@@ -1,0 +1,29 @@
+{
+  "broken_images": [
+    "/assets/images/logo-light.svg",
+    "/assets/images/logo.svg"
+  ],
+  "generated_by": "siteState",
+  "images": [
+    {
+      "format": "",
+      "path": "/assets/images/.DS_Store",
+      "size_kb": 8,
+      "used_on": []
+    },
+    {
+      "alt": "Monica Vogel, Lead Designer at Bond Design Studio",
+      "format": "jpg",
+      "path": "/assets/images/Monica Vogel Image.jpg",
+      "size_kb": 59,
+      "used_on": [
+        "/"
+      ]
+    }
+  ],
+  "missing_alt": [],
+  "oversize": [],
+  "unused": [
+    "/assets/images/.DS_Store"
+  ]
+}
