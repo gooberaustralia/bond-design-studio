@@ -797,11 +797,6 @@
       "to": "/monica"
     },
     {
-      "anchor": "How a project runs",
-      "from": "/thank-you/",
-      "to": "/process"
-    },
-    {
       "anchor": "Process",
       "from": "/thank-you/",
       "to": "/process"
@@ -813,6 +808,11 @@
     },
     {
       "anchor": "Process",
+      "from": "/thank-you/",
+      "to": "/process"
+    },
+    {
+      "anchor": "The six stages of a project",
       "from": "/thank-you/",
       "to": "/process"
     },
