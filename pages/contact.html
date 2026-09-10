@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en-AU" data-theme="day">
+<head>
+<!-- @use:bond-head title="Contact | Bond Design Studio, Sydney" description="Talk to Bond Design Studio about a knockdown rebuild, renovation, extension or new home anywhere in the Sydney metropolitan area. Every project starts with a conversation." canonical="https://bonddesignstudio.com.au/contact" -->
+</head>
+
+<body>
+<!-- @use:bond-header -->
+
+<main id="main">
+  <section class="pagehead">
+    <div class="shell">
+      <div class="pagehead__grid">
+        <div><h1>Let's discuss your project</h1></div>
+        <div><p class="lede">Whether you are planning a knockdown rebuild, a major renovation, an
+          extension or a new home on vacant land, we would love to hear about your vision.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell">
+      <div class="contact__page">
+
+        <div class="contact__form" data-reveal>
+          <p class="label">Send an enquiry</p>
+          <form class="form" action="/api/enquiry" method="POST">
+            <div class="honey" aria-hidden="true">
+              <label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+            </div>
+
+            <div class="form__row">
+              <label class="field"><span>Your name</span>
+                <input type="text" name="name" autocomplete="name" required></label>
+              <label class="field"><span>Email</span>
+                <input type="email" name="email" autocomplete="email" required></label>
+            </div>
+
+            <div class="form__row">
+              <label class="field"><span>Phone</span>
+                <input type="tel" name="phone" autocomplete="tel"></label>
+              <label class="field"><span>Suburb</span>
+                <input type="text" name="suburb" autocomplete="address-level2" placeholder="Where is the site"></label>
+            </div>
+
+            <div class="form__row">
+              <label class="field field--select"><span>Project type</span>
+                <select name="project_type">
+                  <option value="">Choose one</option>
+                  <option>Knockdown rebuild</option>
+                  <option>Renovation or extension</option>
+                  <option>New home on vacant land</option>
+                  <option>Interior design</option>
+                  <option>Not sure yet</option>
+                </select></label>
+              <label class="field field--select"><span>Construction budget</span>
+                <select name="budget">
+                  <option value="">Choose one</option>
+                  <option>Under $500,000</option>
+                  <option>$500,000 to $1 million</option>
+                  <option>$1 million to $2 million</option>
+                  <option>Over $2 million</option>
+                  <option>Still working it out</option>
+                </select></label>
+            </div>
+
+            <label class="field"><span>About the project</span>
+              <textarea name="message" rows="5" placeholder="What is not working about the house you have, or what you would like to build"></textarea></label>
+
+            <button class="submit" type="submit">Send enquiry</button>
+          </form>
+        </div>
+
+        <aside class="contact__side" data-reveal>
+          <p class="label">Direct</p>
+          <h2 class="display display--statement">Every successful project starts with a
+            conversation.</h2>
+
+          <div class="contact__detail">
+            <a href="mailto:hello@bonddesignstudio.com.au">hello@bonddesignstudio.com.au</a>
+            <a href="https://www.instagram.com/bonddesignstudio_au/" rel="noopener">Instagram, bonddesignstudio_au</a>
+            <span class="statement__meta">Sydney metropolitan area &nbsp;/&nbsp; Residential only</span>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <figure class="bleed bleed--photo" data-reveal>
+    <picture>
+      <source media="(max-width: 800px)" srcset="/assets/site/consult-tall.webp">
+      <img src="/assets/site/consult-wide.webp" width="2200" height="1227" loading="lazy" decoding="async"
+           alt="Monica Vogel seated at an outdoor table with a client, going through a set of architectural drawings, a pool and garden behind them.">
+    </picture>
+  </figure>
+
+  <section class="band band--raised" id="questions">
+    <div class="shell">
+      <div class="faq__grid">
+        <div class="faq__head" data-reveal>
+          <p class="label">Before you write</p>
+          <h2 class="display display--section">What helps <br>us most</h2>
+        </div>
+        <dl class="faq" data-reveal>
+          <div>
+            <dt>What should I include in the first message?</dt>
+            <dd>The suburb, roughly what you are planning, and what is not working about the house
+              you have now. If you have a budget in mind, say so. Three lines is plenty.</dd>
+          </div>
+          <div>
+            <dt>Do you charge for the first conversation?</dt>
+            <dd>No. The first conversation is about whether the project makes sense and whether we
+              are the right studio for it.</dd>
+          </div>
+          <div>
+            <dt>Which parts of Sydney do you work in?</dt>
+            <dd>The Sydney metropolitan area. Residential only.</dd>
+          </div>
+          <div>
+            <dt>I have plans already. Can you take them further?</dt>
+            <dd>Often yes. Our services can be engaged for selected stages rather than end to end,
+              so an existing concept can be developed, documented and taken through approval.</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- @use:bond-footer -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "url": "https://bonddesignstudio.com.au/contact",
+  "mainEntity": {
+    "@type": "ProfessionalService",
+    "@id": "https://bonddesignstudio.com.au/#studio",
+    "name": "Bond Design Studio",
+    "email": "hello@bonddesignstudio.com.au"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What should I include in the first message?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The suburb, roughly what you are planning, and what is not working about the house you have now. If you have a budget in mind, say so. Three lines is plenty."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you charge for the first conversation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The first conversation is about whether the project makes sense and whether we are the right studio for it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which parts of Sydney do you work in?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Sydney metropolitan area. Residential only."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I have plans already. Can you take them further?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Often yes. Our services can be engaged for selected stages rather than end to end, so an existing concept can be developed, documented and taken through approval."
+      }
+    }
+  ]
+}
+</script>
+</body>
+</html>

@@ -21,8 +21,8 @@
  */
 import { sendEmail } from "./_email.js";
 
-const BUSINESS_NAME = "Bond Design Studio — Website Project";
-const FALLBACK_TO = "";
+const BUSINESS_NAME = "Bond Design Studio";
+const FALLBACK_TO = "hello@bonddesignstudio.com.au";
 const FALLBACK_FROM_EMAIL = "noreply@goober.com.au";
 const THANK_YOU = "/thank-you/";
 
@@ -47,6 +47,11 @@ export default async function handler(req, res) {
   const email = (body.email || "").toString().trim();
   const phone = (body.phone || "").toString().trim();
   const message = (body.message || body.enquiry || "").toString().trim();
+  // Qualifying fields from the contact form. Suburb and project type tell the
+  // studio more before the first call than anything else on the form.
+  const suburb = (body.suburb || "").toString().trim();
+  const projectType = (body.project_type || "").toString().trim();
+  const budget = (body.budget || "").toString().trim();
 
   const to = process.env.CONTACT_TO_EMAIL || FALLBACK_TO;
   const fromEmail = process.env.CONTACT_FROM_EMAIL || FALLBACK_FROM_EMAIL;
@@ -68,6 +73,9 @@ export default async function handler(req, res) {
         `Name:    ${name || "Not provided"}`,
         `Email:   ${email || "Not provided"}`,
         `Phone:   ${phone || "Not provided"}`,
+        `Suburb:  ${suburb || "Not provided"}`,
+        `Project: ${projectType || "Not provided"}`,
+        `Budget:  ${budget || "Not provided"}`,
         "",
         "Message:",
         message || "(no message)",

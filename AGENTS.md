@@ -224,12 +224,12 @@ Env vars: `EMAIL_PROVIDER`, `SENDGRID_API_KEY`, `RESEND_API_KEY`, `CONTACT_TO_EM
 - Every contact or quote form POSTs to `/api/enquiry`. Never a third-party form service, never a `mailto:` action.
 - Never hardcode an email address or an API key in HTML or JS. `api/enquiry.js` and `api/_autoreply.js` already read these env vars, with the baked defaults kept as a fallback.
 
-### CRM connector (optional): skipped
+### CRM connector (optional): on Vercel
 Env vars: `GOOBER_CONNECTOR_ID`, `GOOBER_CONNECTOR_KEY`, `GOOBER_CONNECTOR_ENDPOINT`
 - Lead hooks POST to `/api/lead` with no key in the page. `window.gooberLead()` already does this. Never add a connector key to HTML or JS.
 - Sites Goober does not manage after launch leave this item off. It is optional.
 
-### Analytics (optional): not set
+### Analytics (optional): saved locally
 - GA4 and Google Ads ids live in `site/tracking.json` and are rendered into `partials/tracking-head.html`. They are not secret and are safe in the page.
 
 ### Domain (optional): not set

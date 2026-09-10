@@ -1,6 +1,15 @@
-# Bond Design Studio — Website Project
+# Bond Design Studio
+
+> Timeless residential design for the way you live
 
 ## Pages
 
-- [index](/)
-- [new-home](/new-home/)
+- [contact](https://bonddesignstudio.com.au/contact/)
+- [index](https://bonddesignstudio.com.au/)
+- [monica](https://bonddesignstudio.com.au/monica/)
+- [process](https://bonddesignstudio.com.au/process/)
+- [services](https://bonddesignstudio.com.au/services/)
+- [knockdown-rebuild](https://bonddesignstudio.com.au/services/knockdown-rebuild/)
+- [new-homes](https://bonddesignstudio.com.au/services/new-homes/)
+- [renovations-extensions](https://bonddesignstudio.com.au/services/renovations-extensions/)
+- [thank-you](https://bonddesignstudio.com.au/thank-you/)

@@ -1,7 +1,13 @@
 {
-  "count": 2,
+  "count": 9,
   "generated_by": "siteState",
   "pages": [
+    {
+      "is_draft": false,
+      "path": "pages/contact.html",
+      "slug": "/contact/",
+      "title": "contact"
+    },
     {
       "is_draft": false,
       "path": "pages/index.html",
@@ -10,9 +16,45 @@
     },
     {
       "is_draft": false,
-      "path": "pages/new-home.html",
-      "slug": "/new-home/",
-      "title": "new-home"
+      "path": "pages/monica.html",
+      "slug": "/monica/",
+      "title": "monica"
+    },
+    {
+      "is_draft": false,
+      "path": "pages/process.html",
+      "slug": "/process/",
+      "title": "process"
+    },
+    {
+      "is_draft": false,
+      "path": "pages/services.html",
+      "slug": "/services/",
+      "title": "services"
+    },
+    {
+      "is_draft": false,
+      "path": "pages/services/knockdown-rebuild.html",
+      "slug": "/services/knockdown-rebuild/",
+      "title": "knockdown-rebuild"
+    },
+    {
+      "is_draft": false,
+      "path": "pages/services/new-homes.html",
+      "slug": "/services/new-homes/",
+      "title": "new-homes"
+    },
+    {
+      "is_draft": false,
+      "path": "pages/services/renovations-extensions.html",
+      "slug": "/services/renovations-extensions/",
+      "title": "renovations-extensions"
+    },
+    {
+      "is_draft": false,
+      "path": "pages/thank-you.html",
+      "slug": "/thank-you/",
+      "title": "thank-you"
     }
   ]
 }

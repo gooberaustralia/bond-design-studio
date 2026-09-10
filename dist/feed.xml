@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>Bond Design Studio — Website Project</title>
-    <link>/blog/</link>
+    <title>Bond Design Studio</title>
+    <link>https://bonddesignstudio.com.au/blog/</link>
+    <description>Timeless residential design for the way you live</description>
   </channel>
 </rss>

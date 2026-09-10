@@ -4,17 +4,847 @@
     {
       "anchor": "",
       "from": "/",
-      "to": "/new-home"
+      "to": "/"
     },
     {
       "anchor": "",
-      "from": "/new-home/",
-      "to": "/new-home"
+      "from": "/",
+      "to": "/"
+    },
+    {
+      "anchor": "Contact",
+      "from": "/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Contact",
+      "from": "/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Enquire",
+      "from": "/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Process",
+      "from": "/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Process",
+      "from": "/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Process",
+      "from": "/",
+      "to": "/process"
+    },
+    {
+      "anchor": "All services",
+      "from": "/",
+      "to": "/services"
+    },
+    {
+      "anchor": "Services",
+      "from": "/",
+      "to": "/services"
+    },
+    {
+      "anchor": "Services",
+      "from": "/",
+      "to": "/services"
+    },
+    {
+      "anchor": "Knockdown rebuild",
+      "from": "/",
+      "to": "/services/knockdown-rebuild"
+    },
+    {
+      "anchor": "Knockdown rebuild in detail",
+      "from": "/",
+      "to": "/services/knockdown-rebuild"
+    },
+    {
+      "anchor": "New homes",
+      "from": "/",
+      "to": "/services/new-homes"
+    },
+    {
+      "anchor": "New homes in detail",
+      "from": "/",
+      "to": "/services/new-homes"
+    },
+    {
+      "anchor": "Renovations and extensions",
+      "from": "/",
+      "to": "/services/renovations-extensions"
+    },
+    {
+      "anchor": "Renovations and extensions in detail",
+      "from": "/",
+      "to": "/services/renovations-extensions"
     },
     {
       "anchor": "",
-      "from": "/new-home/",
-      "to": "/new-home"
+      "from": "/contact/",
+      "to": "/"
+    },
+    {
+      "anchor": "",
+      "from": "/contact/",
+      "to": "/"
+    },
+    {
+      "anchor": "Contact",
+      "from": "/contact/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Contact",
+      "from": "/contact/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Enquire",
+      "from": "/contact/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/contact/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/contact/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/contact/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Process",
+      "from": "/contact/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Process",
+      "from": "/contact/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Process",
+      "from": "/contact/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Services",
+      "from": "/contact/",
+      "to": "/services"
+    },
+    {
+      "anchor": "Services",
+      "from": "/contact/",
+      "to": "/services"
+    },
+    {
+      "anchor": "Knockdown rebuild",
+      "from": "/contact/",
+      "to": "/services/knockdown-rebuild"
+    },
+    {
+      "anchor": "New homes",
+      "from": "/contact/",
+      "to": "/services/new-homes"
+    },
+    {
+      "anchor": "Renovations and extensions",
+      "from": "/contact/",
+      "to": "/services/renovations-extensions"
+    },
+    {
+      "anchor": "",
+      "from": "/monica/",
+      "to": "/"
+    },
+    {
+      "anchor": "",
+      "from": "/monica/",
+      "to": "/"
+    },
+    {
+      "anchor": "Contact",
+      "from": "/monica/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Contact",
+      "from": "/monica/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Enquire",
+      "from": "/monica/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Start a conversation",
+      "from": "/monica/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/monica/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/monica/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/monica/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Process",
+      "from": "/monica/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Process",
+      "from": "/monica/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Process",
+      "from": "/monica/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Services",
+      "from": "/monica/",
+      "to": "/services"
+    },
+    {
+      "anchor": "Services",
+      "from": "/monica/",
+      "to": "/services"
+    },
+    {
+      "anchor": "Knockdown rebuild",
+      "from": "/monica/",
+      "to": "/services/knockdown-rebuild"
+    },
+    {
+      "anchor": "New homes",
+      "from": "/monica/",
+      "to": "/services/new-homes"
+    },
+    {
+      "anchor": "Renovations and extensions",
+      "from": "/monica/",
+      "to": "/services/renovations-extensions"
+    },
+    {
+      "anchor": "",
+      "from": "/process/",
+      "to": "/"
+    },
+    {
+      "anchor": "",
+      "from": "/process/",
+      "to": "/"
+    },
+    {
+      "anchor": "Contact",
+      "from": "/process/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Contact",
+      "from": "/process/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Enquire",
+      "from": "/process/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Start a conversation",
+      "from": "/process/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/process/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/process/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/process/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Process",
+      "from": "/process/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Process",
+      "from": "/process/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Process",
+      "from": "/process/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Services",
+      "from": "/process/",
+      "to": "/services"
+    },
+    {
+      "anchor": "Services",
+      "from": "/process/",
+      "to": "/services"
+    },
+    {
+      "anchor": "Knockdown rebuild",
+      "from": "/process/",
+      "to": "/services/knockdown-rebuild"
+    },
+    {
+      "anchor": "New homes",
+      "from": "/process/",
+      "to": "/services/new-homes"
+    },
+    {
+      "anchor": "Renovations and extensions",
+      "from": "/process/",
+      "to": "/services/renovations-extensions"
+    },
+    {
+      "anchor": "",
+      "from": "/services/",
+      "to": "/"
+    },
+    {
+      "anchor": "",
+      "from": "/services/",
+      "to": "/"
+    },
+    {
+      "anchor": "Ask about interiors",
+      "from": "/services/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Contact",
+      "from": "/services/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Contact",
+      "from": "/services/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Enquire",
+      "from": "/services/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Start a conversation",
+      "from": "/services/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/services/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/services/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/services/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Process",
+      "from": "/services/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Process",
+      "from": "/services/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Process",
+      "from": "/services/",
+      "to": "/process"
+    },
+    {
+      "anchor": "See how a project runs",
+      "from": "/services/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Services",
+      "from": "/services/",
+      "to": "/services"
+    },
+    {
+      "anchor": "Services",
+      "from": "/services/",
+      "to": "/services"
+    },
+    {
+      "anchor": "Knockdown rebuild",
+      "from": "/services/",
+      "to": "/services/knockdown-rebuild"
+    },
+    {
+      "anchor": "Knockdown rebuild design",
+      "from": "/services/",
+      "to": "/services/knockdown-rebuild"
+    },
+    {
+      "anchor": "New home design",
+      "from": "/services/",
+      "to": "/services/new-homes"
+    },
+    {
+      "anchor": "New homes",
+      "from": "/services/",
+      "to": "/services/new-homes"
+    },
+    {
+      "anchor": "Renovation and extension design",
+      "from": "/services/",
+      "to": "/services/renovations-extensions"
+    },
+    {
+      "anchor": "Renovations and extensions",
+      "from": "/services/",
+      "to": "/services/renovations-extensions"
+    },
+    {
+      "anchor": "",
+      "from": "/services/knockdown-rebuild/",
+      "to": "/"
+    },
+    {
+      "anchor": "",
+      "from": "/services/knockdown-rebuild/",
+      "to": "/"
+    },
+    {
+      "anchor": "Contact",
+      "from": "/services/knockdown-rebuild/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Contact",
+      "from": "/services/knockdown-rebuild/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Enquire",
+      "from": "/services/knockdown-rebuild/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Start a conversation",
+      "from": "/services/knockdown-rebuild/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/services/knockdown-rebuild/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/services/knockdown-rebuild/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/services/knockdown-rebuild/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Process",
+      "from": "/services/knockdown-rebuild/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Process",
+      "from": "/services/knockdown-rebuild/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Process",
+      "from": "/services/knockdown-rebuild/",
+      "to": "/process"
+    },
+    {
+      "anchor": "process page",
+      "from": "/services/knockdown-rebuild/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Services",
+      "from": "/services/knockdown-rebuild/",
+      "to": "/services"
+    },
+    {
+      "anchor": "Services",
+      "from": "/services/knockdown-rebuild/",
+      "to": "/services"
+    },
+    {
+      "anchor": "Services",
+      "from": "/services/knockdown-rebuild/",
+      "to": "/services"
+    },
+    {
+      "anchor": "Knockdown rebuild",
+      "from": "/services/knockdown-rebuild/",
+      "to": "/services/knockdown-rebuild"
+    },
+    {
+      "anchor": "New homes",
+      "from": "/services/knockdown-rebuild/",
+      "to": "/services/new-homes"
+    },
+    {
+      "anchor": "renovations and extensions",
+      "from": "/services/knockdown-rebuild/",
+      "to": "/services/renovations-extensions"
+    },
+    {
+      "anchor": "Renovations and extensions",
+      "from": "/services/knockdown-rebuild/",
+      "to": "/services/renovations-extensions"
+    },
+    {
+      "anchor": "",
+      "from": "/services/new-homes/",
+      "to": "/"
+    },
+    {
+      "anchor": "",
+      "from": "/services/new-homes/",
+      "to": "/"
+    },
+    {
+      "anchor": "Contact",
+      "from": "/services/new-homes/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Contact",
+      "from": "/services/new-homes/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Enquire",
+      "from": "/services/new-homes/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Start a conversation",
+      "from": "/services/new-homes/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/services/new-homes/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/services/new-homes/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/services/new-homes/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Process",
+      "from": "/services/new-homes/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Process",
+      "from": "/services/new-homes/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Process",
+      "from": "/services/new-homes/",
+      "to": "/process"
+    },
+    {
+      "anchor": "process page",
+      "from": "/services/new-homes/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Services",
+      "from": "/services/new-homes/",
+      "to": "/services"
+    },
+    {
+      "anchor": "Services",
+      "from": "/services/new-homes/",
+      "to": "/services"
+    },
+    {
+      "anchor": "Services",
+      "from": "/services/new-homes/",
+      "to": "/services"
+    },
+    {
+      "anchor": "Knockdown rebuild",
+      "from": "/services/new-homes/",
+      "to": "/services/knockdown-rebuild"
+    },
+    {
+      "anchor": "New homes",
+      "from": "/services/new-homes/",
+      "to": "/services/new-homes"
+    },
+    {
+      "anchor": "Renovations and extensions",
+      "from": "/services/new-homes/",
+      "to": "/services/renovations-extensions"
+    },
+    {
+      "anchor": "",
+      "from": "/services/renovations-extensions/",
+      "to": "/"
+    },
+    {
+      "anchor": "",
+      "from": "/services/renovations-extensions/",
+      "to": "/"
+    },
+    {
+      "anchor": "Contact",
+      "from": "/services/renovations-extensions/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Contact",
+      "from": "/services/renovations-extensions/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Enquire",
+      "from": "/services/renovations-extensions/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Start a conversation",
+      "from": "/services/renovations-extensions/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/services/renovations-extensions/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/services/renovations-extensions/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/services/renovations-extensions/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Process",
+      "from": "/services/renovations-extensions/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Process",
+      "from": "/services/renovations-extensions/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Process",
+      "from": "/services/renovations-extensions/",
+      "to": "/process"
+    },
+    {
+      "anchor": "process page",
+      "from": "/services/renovations-extensions/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Services",
+      "from": "/services/renovations-extensions/",
+      "to": "/services"
+    },
+    {
+      "anchor": "Services",
+      "from": "/services/renovations-extensions/",
+      "to": "/services"
+    },
+    {
+      "anchor": "Services",
+      "from": "/services/renovations-extensions/",
+      "to": "/services"
+    },
+    {
+      "anchor": "Knockdown rebuild",
+      "from": "/services/renovations-extensions/",
+      "to": "/services/knockdown-rebuild"
+    },
+    {
+      "anchor": "knockdown rebuilds",
+      "from": "/services/renovations-extensions/",
+      "to": "/services/knockdown-rebuild"
+    },
+    {
+      "anchor": "New homes",
+      "from": "/services/renovations-extensions/",
+      "to": "/services/new-homes"
+    },
+    {
+      "anchor": "Renovations and extensions",
+      "from": "/services/renovations-extensions/",
+      "to": "/services/renovations-extensions"
+    },
+    {
+      "anchor": "",
+      "from": "/thank-you/",
+      "to": "/"
+    },
+    {
+      "anchor": "",
+      "from": "/thank-you/",
+      "to": "/"
+    },
+    {
+      "anchor": "Contact",
+      "from": "/thank-you/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Contact",
+      "from": "/thank-you/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Enquire",
+      "from": "/thank-you/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/thank-you/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/thank-you/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/thank-you/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "How a project runs",
+      "from": "/thank-you/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Process",
+      "from": "/thank-you/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Process",
+      "from": "/thank-you/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Process",
+      "from": "/thank-you/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Services",
+      "from": "/thank-you/",
+      "to": "/services"
+    },
+    {
+      "anchor": "Services",
+      "from": "/thank-you/",
+      "to": "/services"
+    },
+    {
+      "anchor": "The four services",
+      "from": "/thank-you/",
+      "to": "/services"
+    },
+    {
+      "anchor": "Knockdown rebuild",
+      "from": "/thank-you/",
+      "to": "/services/knockdown-rebuild"
+    },
+    {
+      "anchor": "New homes",
+      "from": "/thank-you/",
+      "to": "/services/new-homes"
+    },
+    {
+      "anchor": "Renovations and extensions",
+      "from": "/thank-you/",
+      "to": "/services/renovations-extensions"
     }
   ],
   "generated_by": "siteState",

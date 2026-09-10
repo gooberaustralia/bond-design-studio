@@ -1,5 +1,9 @@
 {
-  "primary": "",
-  "service_areas": [],
-  "geo_pages": []
+  "primary": "Sydney",
+  "service_areas": [
+    "Sydney metropolitan area",
+    "Sydney"
+  ],
+  "geo_pages": [],
+  "seeded": true
 }

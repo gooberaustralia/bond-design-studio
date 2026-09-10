@@ -1,6 +1,6 @@
 # goober-design-pro
 
-Goober Digital's one-prompt premium web design skill. It gives an AI coding
+Goober Marketing Pty Ltd's one-prompt premium web design skill. It gives an AI coding
 agent a complete **design intelligence process**, strategy → saved design DNA
 → generated imagery → build → motion → graded self-review, so client websites
 come out custom-designed and polished, never "AI slop".

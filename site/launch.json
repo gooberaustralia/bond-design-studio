@@ -24,7 +24,7 @@
       "id": "crm-connector",
       "label": "CRM connector",
       "required": false,
-      "status": "skipped",
+      "status": "provisioned",
       "envVars": [
         "GOOBER_CONNECTOR_ID",
         "GOOBER_CONNECTOR_KEY",
@@ -35,7 +35,7 @@
       "id": "analytics",
       "label": "Analytics",
       "required": false,
-      "status": "not_set",
+      "status": "local",
       "envVars": []
     },
     {

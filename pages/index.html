@@ -1,118 +1,382 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU" data-theme="day">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bond Design Studio — Refined Residential Architecture, Sydney</title>
-  <meta name="description" content="Bond Design Studio creates residential spaces designed for clarity, light, and life. Custom homes, interior design, and sustainable architecture in Sydney.">
-
-  <!-- Framework -->
-  <link rel="stylesheet" href="/css/framework/core.css">
-  <link rel="stylesheet" href="/css/framework/components.css">
-  <link rel="stylesheet" href="/css/framework/sections.css">
-
-  <!-- Brand tokens + custom -->
-  <link rel="stylesheet" href="/css/tokens.css">
-  <link rel="stylesheet" href="/css/custom.css">
+<!-- @use:bond-head title="Bond Design Studio | Residential Design Studio, Sydney" description="Bond Design Studio is a boutique Sydney residential design studio creating bespoke homes, knockdown rebuilds, renovations and extensions. Led by designer Monica Vogel." canonical="https://bonddesignstudio.com.au/" -->
+<link rel="preload" as="image" href="/assets/site/hero-wide.webp" media="(min-width: 801px)" fetchpriority="high">
+<link rel="preload" as="image" href="/assets/site/hero-tall.webp" media="(max-width: 800px)" fetchpriority="high">
 </head>
+
 <body>
+<!-- @use:bond-header -->
+
+<main id="main">
 
   <!-- ============================================================
-       HERO — Scroll-Driven Video Scrub
+       HERO
        ============================================================ -->
-  <section id="hero-section" aria-label="Hero" role="region">
-
-    <!--
-      Canvas-based frame scrubbing. Frames extracted via ffmpeg — see README.md.
-      Poster image shows until frames are loaded or as fallback.
-    -->
-    <canvas
-      id="hero-canvas"
-      aria-hidden="true"
-    ></canvas>
-
-    <!-- Dark overlay gradient always present -->
-    <div class="hero-overlay-gradient" aria-hidden="true"></div>
-
-    <!-- White fade-out overlay — JS drives opacity during hold zone -->
-    <div id="hero-fade-white" aria-hidden="true"></div>
-
-    <!-- Frame preload overlay — hidden once frames are ready -->
-    <div id="hero-loader" aria-hidden="true">
-      <div id="hero-loader-bar"></div>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero__media" id="hero-media">
+      <picture>
+        <source media="(max-width: 800px)" srcset="/assets/site/hero-tall.webp">
+        <img src="/assets/site/hero-wide.webp" width="2400" height="1350" fetchpriority="high" decoding="async"
+             alt="Bond Design Studio residence at Strathfield seen from the street, a white brick facade with planted terraces behind a mature paperbark.">
+      </picture>
     </div>
+    <div class="hero__scrim" aria-hidden="true"></div>
 
-    <!-- Logo + text overlay -->
-    <div class="hero-text-overlay">
-
-      <!-- Studio wordmark — scales in, then fades out via JS -->
-      <div class="hero-logo" id="hero-logo" aria-label="Bond Design Studio">
-        <span class="hero-logo-word">Bond</span>
-        <span class="hero-logo-word">Design</span>
-        <span class="hero-logo-word">Studio</span>
+    <div class="hero__copy">
+      <div class="shell">
+        <p class="label" data-reveal>Residential design studio &nbsp;/&nbsp; Sydney</p>
+        <h1 class="display display--hero hero__title" id="hero-title" data-reveal>Timeless residential design for the way you live</h1>
+        <p class="hero__sub" data-reveal>Bespoke homes, knockdown rebuilds, renovations and extensions, designed one at a time.</p>
       </div>
-
-      <!-- Subtitle + description — blur-focus in after logo fades, then out -->
-      <div class="hero-text-container" id="hero-text-container">
-        <p class="hero-text-1" id="hero-text-1">
-          Refined residential spaces designed for clarity, light, and life.
-        </p>
-        <p class="hero-text-2" id="hero-text-2">
-          To create residential spaces that inspire, nurture, and enrich the lives of those who live in them. We believe every home should be a sanctuary that feels as good as it looks.
-        </p>
-      </div>
-
     </div>
 
-    <!-- Scroll hint — fades out as user begins scrolling -->
-    <div id="scroll-hint" aria-hidden="true">
-      <div class="scroll-hint-line"></div>
-      <span class="scroll-hint-label">Scroll</span>
+    <div class="hero__aside" aria-hidden="true">
+      <p class="hero__credit">Strathfield &nbsp;/&nbsp; in design</p>
+      <span class="hero__cue">
+        <span>Scroll</span>
+        <span class="hero__cue-line"></span>
+      </span>
     </div>
-
-    <!-- Sentinel: IntersectionObserver watches this to detect when we scroll past the hero -->
-    <div class="hero-sentinel" id="hero-sentinel" aria-hidden="true"></div>
-
   </section>
 
+  <!-- ============================================================
+       STUDIO STATEMENT
+       ============================================================ -->
+  <section class="statement" id="studio" aria-labelledby="studio-heading">
+    <div class="shell">
+      <div class="statement__grid">
+
+        <div data-reveal>
+          <figure class="statement__figure">
+            <img src="/assets/site/studio-tall.webp" width="1200" height="1500" loading="lazy" decoding="async"
+                 alt="Stone lined stair rising between a battened screen and a rough cut wall at the Mosman residence.">
+          </figure>
+          <p class="statement__caption">Mosman &nbsp;/&nbsp; in design</p>
+        </div>
+
+        <div class="statement__body" data-reveal>
+          <p class="label">The studio</p>
+          <h2 class="display display--statement" id="studio-heading">
+            Great homes are about more than appearance. They should feel effortless to live in,
+            connect naturally to their surroundings, and support the way your family lives today
+            and into the future.
+          </h2>
+          <p>
+            We design homes that balance beauty, function and long life, so they enrich everyday
+            living and still make sense in twenty years. Inspired by natural materials, thoughtful
+            detail and enduring architectural principles, every project is tailored to the people
+            who call it home.
+          </p>
+          <p class="statement__meta">Sydney metropolitan area &nbsp;/&nbsp; Residential only</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   <!-- ============================================================
-       SERVICES — hero fade dissolves into the top of this section
+       APPROACH
        ============================================================ -->
-  <section
-    class="section above-hero hero-join"
-    id="services"
-    aria-labelledby="services-heading"
-  >
-    <div class="container">
+  <section class="band" aria-labelledby="approach-heading">
+    <div class="shell">
+      <div class="approach__grid">
 
-      <span class="eyebrow reveal" data-delay="0">Our Services</span>
-      <h2 class="display-heading reveal" id="services-heading" data-delay="1">What We Do</h2>
+        <div data-reveal>
+          <p class="label">Why Bond</p>
+          <h2 class="display display--section" id="approach-heading">Thoughtful design. <br>Personal service.</h2>
+          <p>
+            Unlike larger firms, we keep a highly collaborative relationship with every client.
+            We work closely with you to create thoughtfully designed spaces that balance lifestyle,
+            design and long term value.
+          </p>
+          <p>
+            From initial concepts through construction documentation and project coordination, our
+            goal is to keep the process clear, enjoyable and worth the effort. We combine creative
+            thinking with practical problem solving to deliver homes that are beautiful, functional
+            and buildable.
+          </p>
+        </div>
 
-      <p class="body-copy services-intro reveal" data-delay="2">
-        At Bond Design Studio, we offer a comprehensive range of services to help you create your perfect home. Our approach is collaborative, ensuring that every step of the design process is in line with your vision.
+        <div data-reveal>
+          <figure class="approach__figure">
+            <img src="/assets/site/approach.webp" width="1300" height="893" loading="lazy" decoding="async"
+                 alt="Living room at the Mosman residence with a timber lined wall, low seating and a long horizontal fireplace.">
+          </figure>
+          <p class="statement__caption">Mosman &nbsp;/&nbsp; living</p>
+        </div>
+
+      </div>
+
+      <dl class="benefits" data-reveal>
+        <div><dt>Boutique studio</dt><dd>A highly collaborative relationship with every client</dd></div>
+        <div><dt>Residential only</dt><dd>Bespoke homes, rebuilds, renovations and extensions</dd></div>
+        <div><dt>Council and approvals</dt><dd>Guidance through the planning and approval path</dd></div>
+        <div><dt>Builder coordination</dt><dd>We work alongside your builder and consultants</dd></div>
+        <div><dt>Interiors resolved</dt><dd>Materials, colour and finishes decided with the plan</dd></div>
+        <div><dt>End to end</dt><dd>Involved from the first concept to the final site visit</dd></div>
+        <div><dt>Built to last</dt><dd>Homes designed to stay relevant rather than to date</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FULL BLEED BREATH
+       ============================================================ -->
+  <figure class="bleed" data-reveal>
+    <img src="/assets/site/band-pool.webp" width="2200" height="942" loading="lazy" decoding="async"
+         alt="Pool and terrace at the Strathfield residence, with the living pavilion opening onto the garden.">
+    <figcaption>Strathfield &nbsp;/&nbsp; pool and terrace</figcaption>
+  </figure>
+
+  <!-- ============================================================
+       SERVICES - an index that opens
+       ============================================================ -->
+  <section class="band band--raised" id="services" aria-labelledby="services-heading">
+    <div class="shell">
+      <p class="label" data-reveal>What we do</p>
+      <h2 class="display display--section" id="services-heading" data-reveal>Four ways we work with homeowners</h2>
+
+      <div class="index" data-reveal>
+
+        <div class="index__row">
+          <button class="index__head" type="button" aria-expanded="false" aria-controls="svc-1">
+            <span class="index__num">01</span>
+            <span class="index__title">Knockdown rebuild</span>
+            <span class="index__teaser">Stay in the street you love, in a home designed for how you live now.</span>
+            <span class="index__sign" aria-hidden="true"></span>
+          </button>
+          <div class="index__panel" id="svc-1" data-open="false">
+            <div class="index__panel-inner">
+              <div class="index__panel-grid">
+                <div>
+                  <p>
+                    Many homeowners love where they live but find their existing home no longer suits
+                    their lifestyle. A knockdown rebuild lets you stay in the location you love while
+                    creating a home designed for how you live today.
+                  </p>
+                  <p>
+                    We guide clients through site analysis, concept design, planning approvals,
+                    documentation and construction coordination to create homes that make the most of
+                    their land.
+                  </p>
+                  <a class="textlink" href="/services/knockdown-rebuild">Knockdown rebuild in detail</a>
+                </div>
+                <figure>
+                  <img src="/assets/site/svc-rebuild.webp" width="1200" height="750" loading="lazy" decoding="async"
+                       alt="Long low residence at Kenthurst with a gabled roof and gravel forecourt.">
+                  <figcaption>Kenthurst &nbsp;/&nbsp; in design</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="index__row">
+          <button class="index__head" type="button" aria-expanded="false" aria-controls="svc-2">
+            <span class="index__num">02</span>
+            <span class="index__title">Renovations and extensions</span>
+            <span class="index__teaser">Open the living areas, bring in light, reconnect the house to the garden.</span>
+            <span class="index__sign" aria-hidden="true"></span>
+          </button>
+          <div class="index__panel" id="svc-2" data-open="false">
+            <div class="index__panel-inner">
+              <div class="index__panel-grid">
+                <div>
+                  <p>
+                    A well designed renovation can completely change the way a home works. Whether you
+                    are opening living areas, adding bedrooms, improving natural light or creating a
+                    stronger connection between indoor and outdoor spaces, we design around the
+                    character of your home rather than against it.
+                  </p>
+                  <a class="textlink" href="/services/renovations-extensions">Renovations and extensions in detail</a>
+                </div>
+                <figure>
+                  <img src="/assets/site/svc-reno.webp" width="1200" height="750" loading="lazy" decoding="async"
+                       alt="Entry court at the Strathfield residence with stepping stones, planting and a white masonry wall.">
+                  <figcaption>Strathfield &nbsp;/&nbsp; entry</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="index__row">
+          <button class="index__head" type="button" aria-expanded="false" aria-controls="svc-3">
+            <span class="index__num">03</span>
+            <span class="index__title">New homes on vacant land</span>
+            <span class="index__teaser">A home shaped by your block, your budget and your family.</span>
+            <span class="index__sign" aria-hidden="true"></span>
+          </button>
+          <div class="index__panel" id="svc-3" data-open="false">
+            <div class="index__panel-inner">
+              <div class="index__panel-grid">
+                <div>
+                  <p>
+                    Building a new home is a rare chance to create something genuinely tailored to your
+                    family. From site planning through to detailed design, we work closely with clients
+                    to create homes that respond to their block, budget and lifestyle while delivering
+                    enduring architectural quality.
+                  </p>
+                  <a class="textlink" href="/services/new-homes">New homes in detail</a>
+                </div>
+                <figure>
+                  <img src="/assets/site/svc-new.webp" width="1200" height="750" loading="lazy" decoding="async"
+                       alt="Mosman residence seen from the rear garden, an upper floor cantilevered over the terrace and pool.">
+                  <figcaption>Mosman &nbsp;/&nbsp; garden elevation</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="index__row">
+          <button class="index__head" type="button" aria-expanded="false" aria-controls="svc-4">
+            <span class="index__num">04</span>
+            <span class="index__title">Interior design</span>
+            <span class="index__teaser">Materials, colour and finishes resolved as carefully as the plan.</span>
+            <span class="index__sign" aria-hidden="true"></span>
+          </button>
+          <div class="index__panel" id="svc-4" data-open="false">
+            <div class="index__panel-inner">
+              <div class="index__panel-grid">
+                <div>
+                  <p>
+                    Great homes are experienced from the inside out. We help clients make cohesive
+                    decisions around materials, colours, finishes, fixtures and fittings so the interior
+                    reflects the design vision and feels beautifully resolved.
+                  </p>
+                  <a class="textlink" href="/services">All services</a>
+                </div>
+                <figure>
+                  <img src="/assets/site/svc-interior.webp" width="1200" height="750" loading="lazy" decoding="async"
+                       alt="Kitchen at the Mosman residence with a stone island, timber joinery and woven stools.">
+                  <figcaption>Mosman &nbsp;/&nbsp; kitchen</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MANIFESTO - one dark breath between the index and the detail
+       ============================================================ -->
+  <section class="manifesto" aria-label="Studio principle">
+    <div class="shell">
+      <p class="label" data-reveal>The principle</p>
+      <p class="manifesto__line" data-reveal>
+        Every decision is made on paper first, while it is still cheap to change your mind.
       </p>
+      <p class="manifesto__sig" data-reveal>Bond Design Studio, Sydney</p>
+    </div>
+  </section>
 
-      <div class="services-grid">
+  <!-- ============================================================
+       PROCESS
+       ============================================================ -->
+  <section class="band band--raised process" id="process" aria-labelledby="process-heading">
+    <div class="shell">
+      <div class="process__grid">
 
-        <div class="service-card reveal" data-delay="3">
-          <h3>Custom Home Design</h3>
-          <p>We collaborate with you from the very first sketch to the final detail — crafting a home that reflects your personality, lifestyle, and long-term vision. Every decision is considered. Nothing is incidental.</p>
+        <div class="process__head" data-reveal>
+          <p class="label">How it runs</p>
+          <h2 class="display display--section" id="process-heading">Concept to <br>completion</h2>
+          <p class="lede">
+            Six stages, in order, with the studio involved through all of them. You always know which
+            stage you are in and what happens next.
+          </p>
         </div>
 
-        <div class="service-card reveal" data-delay="4">
-          <h3>Interior Design</h3>
-          <p>From spatial planning and material selection to lighting and furniture, we design interiors that are harmonious, functional, and enduring. Spaces that feel as good as they look.</p>
+        <ol class="process__list" id="process-list">
+          <span class="process__line" id="process-line" aria-hidden="true"></span>
+
+          <li>
+            <span class="process__num">01</span>
+            <div class="process__step">
+              <h3>Discover</h3>
+              <p>We start by understanding your site, your lifestyle, your aspirations and your goals for the project.</p>
+            </div>
+          </li>
+          <li>
+            <span class="process__num">02</span>
+            <div class="process__step">
+              <h3>Concept design</h3>
+              <p>Initial design ideas are explored and refined into a clear vision for your future home.</p>
+            </div>
+          </li>
+          <li>
+            <span class="process__num">03</span>
+            <div class="process__step">
+              <h3>Design development</h3>
+              <p>Layouts, materials and architectural details are developed and coordinated.</p>
+            </div>
+          </li>
+          <li>
+            <span class="process__num">04</span>
+            <div class="process__step">
+              <h3>Documentation</h3>
+              <p>Detailed drawings are prepared for approvals, tendering and construction.</p>
+            </div>
+          </li>
+          <li>
+            <span class="process__num">05</span>
+            <div class="process__step">
+              <h3>Builder coordination</h3>
+              <p>We work with builders and consultants to keep the path from design to construction smooth.</p>
+            </div>
+          </li>
+          <li>
+            <span class="process__num">06</span>
+            <div class="process__step">
+              <h3>Construction support</h3>
+              <p>Our involvement continues on site, protecting the design and helping with key decisions.</p>
+            </div>
+          </li>
+        </ol>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MONICA
+       ============================================================ -->
+  <section class="band band--nude" id="monica" aria-labelledby="monica-heading">
+    <div class="shell">
+      <div class="monica__grid">
+
+        <div data-reveal>
+          <figure class="monica__portrait">
+            <img src="/assets/site/monica.webp" width="900" height="1125" loading="lazy" decoding="async"
+                 alt="Monica Vogel, lead designer at Bond Design Studio.">
+          </figure>
         </div>
 
-        <div class="service-card reveal" data-delay="3">
-          <h3>Home Transformations</h3>
-          <p>We see the potential in existing homes. Whether a single room or a whole-home redesign, we bring fresh eyes and careful thinking to spaces that deserve a new chapter.</p>
-        </div>
-
-        <div class="service-card reveal" data-delay="4">
-          <h3>Sustainable Design</h3>
-          <p>Beautiful design and responsible practice are not in opposition. We integrate sustainable materials, passive principles, and considered detailing to create homes that tread lightly and last.</p>
+        <div class="monica__body" data-reveal>
+          <p class="label">Lead designer</p>
+          <h2 class="display display--section" id="monica-heading">Monica Vogel</h2>
+          <p>
+            Monica is an experienced residential designer with a passion for creating homes that are
+            both timeless and deeply personal. Having worked with respected Sydney practices including
+            Luigi Rosselli Architects and Stafford Architecture, she brings extensive experience across
+            bespoke homes, renovations and interior design.
+          </p>
+          <p>
+            Her approach is grounded in thoughtful collaboration, careful listening and an appreciation
+            for the details that make a house feel like home. Known for her understanding of proportion,
+            materiality and everyday living, Monica works closely with each client to create spaces that
+            are beautiful, functional and uniquely theirs.
+          </p>
+          <ul class="pedigree">
+            <li>Luigi Rosselli Architects</li>
+            <li>Stafford Architecture</li>
+            <li>Bond Design Studio</li>
+          </ul>
         </div>
 
       </div>
@@ -121,503 +385,202 @@
 
 
   <!-- ============================================================
-       PRINCIPAL — Monica Vogel
+       FAQ - answer-first, visible, no accordion. The services index
+       already opens; this reads as an index of answers instead.
        ============================================================ -->
-  <section
-    class="section section-xl above-hero"
-    id="principal"
-    aria-labelledby="principal-heading"
-    data-section
-  >
-    <div class="container">
-      <div class="principal-split">
-
-        <!-- Portrait -->
-        <img
-          class="portrait-img reveal-left"
-          src="/assets/images/Monica Vogel Image.jpg"
-          alt="Monica Vogel, Lead Designer at Bond Design Studio"
-          loading="lazy"
-          data-delay="0"
-        >
-
-        <!-- Bio -->
-        <div class="principal-bio reveal-right" data-delay="1">
-          <span class="eyebrow">Lead Designer</span>
-          <h2 class="display-heading-lg" id="principal-heading">Monica Vogel</h2>
-
-          <p class="body-copy-dark">
-            Monica founded Bond Design Studio on a single conviction: that a home should be an honest expression of the life lived in it. With over two decades of practice across Sydney's most thoughtful residential projects, she has developed a design language defined by restraint, craft, and clarity.
-          </p>
-          <p class="body-copy-dark">
-            Her training in architecture and her enduring interest in the way people inhabit space inform every project — from the first meeting to the day the keys are handed over. Monica has been recognised by the Australian Institute of Architects and her work has been published in&nbsp;<em>Vogue Living</em>, <em>Belle</em>, and <em>Architectural Digest Australia</em>.
-          </p>
-          <p class="body-copy-dark">
-            She believes the quietest rooms are often the most memorable.
-          </p>
+  <section class="band band--raised" id="questions" aria-labelledby="faq-heading">
+    <div class="shell">
+      <div class="faq__grid">
+        <div class="faq__head" data-reveal>
+          <p class="label">Common questions</p>
+          <h2 class="display display--section" id="faq-heading">Before you <br>get in touch</h2>
+          <p class="lede">The things homeowners ask us first. If yours is not here, ask it directly
+            and you will get a straight answer.</p>
         </div>
 
+        <dl class="faq" data-reveal>
+          <div>
+            <dt>Do I need an architect or a building designer?</dt>
+            <dd>For a standard house in New South Wales, a registered architect is not required.
+              Renovations, extensions and knockdown rebuilds of a single home can be designed and
+              documented by a residential design studio. Architects are required for apartment
+              buildings and other regulated work. What matters more is who you trust with your
+              house, and how far they stay involved.</dd>
+          </div>
+          <div>
+            <dt>What does a knockdown rebuild cost in Sydney?</dt>
+            <dd>It depends on the size and finish of the new home, and on the block itself. Slope,
+              rock, tree protection, asbestos in the old house and the approval pathway all move
+              the number, sometimes by a lot. We would rather look at your site and give you a real
+              range than quote an average that turns out to be wrong for you.</dd>
+          </div>
+          <div>
+            <dt>How do your fees work?</dt>
+            <dd>For a complete design service, fees typically commence from 10% plus GST of the
+              construction value, with the final figure set by the scale and complexity of the
+              project. They are invoiced progressively against work completed, and we provide
+              forward estimates so you always know what is coming. You can also engage us for
+              selected stages rather than the whole thing.</dd>
+          </div>
+          <div>
+            <dt>Why is that more than a drafting fee?</dt>
+            <dd>Because it buys more than drawings. A documentation only fee ends when the plans are
+              printed. Ours covers concept design, design development, full documentation, council
+              and approvals, coordination with your builder and consultants, and involvement
+              through construction so the house that gets built is the house that was designed.</dd>
+          </div>
+          <div>
+            <dt>How long does council approval take?</dt>
+            <dd>There are two pathways. A complying development certificate is the faster one and
+              suits straightforward sites that meet the standards. A development application goes
+              to your council, takes considerably longer, and is unavoidable on some sites. We work
+              out which one applies to your block early, because it changes the timeline more than
+              anything else.</dd>
+          </div>
+          <div>
+            <dt>Can I stay in the house during a renovation?</dt>
+            <dd>Sometimes, and it is worth deciding early rather than late. Staging the work so you
+              keep a kitchen and a bathroom is a design decision, not a building one, and it
+              affects the drawings. If moving out is simpler and cheaper overall, we will tell you.</dd>
+          </div>
+          <div>
+            <dt>Do you work with my builder, or do you have one?</dt>
+            <dd>We are a design studio, not a building company, so you are free to choose your
+              builder. We coordinate with them and with the consultants through documentation and
+              construction. If you do not have a builder yet, we can help you tender the project
+              and compare what comes back properly.</dd>
+          </div>
+        </dl>
       </div>
     </div>
   </section>
-
 
   <!-- ============================================================
        CONTACT
        ============================================================ -->
-  <section
-    class="section section-xl above-hero"
-    id="contact"
-    aria-labelledby="contact-heading"
-    data-section
-  >
-      <div class="container">
+  <section class="band" id="contact" aria-labelledby="contact-heading">
+    <div class="shell">
+      <div class="contact__grid">
 
-        <h2 class="display-heading-lg reveal" id="contact-heading" data-delay="0">Get in touch.</h2>
-
-        <div class="contact-layout">
-
-          <!-- Contact details -->
-          <div class="contact-details-stack reveal-left" aria-label="Contact information" data-delay="1">
-
-            <div class="contact-detail">
-              <span class="contact-detail-label">Studio</span>
-              <span class="contact-detail-value">
-                100 Barangaroo Avenue<br>
-                Sydney NSW 2000
-              </span>
-            </div>
-
-            <div class="contact-detail">
-              <span class="contact-detail-label">Email</span>
-              <a
-                href="mailto:admin@bonddesignstudio.com.au"
-                class="contact-detail-value"
-              >admin@bonddesignstudio.com.au</a>
-            </div>
-
-          </div>
-
-          <!-- Contact form -->
-          <form
-            id="contact-form"
-            class="reveal-right"
-            novalidate
-            aria-label="Contact form"
-            data-delay="2"
-          >
-
-            <div class="floating-field" id="field-wrap-name">
-              <input
-                class="floating-input"
-                type="text"
-                id="field-name"
-                name="name"
-                placeholder=" "
-                autocomplete="name"
-                aria-required="true"
-                aria-describedby="error-name"
-              >
-              <label class="floating-label" for="field-name">Full Name</label>
-              <span class="field-error-msg" id="error-name" role="alert">Please enter your name.</span>
-            </div>
-
-            <div class="floating-field" id="field-wrap-email">
-              <input
-                class="floating-input"
-                type="email"
-                id="field-email"
-                name="email"
-                placeholder=" "
-                autocomplete="email"
-                aria-required="true"
-                aria-describedby="error-email"
-              >
-              <label class="floating-label" for="field-email">Email Address</label>
-              <span class="field-error-msg" id="error-email" role="alert">Please enter a valid email address.</span>
-            </div>
-
-            <div class="floating-field" id="field-wrap-phone">
-              <input
-                class="floating-input"
-                type="tel"
-                id="field-phone"
-                name="phone"
-                placeholder=" "
-                autocomplete="tel"
-              >
-              <label class="floating-label" for="field-phone">Phone (optional)</label>
-            </div>
-
-            <div class="floating-field" id="field-wrap-message">
-              <textarea
-                class="floating-textarea"
-                id="field-message"
-                name="message"
-                rows="4"
-                placeholder=" "
-                aria-required="true"
-                aria-describedby="error-message"
-              ></textarea>
-              <label class="floating-label" for="field-message">Message</label>
-              <span class="field-error-msg" id="error-message" role="alert">Please enter a message.</span>
-            </div>
-
-            <button type="submit" class="form-submit-btn">Send Message</button>
-
-          </form>
-
+        <div data-reveal>
+          <p class="label">Contact</p>
+          <h2 class="display display--section" id="contact-heading">Every project starts <br>with a conversation</h2>
+          <p class="lede">
+            Planning a knockdown rebuild, a major renovation, an extension or a new home on vacant land?
+            Tell us about the site and what is not working, and we will tell you what is possible.
+          </p>
         </div>
+
+        <div class="contact__actions" data-reveal>
+          <a class="action" href="mailto:hello@bonddesignstudio.com.au?subject=New%20project%20enquiry">
+            Start a conversation
+            <svg width="26" height="10" viewBox="0 0 26 10" fill="none" aria-hidden="true">
+              <path d="M0 5h24M20 1l4 4-4 4" stroke="currentColor" stroke-width="1"/>
+            </svg>
+          </a>
+          <a class="textlink" href="mailto:hello@bonddesignstudio.com.au?subject=Studio%20brochure">
+            Request the studio brochure
+          </a>
+        </div>
+
       </div>
+    </div>
   </section>
 
+</main>
 
-  <!-- ============================================================
-       FOOTER
-       ============================================================ -->
-  <footer class="above-hero footer-wrap" role="contentinfo">
-    <div class="container">
-      <p class="footer-text">&copy; 2025 Bond Design Studio. All rights reserved.<a class="preview-peek" href="/new-home" title="Preview the redesign" aria-label="Preview the redesign"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.6 12S5.5 5 12 5s10.4 7 10.4 7-3.9 7-10.4 7S1.6 12 1.6 12Z"/><circle cx="12" cy="12" r="2.6"/></svg></a></p>
-    </div>
-  </footer>
+<!-- @use:bond-footer -->
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://bonddesignstudio.com.au/#studio",
+  "name": "Bond Design Studio",
+  "description": "Boutique Sydney residential design studio creating bespoke homes, knockdown rebuilds, renovations and extensions.",
+  "url": "https://bonddesignstudio.com.au/",
+  "email": "hello@bonddesignstudio.com.au",
+  "image": "https://bonddesignstudio.com.au/assets/site/hero-wide.webp",
+  "areaServed": { "@type": "City", "name": "Sydney" },
+  "address": { "@type": "PostalAddress", "addressRegion": "NSW", "addressCountry": "AU" },
+  "sameAs": ["https://www.instagram.com/bonddesignstudio_au/"],
+  "employee": { "@type": "Person", "name": "Monica Vogel", "jobTitle": "Lead Designer" },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Residential design services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Knockdown rebuild design", "url": "https://bonddesignstudio.com.au/services/knockdown-rebuild" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Renovation and extension design", "url": "https://bonddesignstudio.com.au/services/renovations-extensions" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "New home design", "url": "https://bonddesignstudio.com.au/services/new-homes" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Interior design" } }
+    ]
+  }
+}
+</script>
 
-  <!-- Framework runtime (nav, accordion, scroll-reveal) -->
-  <script src="/js/framework/runtime.js" defer></script>
-
-  <!-- Custom: canvas frame scrubbing hero, cinematic overlays, scroll-reveal -->
-  <script>
-    (function () {
-      'use strict';
-
-      /* ─── Elements ─────────────────────────────────────────── */
-      var heroSection   = document.getElementById('hero-section');
-      var canvas        = document.getElementById('hero-canvas');
-      var heroLogo      = document.getElementById('hero-logo');
-      var textContainer = document.getElementById('hero-text-container');
-      var sentinel      = document.getElementById('hero-sentinel');
-      var fadeWhite     = document.getElementById('hero-fade-white');
-
-      if (!heroSection || !canvas) return;
-
-      var ctx = canvas.getContext('2d');
-
-      /* ─── Frame config ──────────────────────────────────────── */
-      /*
-       * FRAME_COUNT must match the actual number of files in /media/frames/.
-       * Run the ffmpeg command in README.md to extract frames, then
-       * set this value to the output of: ls media/frames/*.jpg | wc -l
-       *
-       * Currently 0 → fallback mode (poster shown, no scrubbing).
-       */
-      var FRAME_COUNT = 120;
-      var FRAME_PATH  = '/media/frames/frame';  /* files are frame0001.jpg … */
-
-      var SCROLL_SPEED = 380;   /* px of scroll per second-equivalent of frames */
-      var HOLD_SCROLL  = 800;   /* px to hold final frame before section exits */
-      var FPS          = 15;    /* must match ffmpeg fps= value */
-
-      if (FRAME_COUNT === 0) {
-        console.warn('[Hero] Frames not found — run ffmpeg command in README.md first.');
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need an architect or a building designer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For a standard house in New South Wales, a registered architect is not required. Renovations, extensions and knockdown rebuilds of a single home can be designed and documented by a residential design studio. Architects are required for apartment buildings and other regulated work. What matters more is who you trust with your house, and how far they stay involved."
       }
-
-      /* ─── Resize canvas to fill viewport ────────────────────── */
-      function resizeCanvas () {
-        canvas.width  = window.innerWidth;
-        canvas.height = window.innerHeight;
-        /* Redraw current frame after resize */
-        if (currentImage) drawImage(currentImage);
+    },
+    {
+      "@type": "Question",
+      "name": "What does a knockdown rebuild cost in Sydney?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on the size and finish of the new home, and on the block itself. Slope, rock, tree protection, asbestos in the old house and the approval pathway all move the number, sometimes by a lot. We would rather look at your site and give you a real range than quote an average that turns out to be wrong for you."
       }
-      window.addEventListener('resize', resizeCanvas, { passive: true });
-      resizeCanvas();
-
-      /* ─── Hero scroll height ─────────────────────────────────── */
-      var totalScrollHeight = (FRAME_COUNT > 0)
-        ? (FRAME_COUNT / FPS) * SCROLL_SPEED + HOLD_SCROLL
-        : 10 * SCROLL_SPEED + HOLD_SCROLL;  /* 10s fallback */
-
-      heroSection.style.height = totalScrollHeight + 'px';
-
-      /* ─── Image pool ─────────────────────────────────────────── */
-      var frames       = [];   /* all frames, indexed 1..FRAME_COUNT */
-      var currentImage = null;
-      var lastFrameIdx = -1;
-      var drawPending  = false;
-      var targetVP     = 0;   /* raw scroll progress (updated on scroll) */
-      var smoothVP     = 0;   /* lerped toward targetVP each rAF tick */
-      var LERP         = 0.10; /* 0=no smoothing, 1=instant; 0.10 = gentle glide */
-      var scrollHint   = document.getElementById('scroll-hint');
-      var loaderEl     = document.getElementById('hero-loader');
-      var loaderBarEl  = document.getElementById('hero-loader-bar');
-
-      /* Pad index to 4 digits: 1 → "0001" */
-      function pad4 (n) { return ('000' + n).slice(-4); }
-
-      /* Draw an image covering the canvas (object-fit:cover equivalent).
-         srcH = 95% of image height to crop the Veo watermark at the bottom. */
-      function drawImage (img) {
-        if (!img || !img.complete) return;
-        var cw = canvas.width,  ch = canvas.height;
-        var iw = img.naturalWidth, ih = img.naturalHeight;
-        var srcH = ih * 0.95;
-        var scale = Math.max(cw / iw, ch / srcH);
-        var sw = iw * scale, sh = srcH * scale;
-        var dx = (cw - sw) / 2, dy = (ch - sh) / 2;
-        ctx.drawImage(img, 0, 0, iw, srcH, dx, dy, sw, sh);
+    },
+    {
+      "@type": "Question",
+      "name": "How do your fees work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For a complete design service, fees typically commence from 10% plus GST of the construction value, with the final figure set by the scale and complexity of the project. They are invoiced progressively against work completed, and we provide forward estimates so you always know what is coming. You can also engage us for selected stages rather than the whole thing."
       }
-
-      /* Load and draw frame at index i (1-based) */
-      function showFrame (i) {
-        if (i === lastFrameIdx) return;
-        lastFrameIdx = i;
-
-        if (frames[i]) {
-          currentImage = frames[i];
-          drawImage(frames[i]);
-          return;
-        }
-
-        var img = new Image();
-        img.onload = function () {
-          frames[i]    = img;
-          currentImage = img;
-          /* Only paint if this is still the target frame */
-          if (lastFrameIdx === i) drawImage(img);
-        };
-        img.src = FRAME_PATH + pad4(i) + '.jpg';
+    },
+    {
+      "@type": "Question",
+      "name": "Why is that more than a drafting fee?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because it buys more than drawings. A documentation only fee ends when the plans are printed. Ours covers concept design, design development, full documentation, council and approvals, coordination with your builder and consultants, and involvement through construction so the house that gets built is the house that was designed."
       }
-
-      /* ─── Eager preload — all frames at startup ─────────────── */
-      var loadedCount = 0;
-
-      function preloadAllFrames () {
-        if (FRAME_COUNT === 0) {
-          /* No frames — dismiss loader immediately */
-          if (loaderEl) loaderEl.classList.add('loaded');
-          return;
-        }
-
-        for (var i = 1; i <= FRAME_COUNT; i++) {
-          (function (idx) {
-            var img = new Image();
-            frames[idx] = img; /* reserve slot so showFrame doesn't double-load */
-            img.onload = img.onerror = function () {
-              loadedCount++;
-              var pct = (loadedCount / FRAME_COUNT) * 100;
-              if (loaderBarEl) loaderBarEl.style.width = pct + '%';
-
-              /* Draw first frame as soon as it arrives */
-              if (idx === 1 && img.complete && img.naturalWidth > 0) {
-                currentImage = img;
-                drawImage(img);
-              }
-
-              /* Dismiss loader once all frames are settled */
-              if (loadedCount >= FRAME_COUNT) {
-                if (loaderEl) loaderEl.classList.add('loaded');
-              }
-            };
-            img.src = FRAME_PATH + pad4(idx) + '.jpg';
-          }(i));
-        }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does council approval take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There are two pathways. A complying development certificate is the faster one and suits straightforward sites that meet the standards. A development application goes to your council, takes considerably longer, and is unavoidable on some sites. We work out which one applies to your block early, because it changes the timeline more than anything else."
       }
-
-      /* prefetchAround is now a no-op — all frames already loading */
-      function prefetchAround () {}
-
-      /* ─── Continuous lerp loop ───────────────────────────────── */
-      function rafLoop () {
-        requestAnimationFrame(rafLoop);
-
-        var delta = targetVP - smoothVP;
-        /* Stop updating when close enough — avoids endless micro-draws */
-        if (Math.abs(delta) < 0.0001) {
-          smoothVP = targetVP;
-          return;
-        }
-        smoothVP += delta * LERP;
-
-        /* Canvas frame */
-        if (FRAME_COUNT > 0) {
-          var idx = Math.max(1, Math.min(FRAME_COUNT, Math.round(smoothVP * (FRAME_COUNT - 1)) + 1));
-          showFrame(idx);
-          prefetchAround(idx);
-        }
-
-        /* Cinematic overlays */
-        updateOverlays(smoothVP);
-
-        /* White fade-out during hold zone
-           smoothVP is capped at 1.0; map raw scrollY through smoothed equivalent */
-        if (fadeWhite) {
-          var smoothScrollY = smoothVP * videoScrollHeight;
-          var hp = HOLD_SCROLL > 0
-            ? clamp((smoothScrollY - (videoScrollHeight - HOLD_SCROLL)) / HOLD_SCROLL, 0, 1)
-            : 0;
-          fadeWhite.style.opacity = hp.toFixed(4);
-        }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I stay in the house during a renovation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sometimes, and it is worth deciding early rather than late. Staging the work so you keep a kitchen and a bathroom is a design decision, not a building one, and it affects the drawings. If moving out is simpler and cheaper overall, we will tell you."
       }
-
-      /* ─── rAF draw tick (legacy — kept for resize redraws) ──── */
-      function doDraw () {
-        drawPending = false;
+    },
+    {
+      "@type": "Question",
+      "name": "Do you work with my builder, or do you have one?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We are a design studio, not a building company, so you are free to choose your builder. We coordinate with them and with the consultants through documentation and construction. If you do not have a builder yet, we can help you tender the project and compare what comes back properly."
       }
-
-      /* ─── Helpers ────────────────────────────────────────────── */
-      function clamp (v, lo, hi) { return v < lo ? lo : v > hi ? hi : v; }
-      function inv (a, b, v) {
-        return a === b ? 0 : clamp((v - a) / (b - a), 0, 1);
-      }
-
-      /* ─── Cinematic overlay animation ───────────────────────── */
-      function updateOverlays (vp) {
-
-        /* ── Scroll hint: visible at rest, fades out by 10% scroll ── */
-        if (scrollHint) {
-          scrollHint.style.opacity = (1 - inv(0, 0.10, vp)).toFixed(4);
-        }
-
-        /* ── Logo: scale 0.60→1.00 (0–25%), stable (25–44%), fade out (44–54%) ── */
-        if (heroLogo) {
-          var logoScale   = 0.60 + inv(0, 0.25, vp) * 0.40;
-          var logoOpacity = vp <= 0.44 ? 1 : 1 - inv(0.44, 0.54, vp);
-          heroLogo.style.opacity   = logoOpacity.toFixed(4);
-          heroLogo.style.transform = 'translate(-50%, -50%) scale(' + logoScale.toFixed(4) + ')';
-        }
-
-        /* ── Text: blur-focus in (46–60%), stable (60–76%), fade out (76–95%) ── */
-        if (textContainer) {
-          var textOpacity;
-          if      (vp < 0.46) { textOpacity = 0; }
-          else if (vp < 0.60) { textOpacity = inv(0.46, 0.60, vp); }
-          else if (vp < 0.76) { textOpacity = 1; }
-          else                { textOpacity = 1 - inv(0.76, 0.95, vp); }
-
-          var blurPx = (1 - clamp(textOpacity * 1.5, 0, 1)) * 9;
-          textContainer.style.opacity = textOpacity.toFixed(4);
-          textContainer.style.filter  = blurPx > 0.1
-            ? 'blur(' + blurPx.toFixed(1) + 'px)'
-            : 'none';
-        }
-      }
-
-      /* ─── Scroll handler ─────────────────────────────────────── */
-      var videoScrollHeight = totalScrollHeight - HOLD_SCROLL;
-
-      window.addEventListener('scroll', function () {
-        var scrollY = window.scrollY || window.pageYOffset;
-
-        /* targetVP drives the lerp loop — capped at 1 (hold zone handled separately) */
-        targetVP = videoScrollHeight > 0
-          ? clamp(scrollY / videoScrollHeight, 0, 1)
-          : 0;
-
-      }, { passive: true });
-
-      /* Preload all frames, then kick off the lerp loop */
-      preloadAllFrames();
-      rafLoop();
-
-      /* ─── Hero exit (IntersectionObserver) ───────────────────── */
-      if (sentinel && 'IntersectionObserver' in window) {
-        var heroObserver = new IntersectionObserver(function (entries) {
-          var entry    = entries[0];
-          var pastHero = !entry.isIntersecting && entry.boundingClientRect.top < 0;
-          document.body.classList.toggle('hero-exited', pastHero);
-        }, { threshold: 0 });
-
-        heroObserver.observe(sentinel);
-      }
-
-      /* ─── Reduced motion ─────────────────────────────────────── */
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        if (heroLogo)      { heroLogo.style.opacity = '1'; }
-        if (textContainer) { textContainer.style.opacity = '1'; textContainer.style.filter = 'none'; }
-      }
-
-      /* ─── Scroll-reveal IntersectionObserver ────────────────── */
-      if ('IntersectionObserver' in window) {
-        var revealObserver = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (!entry.isIntersecting) return;
-            var el    = entry.target;
-            var delay = parseFloat(el.getAttribute('data-delay') || '0');
-            el.style.transitionDelay = (delay * 0.12) + 's';
-            el.classList.add('in-view');
-            revealObserver.unobserve(el);
-          });
-        }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
-
-        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function (el) {
-          revealObserver.observe(el);
-        });
-      } else {
-        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function (el) {
-          el.classList.add('in-view');
-        });
-      }
-
-      /* ─── Contact form — validate + send via /api/contact ──────── */
-      var form = document.getElementById('contact-form');
-
-      if (form) {
-        form.addEventListener('submit', function (e) {
-          e.preventDefault();
-
-          var nameEl    = document.getElementById('field-name');
-          var emailEl   = document.getElementById('field-email');
-          var phoneEl   = document.getElementById('field-phone');
-          var messageEl = document.getElementById('field-message');
-
-          var fields = [
-            { wrap: 'field-wrap-name',    el: nameEl,    check: function (v) { return v.length > 0; } },
-            { wrap: 'field-wrap-email',   el: emailEl,   check: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); } },
-            { wrap: 'field-wrap-message', el: messageEl, check: function (v) { return v.length > 0; } }
-          ];
-
-          var valid = true;
-          fields.forEach(function (f) {
-            var w = document.getElementById(f.wrap);
-            if (w) w.classList.remove('field-error-state');
-            if (!f.check(f.el.value.trim())) {
-              if (w) w.classList.add('field-error-state');
-              valid = false;
-            }
-          });
-
-          if (!valid) return;
-
-          var btn = form.querySelector('.form-submit-btn');
-          if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
-
-          fetch('/api/contact', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              name:    nameEl.value.trim(),
-              email:   emailEl.value.trim(),
-              phone:   phoneEl ? phoneEl.value.trim() : '',
-              message: messageEl.value.trim()
-            })
-          })
-          .then(function (res) { return res.json().then(function (d) { return { ok: res.ok, data: d }; }); })
-          .then(function (r) {
-            if (r.ok) {
-              form.innerHTML = '<p class="form-success-msg">Thank you. We\'ll be in touch soon.</p>';
-            } else {
-              if (btn) { btn.disabled = false; btn.textContent = 'Send Message'; }
-              alert('Sorry, something went wrong. Please email us directly at admin@bonddesignstudio.com.au');
-            }
-          })
-          .catch(function () {
-            if (btn) { btn.disabled = false; btn.textContent = 'Send Message'; }
-            alert('Sorry, something went wrong. Please email us directly at admin@bonddesignstudio.com.au');
-          });
-        });
-      }
-
-    }());
-  </script>
-
+    }
+  ]
+}
+</script>
 </body>
 </html>

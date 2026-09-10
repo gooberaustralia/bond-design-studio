@@ -57,3 +57,42 @@ goober-os SKILL.md, design/thinking.md principles applied from director judgemen
   composition block specifies, process ticks aligned to the numerals.
 - Verified: axe 0 violations, no console errors, Day and Night, 390 and 1440, accordion, drawer,
   reduced motion.
+
+## SEO and LLM SEO phase — 2026-09-10
+- Ran the llm-seo skill with goober-tools. Keyword data (Google Ads, Sydney), AI visibility test
+  across ChatGPT and Claude. Gemini failed twice, recorded as no data.
+- Baseline: 0/100 every engine, 0% share of voice. Bond named in zero answers, cited zero times.
+- Master internal file: strategy/seo-llm-strategy.md. Everything client-facing derives from it.
+- HARD CONSTRAINT discovered: "architect" is a protected title in NSW (ChatGPT cited
+  architects.nsw.gov.au). Site must not use it. Costs us architect sydney (1,300/mo) and
+  architecture firms sydney (480). OPEN: confirm Monica's registration status.
+- Beachhead: knockdown rebuild, ~1,010/mo cluster, two biggest terms LOW competition.
+- Fee gap: AI tells buyers designers charge 3-5%; Bond quotes from 10%. Answered in the FAQ.
+- Home page FAQ built: 7 questions, visible (no accordion, the services index already opens),
+  FAQPage schema generated from the markup so it cannot drift. Build green, no console errors.
+- Client docs published as artifacts: strategy, open questions, build status.
+
+## Full site build — 2026-09-10
+- New design promoted to the live home page. pages/new-home.html deleted, the old scrub page
+  retired. Old assets (frames, framework css/js, source video) moved to source-art/old-site/.
+- Eight pages built, exactly the client's brief structure: index, services, services/knockdown-rebuild,
+  services/renovations-extensions, services/new-homes, process, monica, contact, plus thank-you.
+- Shared partials: bond-head, bond-header, bond-footer. Pages generated via tools/mkpage.py so
+  FAQPage schema is always extracted from the markup and cannot drift.
+- css/new-home.css -> css/site.css, js/new-home.js -> js/site.js.
+- Masthead default is now the solid state; data-over="true" is the exception, set by JS only when
+  a .hero exists. Interior pages were showing a white logo on white paper before this.
+- Enquiry handler extended with suburb, project_type and budget.
+- Verified: build green, 0 broken links, 0 missing alt, axe 0 violations on all pages, no JS
+  errors, no horizontal overflow at 390. dist is 1.5MB total.
+- Interior Design deliberately has no page of its own: the client's structure lists only three
+  service children. It is a section on /services and is quoted as an upsell.
+- 2026-09-10 Process page had no imagery. Added a Kenthurst interior full bleed after the page
+  head, and turned its principle band into a photograph (Strathfield 6) behind a left weighted
+  scrim, so the page varies one axis from the home page's flat ink manifesto.
+- 2026-09-10 Two Higgsfield images generated (nano_banana_pro, 2 credits each, Monica's real
+  photo as face reference): consult-* on /contact, monica-work-* on /monica. Source PNGs kept in
+  source-art/generated/. Deliberately NO project captions on these two, because captioning a
+  generated image as a named project would assert something false. OPEN: Monica's own sign-off on
+  the use of her likeness.
+- Services page hero swapped to Strathfield 3 so band-pool is no longer on two pages.

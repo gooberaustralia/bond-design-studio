@@ -1,19 +1,35 @@
 {
-  "name": "Bond Design Studio — Website Project",
-  "tagline": "",
-  "industry": "",
+  "name": "Bond Design Studio",
+  "tagline": "Timeless residential design for the way you live",
+  "industry": "Residential design",
   "phone": "",
-  "email": "",
-  "contact_to_email": "",
+  "email": "hello@bonddesignstudio.com.au",
+  "contact_to_email": "hello@bonddesignstudio.com.au",
   "contact_from_email": "noreply@goober.com.au",
-  "canonical_url": "",
+  "canonical_url": "https://bonddesignstudio.com.au",
   "address": {
-    "suburb": "",
+    "suburb": "Sydney",
+    "state": "NSW",
     "country": "AU"
   },
-  "target_audience": [],
-  "primary_services": [],
-  "value_props": [],
-  "tone": "professional",
-  "social": {}
+  "target_audience": [
+    "Sydney homeowners planning a knockdown rebuild, renovation, extension or new home"
+  ],
+  "primary_services": [
+    "Knockdown rebuild design",
+    "Renovation and extension design",
+    "New home design on vacant land",
+    "Interior design"
+  ],
+  "value_props": [
+    "Boutique studio, one designer on every project",
+    "Involved from concept through construction",
+    "Council and approval guidance",
+    "Transparent staged fees"
+  ],
+  "tone": "refined, calm, plain spoken",
+  "social": {
+    "instagram": "https://www.instagram.com/bonddesignstudio_au/"
+  },
+  "social_seeded": true
 }

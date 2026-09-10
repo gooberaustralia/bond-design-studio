@@ -1,0 +1,36 @@
+<!-- @default
+  title="Bond Design Studio"
+  description=""
+  canonical=""
+  og_image="/assets/site/hero-wide.webp"
+  robots="index, follow"
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<link rel="canonical" href="{{canonical}}">
+<meta name="robots" content="{{robots}}">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:image" content="{{og_image}}">
+<meta property="og:locale" content="en_AU">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Newsreader:opsz,wght@6..72,200;6..72,300;6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+
+<script>
+  // Set the theme before first paint so Night never flashes white.
+  // The studio's identity is light, so Day is the default for everyone.
+  (function () {
+    try {
+      var saved = localStorage.getItem('bds-theme');
+      document.documentElement.setAttribute('data-theme', saved === 'night' ? 'night' : 'day');
+    } catch (e) {}
+  })();
+</script>

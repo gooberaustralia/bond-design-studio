@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en-AU" data-theme="day">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact | Bond Design Studio, Sydney</title>
+<meta name="description" content="Talk to Bond Design Studio about a knockdown rebuild, renovation, extension or new home anywhere in the Sydney metropolitan area. Every project starts with a conversation.">
+<link rel="canonical" href="https://bonddesignstudio.com.au/contact">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contact | Bond Design Studio, Sydney">
+<meta property="og:description" content="Talk to Bond Design Studio about a knockdown rebuild, renovation, extension or new home anywhere in the Sydney metropolitan area. Every project starts with a conversation.">
+<meta property="og:image" content="/assets/site/hero-wide.webp">
+<meta property="og:locale" content="en_AU">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Newsreader:opsz,wght@6..72,200;6..72,300;6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+
+<script>
+  // Set the theme before first paint so Night never flashes white.
+  // The studio's identity is light, so Day is the default for everyone.
+  (function () {
+    try {
+      var saved = localStorage.getItem('bds-theme');
+      document.documentElement.setAttribute('data-theme', saved === 'night' ? 'night' : 'day');
+    } catch (e) {}
+  })();
+</script>
+
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="masthead" id="masthead">
+  <div class="masthead__inner">
+
+    <a class="brand" href="/" aria-label="Bond Design Studio, home">
+      <img class="brand__mark brand__mark--white" src="/assets/logo/bond-white-320.png"
+           width="320" height="293" alt="" fetchpriority="high">
+      <img class="brand__mark brand__mark--black" src="/assets/logo/bond-black-320.png"
+           width="320" height="293" alt="" aria-hidden="true">
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="/services">Services</a>
+      <a href="/process">Process</a>
+      <a href="/monica">Monica</a>
+      <a href="/contact">Contact</a>
+    </nav>
+
+    <div class="masthead__end">
+      <button class="daynight" id="daynight" type="button" aria-pressed="false">
+        <span class="daynight__track" aria-hidden="true"><span class="daynight__dot"></span></span>
+        <span class="daynight__label" id="daynight-label">Day</span>
+        <span class="visually-hidden">Switch the site between day and night light</span>
+      </button>
+
+      <a class="enquire" href="/contact">Enquire</a>
+
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="drawer">
+        <span></span><span></span>
+        <span class="visually-hidden">Menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="drawer" id="drawer" data-open="false" aria-label="Mobile">
+  <a href="/services">Services</a>
+  <a href="/process">Process</a>
+  <a href="/monica">Monica</a>
+  <a href="/contact">Contact</a>
+  <div class="drawer__foot">
+    <a href="mailto:hello@bonddesignstudio.com.au">hello@bonddesignstudio.com.au</a>
+  </div>
+</nav>
+
+
+<main id="main">
+  <section class="pagehead">
+    <div class="shell">
+      <div class="pagehead__grid">
+        <div><h1>Let's discuss your project</h1></div>
+        <div><p class="lede">Whether you are planning a knockdown rebuild, a major renovation, an
+          extension or a new home on vacant land, we would love to hear about your vision.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell">
+      <div class="contact__page">
+
+        <div class="contact__form" data-reveal>
+          <p class="label">Send an enquiry</p>
+          <form class="form" action="/api/enquiry" method="POST">
+            <div class="honey" aria-hidden="true">
+              <label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+            </div>
+
+            <div class="form__row">
+              <label class="field"><span>Your name</span>
+                <input type="text" name="name" autocomplete="name" required></label>
+              <label class="field"><span>Email</span>
+                <input type="email" name="email" autocomplete="email" required></label>
+            </div>
+
+            <div class="form__row">
+              <label class="field"><span>Phone</span>
+                <input type="tel" name="phone" autocomplete="tel"></label>
+              <label class="field"><span>Suburb</span>
+                <input type="text" name="suburb" autocomplete="address-level2" placeholder="Where is the site"></label>
+            </div>
+
+            <div class="form__row">
+              <label class="field field--select"><span>Project type</span>
+                <select name="project_type">
+                  <option value="">Choose one</option>
+                  <option>Knockdown rebuild</option>
+                  <option>Renovation or extension</option>
+                  <option>New home on vacant land</option>
+                  <option>Interior design</option>
+                  <option>Not sure yet</option>
+                </select></label>
+              <label class="field field--select"><span>Construction budget</span>
+                <select name="budget">
+                  <option value="">Choose one</option>
+                  <option>Under $500,000</option>
+                  <option>$500,000 to $1 million</option>
+                  <option>$1 million to $2 million</option>
+                  <option>Over $2 million</option>
+                  <option>Still working it out</option>
+                </select></label>
+            </div>
+
+            <label class="field"><span>About the project</span>
+              <textarea name="message" rows="5" placeholder="What is not working about the house you have, or what you would like to build"></textarea></label>
+
+            <button class="submit" type="submit">Send enquiry</button>
+          </form>
+        </div>
+
+        <aside class="contact__side" data-reveal>
+          <p class="label">Direct</p>
+          <h2 class="display display--statement">Every successful project starts with a
+            conversation.</h2>
+
+          <div class="contact__detail">
+            <a href="mailto:hello@bonddesignstudio.com.au">hello@bonddesignstudio.com.au</a>
+            <a href="https://www.instagram.com/bonddesignstudio_au/" rel="noopener">Instagram, bonddesignstudio_au</a>
+            <span class="statement__meta">Sydney metropolitan area &nbsp;/&nbsp; Residential only</span>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <figure class="bleed bleed--photo" data-reveal>
+    <picture>
+      <source media="(max-width: 800px)" srcset="/assets/site/consult-tall.webp">
+      <img src="/assets/site/consult-wide.webp" width="2200" height="1227" loading="lazy" decoding="async"
+           alt="Monica Vogel seated at an outdoor table with a client, going through a set of architectural drawings, a pool and garden behind them.">
+    </picture>
+  </figure>
+
+  <section class="band band--raised" id="questions">
+    <div class="shell">
+      <div class="faq__grid">
+        <div class="faq__head" data-reveal>
+          <p class="label">Before you write</p>
+          <h2 class="display display--section">What helps <br>us most</h2>
+        </div>
+        <dl class="faq" data-reveal>
+          <div>
+            <dt>What should I include in the first message?</dt>
+            <dd>The suburb, roughly what you are planning, and what is not working about the house
+              you have now. If you have a budget in mind, say so. Three lines is plenty.</dd>
+          </div>
+          <div>
+            <dt>Do you charge for the first conversation?</dt>
+            <dd>No. The first conversation is about whether the project makes sense and whether we
+              are the right studio for it.</dd>
+          </div>
+          <div>
+            <dt>Which parts of Sydney do you work in?</dt>
+            <dd>The Sydney metropolitan area. Residential only.</dd>
+          </div>
+          <div>
+            <dt>I have plans already. Can you take them further?</dt>
+            <dd>Often yes. Our services can be engaged for selected stages rather than end to end,
+              so an existing concept can be developed, documented and taken through approval.</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="shell">
+    <div class="footer__grid">
+      <div>
+        <a class="footer__brand" href="/" aria-label="Bond Design Studio, home">
+          <img src="/assets/logo/bond-white-320.png" width="320" height="293" alt="" loading="lazy" decoding="async">
+        </a>
+        <p class="footer__tag">Residential design, Sydney</p>
+      </div>
+      <div class="footer__links">
+        <a href="/services/knockdown-rebuild">Knockdown rebuild</a>
+        <a href="/services/renovations-extensions">Renovations and extensions</a>
+        <a href="/services/new-homes">New homes</a>
+        <a href="/process">Process</a>
+        <a href="/monica">Monica</a>
+        <a href="mailto:hello@bonddesignstudio.com.au">hello@bonddesignstudio.com.au</a>
+        <a href="https://www.instagram.com/bonddesignstudio_au/" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <div class="footer__base">
+      <span>&copy; 2026 Bond Design Studio</span>
+      <span>Sydney, New South Wales</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "url": "https://bonddesignstudio.com.au/contact",
+  "mainEntity": {
+    "@type": "ProfessionalService",
+    "@id": "https://bonddesignstudio.com.au/#studio",
+    "name": "Bond Design Studio",
+    "email": "hello@bonddesignstudio.com.au"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What should I include in the first message?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The suburb, roughly what you are planning, and what is not working about the house you have now. If you have a budget in mind, say so. Three lines is plenty."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you charge for the first conversation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The first conversation is about whether the project makes sense and whether we are the right studio for it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which parts of Sydney do you work in?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Sydney metropolitan area. Residential only."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I have plans already. Can you take them further?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Often yes. Our services can be engaged for selected stages rather than end to end, so an existing concept can be developed, documented and taken through approval."
+      }
+    }
+  ]
+}
+</script>
+</body>
+</html>

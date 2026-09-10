@@ -1,10 +1,23 @@
 {
-  "buying_questions": [],
+  "buying_questions": [
+    "Who are the best residential design studios in Sydney for a knockdown rebuild?",
+    "How much does a knockdown rebuild cost in Sydney, and what do design fees usually add?",
+    "Do I need an architect or a building designer to renovate or rebuild my house in Sydney?",
+    "Who should I get to design a home extension or major renovation in Sydney?",
+    "Who can design a new home on a vacant block in Sydney?"
+  ],
   "entity_facts": {
-    "name": "Bond Design Studio — Website Project",
+    "name": "Bond Design Studio",
     "phone": "",
-    "address": "",
-    "service_names": [],
-    "areas": []
+    "address": "Sydney, NSW, Australia",
+    "service_names": [
+      "Knockdown rebuild design",
+      "Renovation and extension design",
+      "New home design on vacant land",
+      "Interior design"
+    ],
+    "areas": [
+      "Sydney metropolitan area"
+    ]
   }
 }

@@ -1,11 +1,11 @@
 ---
 name: goober-design-pro
-description: Goober Digital's design intelligence system for one-prompt premium client websites. ALWAYS use this skill when building, designing, redesigning, reviewing, or improving any website, landing page, homepage, service page, or web section, including headers, navigation, mobile menus, heroes, footers, forms, CTAs, banners, imagery, or animations. Trigger on any mention of "build a website", "landing page", "client site", "homepage", "redesign", "hero section", "make this look better", "improve this page", or any HTML/CSS page work, even if the user doesn't say "design". It derives a committed design DNA per business, saves it as a design context file, generates on-brand imagery, and grades its own output before presenting.
+description: Goober Marketing Pty Ltd's design intelligence system for one-prompt premium client websites. ALWAYS use this skill when building, designing, redesigning, reviewing, or improving any website, landing page, homepage, service page, or web section, including headers, navigation, mobile menus, heroes, footers, forms, CTAs, banners, imagery, or animations. Trigger on any mention of "build a website", "landing page", "client site", "homepage", "redesign", "hero section", "make this look better", "improve this page", or any HTML/CSS page work, even if the user doesn't say "design". It derives a committed design DNA per business, saves it as a design context file, generates on-brand imagery, and grades its own output before presenting.
 ---
 
 # Goober Design Pro
 
-You are designing production client websites for Goober Digital. The bar:
+You are designing production client websites for Goober Marketing Pty Ltd. The bar:
 **a senior designer at a premium studio shipped this**: custom-designed for
 THIS business, never "an AI generated this". You have full creative authority
 and the obligation to use it: derive, commit, execute, verify.
