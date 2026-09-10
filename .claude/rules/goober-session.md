@@ -96,3 +96,44 @@ goober-os SKILL.md, design/thinking.md principles applied from director judgemen
   generated image as a named project would assert something false. OPEN: Monica's own sign-off on
   the use of her likeness.
 - Services page hero swapped to Strathfield 3 so band-pool is no longer on two pages.
+
+## Connections audit — 2026-09-10
+- CORRECTION: SEO meta was NOT missing from the live pages. Titles, descriptions and canonicals
+  were all correct. What was wrong is site/pages.json, which the builder app reads: stitch takes
+  registry titles from @seo blocks and my pages passed them as @use marker attributes instead, so
+  the registry showed filenames. Fixed by renaming partials/bond-head.html to partials/meta.html
+  (stitch only merges @seo into a partial literally named "meta") and giving every page a real
+  @seo block with title, description and primary_keyword.
+- Favicon set generated from the logo's B glyph on warm paper. ico + png + 192 + 512 + apple.
+- Goober tracking partials existed but were referenced by nothing. Wired tracking-head into
+  partials/meta.html and tracking-body-end into partials/bond-footer.html.
+- api/enquiry.js now forwards to the CRM connector server-side with a 6s timeout, and the email
+  always sends regardless of what the CRM does. Email is the guaranteed path.
+- Verified LIVE: /api/lead smoke ok, /api/enquiry smoke emailed:true, a real labelled test lead
+  was accepted by the CRM, and a real browser submission of the live contact form redirected to
+  /thank-you/ correctly.
+- OPEN: tracking-head.html configures AW-5520209094 but sends conversions to AW-16481916838.
+  Two different Google Ads accounts. Also site/tracking.json says every channel is disabled while
+  the partial has GA4 and Ads live. Both look like unswapped scaffold values.
+
+## SEO / speed audit — 2026-09-10
+- Audit script at /tmp/audit.py: crawls every route, checks status, internal asset resolution,
+  title/desc length, single h1, heading order, canonical, JSON-LD validity, img alt + dimensions.
+  Final result: 0 issues across 9 routes, 34 internal URLs.
+- REGRESSION I CAUSED AND FIXED: renaming bond-head.html to meta.html handed the file to stitch's
+  regenerateMetaFontLink(), which rewrites the Google Fonts link from design-guide/tokens.json on
+  every build. tokens.json still held the scaffold values (Outfit/Inter, blue and orange), so
+  Newsreader stopped loading entirely and the whole site fell back to Times New Roman.
+- Fixed by self hosting the fonts: assets/fonts/*.woff2, @font-face at the top of css/site.css,
+  preloaded in meta.html, Google Fonts links gone. Dropping Newsreader's optical-size axis took
+  it from 129KB to 57KB. tokens.json also corrected so the builder app shows the real palette.
+- Added Cache-Control headers to vercel.json: assets immutable for a year, css/js one hour.
+- LCP images preloaded on every interior page.
+- MEASURED FINDING, worth taking to the platform: the Goober tracking stack costs about one
+  second of LCP on every page. With tracking the process page LCP is 1012ms; with the tracking
+  hosts blocked it is 24ms, and the LCP image itself downloads in 4ms. Moving the block from
+  <head> to the end of <body> did not change it, so it is gtag's main thread execution, not
+  script position. Left at body end (correct placement, tracking verified working) rather than
+  hacking the vendor partial. 950ms still sits well inside Google's 2500ms "good" band.
+- Smoke suite: 7/7 on live production. On the local build 5/7, the two failures being the API
+  routes, which only exist on Vercel and cannot run under a static file server.

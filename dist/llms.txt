@@ -4,12 +4,11 @@
 
 ## Pages
 
-- [contact](https://bonddesignstudio.com.au/contact/)
-- [index](https://bonddesignstudio.com.au/)
-- [monica](https://bonddesignstudio.com.au/monica/)
-- [process](https://bonddesignstudio.com.au/process/)
-- [services](https://bonddesignstudio.com.au/services/)
-- [knockdown-rebuild](https://bonddesignstudio.com.au/services/knockdown-rebuild/)
-- [new-homes](https://bonddesignstudio.com.au/services/new-homes/)
-- [renovations-extensions](https://bonddesignstudio.com.au/services/renovations-extensions/)
-- [thank-you](https://bonddesignstudio.com.au/thank-you/)
+- [Contact | Bond Design Studio, Sydney](https://bonddesignstudio.com.au/contact/): Talk to Bond Design Studio about a knockdown rebuild, renovation, extension or new home anywhere in Sydney. Every project starts with a conversation.
+- [Bond Design Studio | Residential Design Studio, Sydney](https://bonddesignstudio.com.au/): A boutique Sydney residential design studio. Bespoke homes, knockdown rebuilds, renovations and extensions, led by designer Monica Vogel.
+- [Monica Vogel, Lead Designer | Bond Design Studio](https://bonddesignstudio.com.au/monica/): Monica Vogel is an experienced Sydney residential designer, previously with Luigi Rosselli Architects and Stafford Architecture. She leads every Bond project.
+- [Our Process and Fees | Bond Design Studio, Sydney](https://bonddesignstudio.com.au/process/): The six stages of a Bond Design Studio project, and how our fees work. Complete design services typically commence from 10% plus GST of construction value.
+- [Design Services | Bond Design Studio, Sydney](https://bonddesignstudio.com.au/services/): Knockdown rebuilds, renovations and extensions, new homes on vacant land and interior design, from a boutique Sydney residential design studio.
+- [Knockdown Rebuild Design, Sydney | Bond Design Studio](https://bonddesignstudio.com.au/services/knockdown-rebuild/): Knockdown rebuild design across Sydney. Site analysis, concept design, council approvals, documentation and construction coordination.
+- [New Home Design on Vacant Land, Sydney | Bond Design Studio](https://bonddesignstudio.com.au/services/new-homes/): New home design for vacant land across Sydney. Orientation, ground conditions, planning controls and budget resolved before the first sketch is drawn.
+- [Renovation and Extension Design, Sydney | Bond Design Studio](https://bonddesignstudio.com.au/services/renovations-extensions/): Renovation and extension design across Sydney. Opening living areas, adding light and reconnecting the house to the garden, with approvals handled.

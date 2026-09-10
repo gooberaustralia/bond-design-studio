@@ -3,58 +3,76 @@
   "generated_by": "siteState",
   "pages": [
     {
+      "description": "Talk to Bond Design Studio about a knockdown rebuild, renovation, extension or new home anywhere in Sydney. Every project starts with a conversation.",
       "is_draft": false,
       "path": "pages/contact.html",
+      "primary_keyword": "contact bond design studio",
       "slug": "/contact/",
-      "title": "contact"
+      "title": "Contact | Bond Design Studio, Sydney"
     },
     {
+      "description": "A boutique Sydney residential design studio. Bespoke homes, knockdown rebuilds, renovations and extensions, led by designer Monica Vogel.",
       "is_draft": false,
       "path": "pages/index.html",
+      "primary_keyword": "residential design studio sydney",
       "slug": "/",
-      "title": "index"
+      "title": "Bond Design Studio | Residential Design Studio, Sydney"
     },
     {
+      "description": "Monica Vogel is an experienced Sydney residential designer, previously with Luigi Rosselli Architects and Stafford Architecture. She leads every Bond project.",
       "is_draft": false,
       "path": "pages/monica.html",
+      "primary_keyword": "monica vogel designer",
       "slug": "/monica/",
-      "title": "monica"
+      "title": "Monica Vogel, Lead Designer | Bond Design Studio"
     },
     {
+      "description": "The six stages of a Bond Design Studio project, and how our fees work. Complete design services typically commence from 10% plus GST of construction value.",
       "is_draft": false,
       "path": "pages/process.html",
+      "primary_keyword": "residential designer fees sydney",
       "slug": "/process/",
-      "title": "process"
+      "title": "Our Process and Fees | Bond Design Studio, Sydney"
     },
     {
+      "description": "Knockdown rebuilds, renovations and extensions, new homes on vacant land and interior design, from a boutique Sydney residential design studio.",
       "is_draft": false,
       "path": "pages/services.html",
+      "primary_keyword": "residential design services sydney",
       "slug": "/services/",
-      "title": "services"
+      "title": "Design Services | Bond Design Studio, Sydney"
     },
     {
+      "description": "Knockdown rebuild design across Sydney. Site analysis, concept design, council approvals, documentation and construction coordination.",
       "is_draft": false,
       "path": "pages/services/knockdown-rebuild.html",
+      "primary_keyword": "knock down and rebuild sydney",
       "slug": "/services/knockdown-rebuild/",
-      "title": "knockdown-rebuild"
+      "title": "Knockdown Rebuild Design, Sydney | Bond Design Studio"
     },
     {
+      "description": "New home design for vacant land across Sydney. Orientation, ground conditions, planning controls and budget resolved before the first sketch is drawn.",
       "is_draft": false,
       "path": "pages/services/new-homes.html",
+      "primary_keyword": "custom home design sydney",
       "slug": "/services/new-homes/",
-      "title": "new-homes"
+      "title": "New Home Design on Vacant Land, Sydney | Bond Design Studio"
     },
     {
+      "description": "Renovation and extension design across Sydney. Opening living areas, adding light and reconnecting the house to the garden, with approvals handled.",
       "is_draft": false,
       "path": "pages/services/renovations-extensions.html",
+      "primary_keyword": "house renovation sydney",
       "slug": "/services/renovations-extensions/",
-      "title": "renovations-extensions"
+      "title": "Renovation and Extension Design, Sydney | Bond Design Studio"
     },
     {
+      "description": "Your enquiry has been received by Bond Design Studio.",
       "is_draft": false,
+      "noindex": true,
       "path": "pages/thank-you.html",
       "slug": "/thank-you/",
-      "title": "thank-you"
+      "title": "Thank You | Bond Design Studio"
     }
   ]
 }

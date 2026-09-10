@@ -219,12 +219,12 @@ Every service this site needs is provisioned as a Vercel environment variable, n
 ### Hosting: verified
 - The site deploys to Vercel from this folder. `.vercel/project.json` links it to the right Vercel project. Never delete it or hand-edit the ids.
 
-### Email: on Vercel
+### Email: verified
 Env vars: `EMAIL_PROVIDER`, `SENDGRID_API_KEY`, `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL`
 - Every contact or quote form POSTs to `/api/enquiry`. Never a third-party form service, never a `mailto:` action.
 - Never hardcode an email address or an API key in HTML or JS. `api/enquiry.js` and `api/_autoreply.js` already read these env vars, with the baked defaults kept as a fallback.
 
-### CRM connector (optional): on Vercel
+### CRM connector (optional): verified
 Env vars: `GOOBER_CONNECTOR_ID`, `GOOBER_CONNECTOR_KEY`, `GOOBER_CONNECTOR_ENDPOINT`
 - Lead hooks POST to `/api/lead` with no key in the page. `window.gooberLead()` already does this. Never add a connector key to HTML or JS.
 - Sites Goober does not manage after launch leave this item off. It is optional.

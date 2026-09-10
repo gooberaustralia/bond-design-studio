@@ -9,6 +9,36 @@
       "used_on": []
     },
     {
+      "format": "png",
+      "path": "/assets/images/apple-touch-icon.png",
+      "size_kb": 5,
+      "used_on": []
+    },
+    {
+      "format": "ico",
+      "path": "/assets/images/favicon.ico",
+      "size_kb": 4,
+      "used_on": []
+    },
+    {
+      "format": "png",
+      "path": "/assets/images/favicon.png",
+      "size_kb": 3,
+      "used_on": []
+    },
+    {
+      "format": "png",
+      "path": "/assets/images/icon-192.png",
+      "size_kb": 5,
+      "used_on": []
+    },
+    {
+      "format": "png",
+      "path": "/assets/images/icon-512.png",
+      "size_kb": 15,
+      "used_on": []
+    },
+    {
       "format": "jpg",
       "path": "/assets/images/Monica Vogel Image.jpg",
       "size_kb": 59,
@@ -19,6 +49,11 @@
   "oversize": [],
   "unused": [
     "/assets/images/.DS_Store",
-    "/assets/images/Monica Vogel Image.jpg"
+    "/assets/images/Monica Vogel Image.jpg",
+    "/assets/images/apple-touch-icon.png",
+    "/assets/images/favicon.ico",
+    "/assets/images/favicon.png",
+    "/assets/images/icon-192.png",
+    "/assets/images/icon-512.png"
   ]
 }

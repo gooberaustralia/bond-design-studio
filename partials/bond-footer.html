@@ -24,4 +24,10 @@
   </div>
 </footer>
 
+<!-- Tracking runs at the end of the body, not in the head. Everything in it
+     attaches document level listeners or fires async beacons, and in the head
+     it delayed largest contentful paint by roughly a second on every page. -->
+<!-- @use:tracking-head -->
+<!-- @use:tracking-body-end -->
+
 <script src="/js/site.js" defer></script>

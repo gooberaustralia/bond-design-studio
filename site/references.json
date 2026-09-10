@@ -1,0 +1,90 @@
+{
+  "clips": [
+    {
+      "id": "f0b687cc-8a63-49a5-bde1-64521aced4fc",
+      "url": "https://www.framer.com/marketplace/templates/",
+      "title": "www.framer.com",
+      "kind": "element",
+      "why_it_works": "",
+      "facts": {
+        "tag": "img",
+        "fonts": [
+          "inter"
+        ],
+        "colours": [
+          "rgba(0, 0, 0, 0)",
+          "rgba(0, 0, 0, 0)"
+        ],
+        "spacing": [
+          "0px",
+          "0px"
+        ]
+      },
+      "created_at": "2026-09-10T07:03:04.749Z"
+    },
+    {
+      "id": "a7f9b5a9-b122-44ed-9bb0-b95fe458dc3d",
+      "url": "https://www.framer.com/marketplace/templates/",
+      "title": "www.framer.com",
+      "kind": "element",
+      "why_it_works": "",
+      "facts": {
+        "tag": "img",
+        "fonts": [
+          "inter"
+        ],
+        "colours": [
+          "rgba(0, 0, 0, 0)",
+          "rgba(0, 0, 0, 0)"
+        ],
+        "spacing": [
+          "0px",
+          "0px"
+        ]
+      },
+      "created_at": "2026-09-10T07:03:07.864Z"
+    },
+    {
+      "id": "3ebb8bad-f839-4f87-baaf-a08f23099a9b",
+      "url": "https://www.framer.com/marketplace/templates/",
+      "title": "www.framer.com",
+      "kind": "viewport",
+      "why_it_works": "",
+      "facts": {},
+      "screenshot": "3ebb8bad-f839-4f87-baaf-a08f23099a9b.png",
+      "created_at": "2026-09-10T07:03:20.824Z"
+    },
+    {
+      "id": "b496b3ba-02e2-40a5-9550-8ac9f9a9586d",
+      "url": "https://www.framer.com/marketplace/templates/",
+      "title": "www.framer.com",
+      "kind": "full-page",
+      "why_it_works": "",
+      "facts": {
+        "fonts": [
+          "walsheim",
+          "inter"
+        ],
+        "colours": [
+          "rgb(255, 255, 255)",
+          "rgb(153, 153, 153)",
+          "rgb(204, 204, 204)",
+          "rgb(0, 153, 255)",
+          "rgb(136, 136, 136)",
+          "rgba(0, 0, 0, 0)"
+        ],
+        "section_order": [
+          "section",
+          "section",
+          "section",
+          "section",
+          "section",
+          "section",
+          "section"
+        ]
+      },
+      "screenshot": "b496b3ba-02e2-40a5-9550-8ac9f9a9586d.png",
+      "created_at": "2026-09-10T07:03:21.570Z"
+    }
+  ]
+}

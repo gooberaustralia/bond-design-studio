@@ -10,14 +10,14 @@
     {
       "id": "robots.txt",
       "label": "robots.txt responds",
-      "status": "fail",
-      "detail": "HTTP 404"
+      "status": "pass",
+      "detail": "HTTP 200"
     },
     {
       "id": "sitemap.xml",
       "label": "sitemap.xml responds",
-      "status": "fail",
-      "detail": "HTTP 404"
+      "status": "pass",
+      "detail": "HTTP 200"
     },
     {
       "id": "assets",
@@ -27,9 +27,15 @@
     {
       "id": "enquiry",
       "label": "POST /api/enquiry (_smoke)",
-      "status": "fail",
-      "detail": "HTTP 404"
+      "status": "pass",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "lead",
+      "label": "POST /api/lead (_smoke)",
+      "status": "pass",
+      "detail": "not configured"
     }
   ],
-  "ranAt": "2026-09-09T20:40:39.225Z"
+  "ranAt": "2026-09-10T06:44:34.849Z"
 }

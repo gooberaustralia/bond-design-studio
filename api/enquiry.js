@@ -21,6 +21,38 @@
  */
 import { sendEmail } from "./_email.js";
 
+const CONNECTOR_ENDPOINT = process.env.GOOBER_CONNECTOR_ENDPOINT || "https://adwords.goober.com.au/api";
+
+/**
+ * Forward the enquiry to the Goober CRM connector.
+ *
+ * Never throws and never blocks the visitor: the email in the caller is the
+ * guaranteed delivery path, and this is the nice-to-have on top. A missing
+ * connector env, a 500 from the CRM or a network timeout all resolve to a
+ * reason string that gets logged and, on a smoke test, reported back.
+ */
+async function forwardToCrm(lead) {
+  const id = process.env.GOOBER_CONNECTOR_ID;
+  const key = process.env.GOOBER_CONNECTOR_KEY;
+  if (!id || !key) return { ok: false, skipped: "connector not configured" };
+
+  try {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 6000);
+    const r = await fetch(`${CONNECTOR_ENDPOINT}/enquiries/${id}`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ ...lead, key }),
+      signal: ctrl.signal,
+    });
+    clearTimeout(timer);
+    if (!r.ok) return { ok: false, reason: `crm responded ${r.status}` };
+    return { ok: true };
+  } catch (e) {
+    return { ok: false, reason: e.name === "AbortError" ? "crm timed out" : String(e.message || e) };
+  }
+}
+
 const BUSINESS_NAME = "Bond Design Studio";
 const FALLBACK_TO = "hello@bonddesignstudio.com.au";
 const FALLBACK_FROM_EMAIL = "noreply@goober.com.au";
@@ -81,6 +113,21 @@ export default async function handler(req, res) {
         message || "(no message)",
       ];
 
+  // CRM first, email second, and the email is sent whatever the CRM did.
+  const crmResult = isSmoke
+    ? await forwardToCrm({ name: "Goober smoke test", email: "smoke@goober.com.au", message: "Connector smoke test", source: "smoke_test" })
+    : await forwardToCrm({
+        name,
+        email,
+        phone,
+        message,
+        source: `website_form:${(req.headers && req.headers.referer) || "/contact"}`,
+        fields: { suburb, project_type: projectType, budget },
+      });
+  if (!crmResult.ok) {
+    console.error("[enquiry] crm forward:", crmResult.reason || crmResult.skipped);
+  }
+
   let sendResult = { ok: false, skipped: true };
   try {
     sendResult = await sendEmail({
@@ -100,7 +147,12 @@ export default async function handler(req, res) {
   }
 
   if (isSmoke) {
-    return res.status(200).json({ ok: true, smoke: true, emailed: !!sendResult.ok });
+    return res.status(200).json({
+      ok: true,
+      smoke: true,
+      emailed: !!sendResult.ok,
+      crm: crmResult.ok ? "ok" : crmResult.reason || crmResult.skipped || "failed",
+    });
   }
 
   return res.redirect(303, THANK_YOU);

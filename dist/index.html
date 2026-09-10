@@ -4,20 +4,31 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bond Design Studio | Residential Design Studio, Sydney</title>
-<meta name="description" content="Bond Design Studio is a boutique Sydney residential design studio creating bespoke homes, knockdown rebuilds, renovations and extensions. Led by designer Monica Vogel.">
+<meta name="description" content="A boutique Sydney residential design studio. Bespoke homes, knockdown rebuilds, renovations and extensions, led by designer Monica Vogel.">
 <link rel="canonical" href="https://bonddesignstudio.com.au/">
 <meta name="robots" content="index, follow">
 
+<link rel="icon" href="/assets/images/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/images/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/images/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/images/icon-512.png">
+<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+<meta name="theme-color" content="#FAFAF8">
+
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Bond Design Studio">
 <meta property="og:title" content="Bond Design Studio | Residential Design Studio, Sydney">
-<meta property="og:description" content="Bond Design Studio is a boutique Sydney residential design studio creating bespoke homes, knockdown rebuilds, renovations and extensions. Led by designer Monica Vogel.">
+<meta property="og:description" content="A boutique Sydney residential design studio. Bespoke homes, knockdown rebuilds, renovations and extensions, led by designer Monica Vogel.">
+<meta property="og:url" content="https://bonddesignstudio.com.au/">
 <meta property="og:image" content="/assets/site/hero-wide.webp">
 <meta property="og:locale" content="en_AU">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bond Design Studio | Residential Design Studio, Sydney">
+<meta name="twitter:description" content="A boutique Sydney residential design studio. Bespoke homes, knockdown rebuilds, renovations and extensions, led by designer Monica Vogel.">
+<meta name="twitter:image" content="/assets/site/hero-wide.webp">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Newsreader:opsz,wght@6..72,200;6..72,300;6..72,400&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/newsreader-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-latin.woff2" crossorigin>
 <link rel="stylesheet" href="/css/site.css">
 
 <script>
@@ -589,6 +600,46 @@
   </div>
 </footer>
 
+<!-- Tracking runs at the end of the body, not in the head. Everything in it
+     attaches document level listeners or fires async beacons, and in the head
+     it delayed largest contentful paint by roughly a second on every page. -->
+<!--
+  Tracking pixels, site wide, injected into every page's <head>.
+  Edit this file to add/remove pixels; mirror the change in
+  site/tracking.json so agents know what's live.
+-->
+
+<!-- goober:tracking:head -->
+<!-- ===== Goober platform tracking (leads → your dashboard) — paste inside <head> ===== -->
+<script>
+(function(){function attr(){try{var a=JSON.parse(localStorage.getItem('goob_attr')||'null');if(a&&Date.now()-a.ts<7776e6)return a;}catch(e){}return null;}function le(k){try{var n='goob_ev_'+k,t=Date.now();var l=+(localStorage.getItem(n)||0);if(t-l<5e3)return;localStorage.setItem(n,String(t));}catch(e){}try{navigator.sendBeacon('https://adwords.goober.com.au/api/lead-events/5f61d428-7382-407b-ae64-47500908824a',JSON.stringify({kind:k,path:location.pathname,attr:attr()}));}catch(e){}}document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e.target.closest('a'):null;if(!a||!a.href)return;var h=a.href;if(h.indexOf('tel:')===0){le('call');}else if(h.indexOf('mailto:')===0){le('email');}else if(h.indexOf('sms:')===0){le('sms');}},true);})();
+(function(){try{var q=new URLSearchParams(location.search),A={},K=['gclid','wbraid','gbraid','utm_source','utm_medium','utm_campaign','utm_term','utm_content'];K.forEach(function(k){var v=q.get(k);if(v)A[k]=v;});if(Object.keys(A).length){A.ts=Date.now();A.lp=location.pathname;localStorage.setItem('goob_attr',JSON.stringify(A));}}catch(e){}function attr(){try{var a=JSON.parse(localStorage.getItem('goob_attr')||'null');if(a&&Date.now()-a.ts<7776e6)return a;}catch(e){}return null;}function aiRef(){try{return sessionStorage.getItem('goober_ai_ref')||null;}catch(e){return null;}}function send(p,how){try{if(!p.email&&!p.phone&&!p.name)return;var sig=(p.email||'')+'|'+(p.phone||'')+'|'+(p.name||''),last=null;try{last=JSON.parse(localStorage.getItem('goob_led')||'null');}catch(e){}if(last&&last.sig===sig&&Date.now()-last.ts<6e4)return;try{localStorage.setItem('goob_led',JSON.stringify({sig:sig,ts:Date.now()}));}catch(e){}p.source=p.source||('website_form:'+location.pathname);p.meta={page:location.pathname,captured:how,attr:attr()};var ar=aiRef();if(ar)p.meta.aiRef=ar;navigator.sendBeacon('https://adwords.goober.com.au/api/enquiries/5f61d428-7382-407b-ae64-47500908824a',JSON.stringify(p));}catch(e){}}function rd(ks,get,n){var rx=new RegExp(n,'i');for(var i=0;i<ks.length;i++){if(rx.test(ks[i]))return String(get(ks[i])||'');}return '';}function build(ks,get){if(rd(ks,get,'^(_hp|website|url)$').trim())return null;var p={name:rd(ks,get,'name|fname|full.?name'),email:rd(ks,get,'e-?mail|email'),phone:rd(ks,get,'phone|tel|mobile|contact.?number|number|mob|cell'),message:rd(ks,get,'message|enquir|comment|feedback|question|note|detail|requirement|msg|textarea|help|body')};var fields={};ks.forEach(function(k){if(/^_wpcf7|recaptcha|g-recaptcha|submit/i.test(k))return;var v=String(get(k)||'');if(v&&v.length<300)fields[k]=v;});var ha=rd(ks,get,'heard.?about|how.?did.?you.?hear|hdyh|referral.?source');if(ha)fields.heardAbout=ha;p.fields=fields;return p;}function fromForm(f){var d=new FormData(f);var ks=[];d.forEach(function(v,k){ks.push(k);});return build(ks,function(k){return d.get(k);});}function fromInputs(ins){var ks=[],m={};ins.forEach(function(x){ks.push(x.name);m[x.name]=x.value;});return build(ks,function(k){return m[k];});}function pluginForm(f){return !!(f.closest&&(f.closest('.wpcf7')||f.closest('.wpforms-form,.wpforms-container')||f.closest('[id^=gform_wrapper],[id^=gform_]')||f.closest('.elementor-form,.elementor-widget-form')||f.closest('.nf-form-cont,.nf-form-layout')));}var stash=null;document.addEventListener('submit',function(e){try{var f=e.target;if(!f||!f.querySelector||f.hasAttribute('data-no-goober'))return;var p=fromForm(f);if(!p)return;if(pluginForm(f)){stash=p;}else{send(p,'generic_submit');}}catch(e){}},true);function cf7(e){try{var ins=(e.detail&&e.detail.inputs)||[];var p=fromInputs(ins);if(!p||(!p.email&&!p.phone&&!p.name))p=stash;if(p)send(p,'cf7');stash=null;}catch(e){}}document.addEventListener('wpcf7mailsent',cf7,false);document.addEventListener('wpcf7mailfailed',cf7,false);function flush(how){return function(){try{if(stash){send(stash,how);stash=null;}}catch(e){}};}function hookJq(){var $=window.jQuery;if(!$||hookJq.d)return;hookJq.d=1;$(document).on('wpformsAjaxSubmitSuccess',flush('wpforms'));$(document).on('gform_confirmation_loaded',flush('gravity'));$(document).on('submit_success',flush('elementor'));$(document).on('nfFormSubmitResponse',flush('ninja'));}hookJq();document.addEventListener('DOMContentLoaded',hookJq);window.addEventListener('load',hookJq);})();
+(function(){try{var r=document.referrer||"";if(/chatgpt\.com|chat\.openai\.com|perplexity\.ai|gemini\.google\.com|copilot\.microsoft\.com|bing\.com\/chat|claude\.ai/i.test(r)){try{sessionStorage.setItem('goober_ai_ref',r);}catch(e){}navigator.sendBeacon("https://adwords.goober.com.au/api/ai-traffic/5f61d428-7382-407b-ae64-47500908824a",JSON.stringify({kind:"referral",source:r,path:location.pathname}));}}catch(e){}})();
+</script>
+<!-- ===== /Goober platform tracking ===== -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N3BS9QG32L"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-5520209094');gtag('config','G-N3BS9QG32L');</script>
+<!-- Lead clicks: tel / mailto / sms (first-party dashboard beacon + Google Ads conversion) -->
+<script>(function(){function attr(){try{var a=JSON.parse(localStorage.getItem('goob_attr')||'null');if(a&&Date.now()-a.ts<7776e6)return a;}catch(e){}return null;}function le(k){try{var n='goob_ev_'+k,t=Date.now();var l=+(localStorage.getItem(n)||0);if(t-l<5e3)return;localStorage.setItem(n,String(t));}catch(e){}try{navigator.sendBeacon('https://adwords.goober.com.au/api/lead-events/5f61d428-7382-407b-ae64-47500908824a',new Blob([JSON.stringify({kind:k,path:location.pathname,attr:attr()})],{type:'application/json'}));}catch(e){}}document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e.target.closest('a'):null;if(!a||!a.href)return;var h=a.href;if(h.indexOf('tel:')===0){le('call');gtag('event','conversion',{'send_to':'AW-16481916838/tQlOCM3b478cEKavmLM9'});gtag('event','phone_click');}else if(h.indexOf('mailto:')===0){le('email');gtag('event','conversion',{'send_to':'AW-16481916838/GizjCJGW_78cEKavmLM9'});gtag('event','email_click');}else if(h.indexOf('sms:')===0){le('sms');gtag('event','conversion',{'send_to':'AW-16481916838/78lUCNDb478cEKavmLM9'});gtag('event','sms_click');}},true);})();</script>
+<!-- Form lead: thank-you page -->
+<script>(function(){var p=location.pathname;if(/^\/(thank-?you|thanks)\/?$/i.test(p)){gtag('event','conversion',{'send_to':'AW-16481916838/ZTrTCN6b_78cEKavmLM9','value':1.0,'currency':'AUD'});gtag('event','generate_lead');}})();</script>
+<!-- Webform enquiries → Goober (first-party lead capture + attribution) -->
+<script>(function(){try{var q=new URLSearchParams(location.search),A={},K=['gclid','wbraid','gbraid','utm_source','utm_medium','utm_campaign','utm_term','utm_content'];K.forEach(function(k){var v=q.get(k);if(v)A[k]=v;});if(Object.keys(A).length){A.ts=Date.now();A.lp=location.pathname;localStorage.setItem('goob_attr',JSON.stringify(A));}}catch(e){}function attr(){try{var a=JSON.parse(localStorage.getItem('goob_attr')||'null');if(a&&Date.now()-a.ts<7776e6)return a;}catch(e){}return null;}function send(p,how){try{if(!p.email&&!p.phone&&!(p.name&&p.message))return;var sig=(p.email||'')+'|'+(p.phone||''),last=null;try{last=JSON.parse(localStorage.getItem('goob_led')||'null');}catch(e){}if(last&&last.sig===sig&&Date.now()-last.ts<6e4)return;try{localStorage.setItem('goob_led',JSON.stringify({sig:sig,ts:Date.now()}));}catch(e){}p.source=p.source||('website_form:'+location.pathname);p.meta={page:location.pathname,captured:how,attr:attr()};navigator.sendBeacon('https://adwords.goober.com.au/api/enquiries/5f61d428-7382-407b-ae64-47500908824a',new Blob([JSON.stringify(p)],{type:'application/json'}));}catch(e){}}function pick(g){return {name:g('name'),email:g('e-?mail'),phone:g('phone|tel|mobile'),message:g('message|enquiry|comment|detail|textarea'),_hp:g('^(_hp|website|url)$')};}function fromForm(f){var d=new FormData(f);return pick(function(n){var rx=new RegExp(n,'i');var ks=[];d.forEach(function(v,k){ks.push(k);});for(var i=0;i<ks.length;i++){if(rx.test(ks[i]))return String(d.get(ks[i])||'');}return '';});}var stash=null;document.addEventListener('submit',function(e){try{var f=e.target;if(!f||!f.querySelector||f.hasAttribute('data-no-goober'))return;var p=fromForm(f);if(p._hp&&p._hp.trim())return;send(p,'generic_submit');}catch(e){}},true);})();</script>
+<!-- AI-visibility: visits arriving from AI assistants -->
+<script>(function(){try{var r=document.referrer||"";if(/chatgpt\.com|chat\.openai\.com|perplexity\.ai|gemini\.google\.com|copilot\.microsoft\.com|bing\.com\/chat|claude\.ai/i.test(r)){navigator.sendBeacon("https://adwords.goober.com.au/api/ai-traffic/5f61d428-7382-407b-ae64-47500908824a",JSON.stringify({kind:"referral",source:r,path:location.pathname}));}}catch(e){}})();</script>
+<!-- Goober lead connector — window.gooberLead() for custom form handlers. Posts to the
+     site's own /api/lead function, which holds the connector key server-side (see
+     api/lead.js) — no key ever reaches this page. -->
+<script>window.gooberLead=function(d){try{d=d||{};var u="/api/lead";var b=new Blob([JSON.stringify(d)],{type:"application/json"});if(navigator.sendBeacon){navigator.sendBeacon(u,b);}else{fetch(u,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(d),keepalive:true});}}catch(e){}};</script>
+<!-- /goober:tracking:head -->
+
+<!--
+  Tracking body end: custom event handlers, no-script fallbacks.
+  Stitched in at the end of the page body. (Do not write the literal closing
+  body tag in this comment, because serve-time script injection searches for it.)
+-->
+
+
 <script src="/js/site.js" defer></script>
 
 
@@ -610,9 +661,9 @@
     "@type": "OfferCatalog",
     "name": "Residential design services",
     "itemListElement": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Knockdown rebuild design", "url": "https://bonddesignstudio.com.au/services/knockdown-rebuild" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Renovation and extension design", "url": "https://bonddesignstudio.com.au/services/renovations-extensions" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "New home design", "url": "https://bonddesignstudio.com.au/services/new-homes" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Knockdown rebuild design", "url": "https://bonddesignstudio.com.au/services/knockdown-rebuild/" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Renovation and extension design", "url": "https://bonddesignstudio.com.au/services/renovations-extensions/" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "New home design", "url": "https://bonddesignstudio.com.au/services/new-homes/" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Interior design" } }
     ]
   }

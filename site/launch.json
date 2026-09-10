@@ -11,7 +11,7 @@
       "id": "email",
       "label": "Email",
       "required": true,
-      "status": "provisioned",
+      "status": "verified",
       "envVars": [
         "EMAIL_PROVIDER",
         "SENDGRID_API_KEY",
@@ -24,7 +24,7 @@
       "id": "crm-connector",
       "label": "CRM connector",
       "required": false,
-      "status": "provisioned",
+      "status": "verified",
       "envVars": [
         "GOOBER_CONNECTOR_ID",
         "GOOBER_CONNECTOR_KEY",
