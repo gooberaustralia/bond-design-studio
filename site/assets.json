@@ -9,9 +9,9 @@
       "used_on": []
     },
     {
-      "format": "png",
-      "path": "/assets/images/apple-touch-icon.png",
-      "size_kb": 5,
+      "format": "webp",
+      "path": "/assets/images/apple-touch-icon.webp",
+      "size_kb": 1,
       "used_on": []
     },
     {
@@ -21,27 +21,27 @@
       "used_on": []
     },
     {
-      "format": "png",
-      "path": "/assets/images/favicon.png",
+      "format": "webp",
+      "path": "/assets/images/favicon.webp",
+      "size_kb": 1,
+      "used_on": []
+    },
+    {
+      "format": "webp",
+      "path": "/assets/images/icon-192.webp",
+      "size_kb": 1,
+      "used_on": []
+    },
+    {
+      "format": "webp",
+      "path": "/assets/images/icon-512.webp",
       "size_kb": 3,
       "used_on": []
     },
     {
-      "format": "png",
-      "path": "/assets/images/icon-192.png",
-      "size_kb": 5,
-      "used_on": []
-    },
-    {
-      "format": "png",
-      "path": "/assets/images/icon-512.png",
-      "size_kb": 15,
-      "used_on": []
-    },
-    {
-      "format": "jpg",
-      "path": "/assets/images/Monica Vogel Image.jpg",
-      "size_kb": 59,
+      "format": "webp",
+      "path": "/assets/images/Monica Vogel Image.webp",
+      "size_kb": 37,
       "used_on": []
     }
   ],
@@ -49,11 +49,11 @@
   "oversize": [],
   "unused": [
     "/assets/images/.DS_Store",
-    "/assets/images/Monica Vogel Image.jpg",
-    "/assets/images/apple-touch-icon.png",
+    "/assets/images/Monica Vogel Image.webp",
+    "/assets/images/apple-touch-icon.webp",
     "/assets/images/favicon.ico",
-    "/assets/images/favicon.png",
-    "/assets/images/icon-192.png",
-    "/assets/images/icon-512.png"
+    "/assets/images/favicon.webp",
+    "/assets/images/icon-192.webp",
+    "/assets/images/icon-512.webp"
   ]
 }

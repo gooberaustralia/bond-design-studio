@@ -1,8 +1,35 @@
 {
-  "ga4": { "enabled": false },
-  "meta_pixel": { "enabled": false },
-  "google_ads": { "enabled": false },
-  "tag_manager": { "enabled": false },
-  "hotjar": { "enabled": false },
-  "linkedin": { "enabled": false }
+  "ga4": {
+    "enabled": true,
+    "id": "G-BB8N4PVSLJ"
+  },
+  "meta_pixel": {
+    "enabled": false
+  },
+  "google_ads": {
+    "enabled": true,
+    "id": "AW-18459716512",
+    "customer_id": "166-499-5047",
+    "conversions": {
+      "enquiry_form_submit": {
+        "send_to": "AW-18459716512/eGr-CKbwv4AdEKDXo-JE",
+        "primary": true,
+        "fires_on": "/thank-you/ page view"
+      },
+      "email_click": {
+        "send_to": "AW-18459716512/jNUPCIz0v4AdEKDXo-JE",
+        "primary": false,
+        "fires_on": "mailto: click"
+      }
+    }
+  },
+  "tag_manager": {
+    "enabled": false
+  },
+  "hotjar": {
+    "enabled": false
+  },
+  "linkedin": {
+    "enabled": false
+  }
 }
