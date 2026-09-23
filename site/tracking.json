@@ -16,6 +16,11 @@
         "primary": true,
         "fires_on": "/thank-you/ page view"
       },
+      "phone_click": {
+        "send_to": "AW-18459716512/5mcnCPjmmYIdEKDXo-JE",
+        "primary": false,
+        "fires_on": "tel: click"
+      },
       "email_click": {
         "send_to": "AW-18459716512/jNUPCIz0v4AdEKDXo-JE",
         "primary": false,

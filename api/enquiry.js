@@ -84,6 +84,16 @@ export default async function handler(req, res) {
   const suburb = (body.suburb || "").toString().trim();
   const projectType = (body.project_type || "").toString().trim();
   const budget = (body.budget || "").toString().trim();
+  let attribution = null;
+  try {
+    const raw = JSON.parse((body.attribution || "null").toString().slice(0, 2000));
+    if (raw && typeof raw === "object" && !Array.isArray(raw)) {
+      attribution = {};
+      for (const key of ["gclid", "wbraid", "gbraid", "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "lp"]) {
+        if (typeof raw[key] === "string") attribution[key] = raw[key].slice(0, 200);
+      }
+    }
+  } catch (_) {}
 
   const to = process.env.CONTACT_TO_EMAIL || FALLBACK_TO;
   const fromEmail = process.env.CONTACT_FROM_EMAIL || FALLBACK_FROM_EMAIL;
@@ -123,6 +133,7 @@ export default async function handler(req, res) {
         message,
         source: `website_form:${(req.headers && req.headers.referer) || "/contact"}`,
         fields: { suburb, project_type: projectType, budget },
+        meta: attribution ? { attr: attribution } : undefined,
       });
   if (!crmResult.ok) {
     console.error("[enquiry] crm forward:", crmResult.reason || crmResult.skipped);
