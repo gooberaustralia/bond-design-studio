@@ -166,5 +166,10 @@ export default async function handler(req, res) {
     });
   }
 
+  if (!crmResult.ok && !sendResult.ok) {
+    return res.status(503).send("Your enquiry could not be sent. Please try again or contact Bond Design Studio directly.");
+  }
+
+  res.setHeader("Set-Cookie", "bond_enquiry_completed=1; Path=/; Max-Age=300; SameSite=Lax; Secure");
   return res.redirect(303, THANK_YOU);
 }
