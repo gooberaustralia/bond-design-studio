@@ -1,7 +1,10 @@
 {
   "ga4": {
     "enabled": true,
-    "id": "G-BB8N4PVSLJ"
+    "id": "G-T0NVMQNT2X",
+    "property_id": "555679611",
+    "previous_id": "G-BB8N4PVSLJ",
+    "note": "Dual tagged from 2026-09-24: new property 555679611 in the client's own GA account; remove G-BB8N4PVSLJ (Big Box Self Storage account) after 2026-10-01."
   },
   "meta_pixel": {
     "enabled": false
