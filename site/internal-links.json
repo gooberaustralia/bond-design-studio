@@ -42,6 +42,11 @@
       "to": "/monica"
     },
     {
+      "anchor": "Privacy policy",
+      "from": "/",
+      "to": "/privacy/"
+    },
+    {
       "anchor": "Process",
       "from": "/",
       "to": "/process"
@@ -142,6 +147,11 @@
       "to": "/monica"
     },
     {
+      "anchor": "Privacy policy",
+      "from": "/contact/",
+      "to": "/privacy/"
+    },
+    {
       "anchor": "Process",
       "from": "/contact/",
       "to": "/process"
@@ -227,6 +237,11 @@
       "to": "/monica"
     },
     {
+      "anchor": "Privacy policy",
+      "from": "/monica/",
+      "to": "/privacy/"
+    },
+    {
       "anchor": "Process",
       "from": "/monica/",
       "to": "/process"
@@ -264,6 +279,91 @@
     {
       "anchor": "Renovations and extensions",
       "from": "/monica/",
+      "to": "/services/renovations-extensions"
+    },
+    {
+      "anchor": "",
+      "from": "/privacy/",
+      "to": "/"
+    },
+    {
+      "anchor": "",
+      "from": "/privacy/",
+      "to": "/"
+    },
+    {
+      "anchor": "Contact",
+      "from": "/privacy/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Contact",
+      "from": "/privacy/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Enquire",
+      "from": "/privacy/",
+      "to": "/contact"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/privacy/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/privacy/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Monica",
+      "from": "/privacy/",
+      "to": "/monica"
+    },
+    {
+      "anchor": "Privacy policy",
+      "from": "/privacy/",
+      "to": "/privacy/"
+    },
+    {
+      "anchor": "Process",
+      "from": "/privacy/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Process",
+      "from": "/privacy/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Process",
+      "from": "/privacy/",
+      "to": "/process"
+    },
+    {
+      "anchor": "Services",
+      "from": "/privacy/",
+      "to": "/services"
+    },
+    {
+      "anchor": "Services",
+      "from": "/privacy/",
+      "to": "/services"
+    },
+    {
+      "anchor": "Knockdown rebuild",
+      "from": "/privacy/",
+      "to": "/services/knockdown-rebuild"
+    },
+    {
+      "anchor": "New homes",
+      "from": "/privacy/",
+      "to": "/services/new-homes"
+    },
+    {
+      "anchor": "Renovations and extensions",
+      "from": "/privacy/",
       "to": "/services/renovations-extensions"
     },
     {
@@ -310,6 +410,11 @@
       "anchor": "Monica",
       "from": "/process/",
       "to": "/monica"
+    },
+    {
+      "anchor": "Privacy policy",
+      "from": "/process/",
+      "to": "/privacy/"
     },
     {
       "anchor": "Process",
@@ -400,6 +505,11 @@
       "anchor": "Monica",
       "from": "/services/",
       "to": "/monica"
+    },
+    {
+      "anchor": "Privacy policy",
+      "from": "/services/",
+      "to": "/privacy/"
     },
     {
       "anchor": "Process",
@@ -507,6 +617,11 @@
       "to": "/monica"
     },
     {
+      "anchor": "Privacy policy",
+      "from": "/services/knockdown-rebuild/",
+      "to": "/privacy/"
+    },
+    {
       "anchor": "Process",
       "from": "/services/knockdown-rebuild/",
       "to": "/process"
@@ -607,6 +722,11 @@
       "to": "/monica"
     },
     {
+      "anchor": "Privacy policy",
+      "from": "/services/new-homes/",
+      "to": "/privacy/"
+    },
+    {
       "anchor": "Process",
       "from": "/services/new-homes/",
       "to": "/process"
@@ -702,6 +822,11 @@
       "to": "/monica"
     },
     {
+      "anchor": "Privacy policy",
+      "from": "/services/renovations-extensions/",
+      "to": "/privacy/"
+    },
+    {
       "anchor": "Process",
       "from": "/services/renovations-extensions/",
       "to": "/process"
@@ -795,6 +920,11 @@
       "anchor": "Monica",
       "from": "/thank-you/",
       "to": "/monica"
+    },
+    {
+      "anchor": "Privacy policy",
+      "from": "/thank-you/",
+      "to": "/privacy/"
     },
     {
       "anchor": "Process",

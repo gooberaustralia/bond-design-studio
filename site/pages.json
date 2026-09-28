@@ -1,5 +1,5 @@
 {
-  "count": 9,
+  "count": 10,
   "generated_by": "siteState",
   "pages": [
     {
@@ -25,6 +25,14 @@
       "primary_keyword": "monica vogel designer",
       "slug": "/monica/",
       "title": "Monica Vogel, Lead Designer | Bond Design Studio"
+    },
+    {
+      "description": "How Bond Design Studio collects, uses, stores and shares personal information from enquiries, lead forms and website visits, and how to contact us about it.",
+      "is_draft": false,
+      "path": "pages/privacy.html",
+      "primary_keyword": "bond design studio privacy policy",
+      "slug": "/privacy/",
+      "title": "Privacy Policy | Bond Design Studio"
     },
     {
       "description": "The six stages of a Bond Design Studio project, and how our fees work. Complete design services typically commence from 10% plus GST of construction value.",
