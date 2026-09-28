@@ -1426,6 +1426,56 @@ button.submit {
 }
 button.submit:hover { background: transparent; color: var(--ink); }
 
+/* Buttons for the free consultation. Square and quiet, in the same voice as
+   the form's submit button, so the offer reads as the site's own. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.95rem 1.75rem;
+  background: var(--ink);
+  color: var(--paper);
+  border: 1px solid var(--ink);
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.4s var(--ease), color 0.4s var(--ease), border-color 0.4s var(--ease);
+}
+.btn:hover,
+.btn:focus-visible { background: transparent; color: var(--ink); }
+.btn--ghost { background: transparent; color: var(--ink); border-color: var(--line-strong); }
+.btn--ghost:hover,
+.btn--ghost:focus-visible { border-color: var(--ink); }
+
+.cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.5rem; }
+.cta-row--head { margin-top: 2rem; }
+
+/* The free consultation offer on each service page: the promise on the left,
+   what the first conversation covers and the two ways to take it up on the right */
+.offer__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: end;
+}
+.offer__title {
+  margin: 0;
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.offer__list { list-style: none; margin: 0.9rem 0 2rem; padding: 0; border-top: 1px solid var(--line-strong); }
+.offer__list li { padding: 0.8rem 0; border-bottom: 1px solid var(--line-strong); font-size: 0.9375rem; line-height: 1.45; }
+.offer__note { margin: 1rem 0 0; font-size: 0.8125rem; color: var(--ink-muted); }
+@media (max-width: 1024px) { .offer__grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 420px) { .cta-row .btn { width: 100%; } }
+
 .contact__detail {
   border-top: 1px solid var(--line);
   margin-top: 2.5rem;

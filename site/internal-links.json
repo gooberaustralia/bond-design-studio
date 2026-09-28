@@ -582,6 +582,11 @@
       "to": "/"
     },
     {
+      "anchor": "Book a free consultation",
+      "from": "/services/knockdown-rebuild/",
+      "to": "/contact"
+    },
+    {
       "anchor": "Contact",
       "from": "/services/knockdown-rebuild/",
       "to": "/contact"
@@ -597,9 +602,14 @@
       "to": "/contact"
     },
     {
-      "anchor": "Start a conversation",
+      "anchor": "Book a free consultation",
       "from": "/services/knockdown-rebuild/",
-      "to": "/contact"
+      "to": "/contact/"
+    },
+    {
+      "anchor": "Book a free consultation",
+      "from": "/services/knockdown-rebuild/",
+      "to": "/contact/"
     },
     {
       "anchor": "Monica",
@@ -687,6 +697,11 @@
       "to": "/"
     },
     {
+      "anchor": "Book a free consultation",
+      "from": "/services/new-homes/",
+      "to": "/contact"
+    },
+    {
       "anchor": "Contact",
       "from": "/services/new-homes/",
       "to": "/contact"
@@ -702,9 +717,14 @@
       "to": "/contact"
     },
     {
-      "anchor": "Start a conversation",
+      "anchor": "Book a free consultation",
       "from": "/services/new-homes/",
-      "to": "/contact"
+      "to": "/contact/"
+    },
+    {
+      "anchor": "Book a free consultation",
+      "from": "/services/new-homes/",
+      "to": "/contact/"
     },
     {
       "anchor": "Monica",
@@ -787,6 +807,11 @@
       "to": "/"
     },
     {
+      "anchor": "Book a free consultation",
+      "from": "/services/renovations-extensions/",
+      "to": "/contact"
+    },
+    {
       "anchor": "Contact",
       "from": "/services/renovations-extensions/",
       "to": "/contact"
@@ -802,9 +827,14 @@
       "to": "/contact"
     },
     {
-      "anchor": "Start a conversation",
+      "anchor": "Book a free consultation",
       "from": "/services/renovations-extensions/",
-      "to": "/contact"
+      "to": "/contact/"
+    },
+    {
+      "anchor": "Book a free consultation",
+      "from": "/services/renovations-extensions/",
+      "to": "/contact/"
     },
     {
       "anchor": "Monica",
