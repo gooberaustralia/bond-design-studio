@@ -22,7 +22,7 @@ module.exports = async function handler(req, res) {
   const phoneLine = phone ? `\nPhone: ${phone}` : '';
   const body = {
     from: 'Bond Design Studio <info@goober.com.au>',
-    to: ['admin@bonddesignstudio.com.au'],
+    to: ['hello@bonddesignstudio.com.au'],
     reply_to: email,
     subject: `New enquiry from ${name}`,
     text: `Name: ${name}\nEmail: ${email}${phoneLine}\n\nMessage:\n${message}`,
