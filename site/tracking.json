@@ -13,7 +13,7 @@
     "ad_account": "1896308431335500",
     "events": {
       "PageView": "every page",
-      "Contact": "tel: link click",
+      "Contact": "tel: link click (content_name Phone click) and mailto: link click (content_name Email click)",
       "Lead": "/thank-you/ after an accepted enquiry (same gate as the Google Ads enquiry conversion)"
     },
     "note": "Browser pixel only. No Conversions API yet. Added 2026-09-28."
