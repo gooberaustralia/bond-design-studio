@@ -1,175 +1,63 @@
-/**
- * Website enquiry handler — Vercel Serverless Function.
- *
- * Every contact/quote form on this site POSTs here. We email the enquiry to
- * the business through the configured provider (api/_email.js), then
- * redirect the visitor to /thank-you/.
- *
- * Lives at `api/enquiry.js` (repo root) — Vercel deploys it as a function
- * alongside the static `dist/` output. Zero dependencies (uses global fetch).
- *
- * Reads EMAIL_PROVIDER ("resend" — the default — or "sendgrid"), the
- * matching key (RESEND_API_KEY / SENDGRID_API_KEY), and CONTACT_TO_EMAIL /
- * CONTACT_FROM_EMAIL from the Vercel environment. Goober sets these when you
- * save the Email launch item. Every value falls back to what was baked in at
- * scaffold time, so the form keeps working even before that item is set up.
- * The key is NEVER committed.
- *
- * `_smoke: true` in the body short-circuits the redirect (used by the
- * Launch panel's smoke test) — it still sends a real test email when a
- * provider key is configured, so you can confirm delivery end to end.
- */
-import { sendEmail } from "./_email.js";
+/** Server-only form relay. The CRM owns delivery and all enquiry emails. */
+import { randomUUID } from 'node:crypto';
 
-const CONNECTOR_ENDPOINT = process.env.GOOBER_CONNECTOR_ENDPOINT || "https://adwords.goober.com.au/api";
-
-/**
- * Forward the enquiry to the Goober CRM connector.
- *
- * Never throws and never blocks the visitor: the email in the caller is the
- * guaranteed delivery path, and this is the nice-to-have on top. A missing
- * connector env, a 500 from the CRM or a network timeout all resolve to a
- * reason string that gets logged and, on a smoke test, reported back.
- */
-async function forwardToCrm(lead) {
-  const id = process.env.GOOBER_CONNECTOR_ID;
-  const key = process.env.GOOBER_CONNECTOR_KEY;
-  if (!id || !key) return { ok: false, skipped: "connector not configured" };
-
-  try {
-    const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 6000);
-    const r = await fetch(`${CONNECTOR_ENDPOINT}/enquiries/${id}`, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ ...lead, key }),
-      signal: ctrl.signal,
-    });
-    clearTimeout(timer);
-    if (!r.ok) return { ok: false, reason: `crm responded ${r.status}` };
-    return { ok: true };
-  } catch (e) {
-    return { ok: false, reason: e.name === "AbortError" ? "crm timed out" : String(e.message || e) };
-  }
-}
-
-const BUSINESS_NAME = "Bond Design Studio";
-const FALLBACK_TO = "hello@bonddesignstudio.com.au";
-const FALLBACK_FROM_EMAIL = "noreply@goober.com.au";
-const THANK_YOU = "/thank-you/";
-
-function esc(v) {
-  return String(v == null ? "" : v).replace(/[<>&]/g, (c) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;" }[c]));
-}
+const THANK_YOU = '/thank-you/';
+const ATTR_KEYS = ['gclid', 'wbraid', 'gbraid', 'fbclid', 'msclkid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'lp'];
+const text = (value) => typeof value === 'string' ? value.trim() : '';
 
 export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    res.setHeader("Allow", "POST");
-    return res.status(405).send("Method Not Allowed");
+  res.setHeader('Cache-Control', 'no-store');
+  if (req.method !== 'POST') {
+    res.setHeader('Allow', 'POST');
+    return res.status(405).json({ ok: false, error: 'Method not allowed' });
   }
+  const body = req.body && typeof req.body === 'object' && !Array.isArray(req.body) ? req.body : {};
+  const json = (req.headers?.accept || '').includes('application/json');
+  const fail = (status, error) => json ? res.status(status).json({ ok: false, error }) : res.status(status).send(error);
+  // Keep the existing honeypot response, without an accepted-enquiry cookie.
+  if (body._gotcha || body._hp) return json ? res.status(200).json({ ok: true }) : res.redirect(303, THANK_YOU);
 
-  // Vercel parses urlencoded / JSON bodies into req.body for Node functions.
-  const body = req.body && typeof req.body === "object" ? req.body : {};
-  const isSmoke = body._smoke === true;
-
-  // Honeypot: real users leave `_gotcha` empty; bots fill it. Pretend success.
-  if (body._gotcha) return res.redirect(303, THANK_YOU);
-
-  const name = (body.name || "").toString().trim();
-  const email = (body.email || "").toString().trim();
-  const phone = (body.phone || "").toString().trim();
-  const message = (body.message || body.enquiry || "").toString().trim();
-  // Qualifying fields from the contact form. Suburb and project type tell the
-  // studio more before the first call than anything else on the form.
-  const suburb = (body.suburb || "").toString().trim();
-  const projectType = (body.project_type || "").toString().trim();
-  const budget = (body.budget || "").toString().trim();
-  let attribution = null;
+  const name = text(body.name), email = text(body.email), phone = text(body.phone);
+  const message = text(body.message || body.enquiry);
+  if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return fail(400, 'Please provide your name and a valid email address.');
+  const fields = { suburb: text(body.suburb), project_type: text(body.project_type), budget: text(body.budget) };
+  if (name.length > 200 || email.length > 200 || phone.length > 50 || message.length > 5000 || Object.values(fields).some(v => v.length > 2000)) {
+    return fail(400, 'Your enquiry is too long. Please shorten it and try again.');
+  }
+  let attribution = {};
   try {
-    const raw = JSON.parse((body.attribution || "null").toString().slice(0, 2000));
-    if (raw && typeof raw === "object" && !Array.isArray(raw)) {
-      attribution = {};
-      for (const key of ["gclid", "wbraid", "gbraid", "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "lp"]) {
-        if (typeof raw[key] === "string") attribution[key] = raw[key].slice(0, 200);
-      }
+    const raw = typeof body.attribution === 'string' ? JSON.parse(body.attribution.slice(0, 6000)) : body.attribution;
+    if (raw && typeof raw === 'object' && !Array.isArray(raw)) {
+      for (const key of ATTR_KEYS) if (typeof raw[key] === 'string') attribution[key] = raw[key].slice(0, 500);
     }
   } catch (_) {}
+  const submissionId = text(body.idempotency_key) || randomUUID();
+  if (!/^[A-Za-z0-9._:-]{1,100}$/.test(submissionId)) return fail(400, 'Please reload the form and try again.');
+  const endpoint = process.env.GOOBER_FORM_WEBHOOK_URL;
+  if (!endpoint) return fail(503, 'Your enquiry could not be sent. Please try again or contact Bond Design Studio directly.');
 
-  const to = process.env.CONTACT_TO_EMAIL || FALLBACK_TO;
-  const fromEmail = process.env.CONTACT_FROM_EMAIL || FALLBACK_FROM_EMAIL;
-  const from = `${BUSINESS_NAME} <${fromEmail}>`;
-
-  const subject = isSmoke
-    ? `[Goober smoke test] ${BUSINESS_NAME}`
-    : `New website enquiry${name ? ` from ${name}` : ""}`;
-
-  const lines = isSmoke
-    ? [
-        `Smoke test from the ${BUSINESS_NAME} enquiry function.`,
-        "",
-        "If you received this, email is wired up correctly.",
-      ]
-    : [
-        `New enquiry from the ${BUSINESS_NAME} website:`,
-        "",
-        `Name:    ${name || "Not provided"}`,
-        `Email:   ${email || "Not provided"}`,
-        `Phone:   ${phone || "Not provided"}`,
-        `Suburb:  ${suburb || "Not provided"}`,
-        `Project: ${projectType || "Not provided"}`,
-        `Budget:  ${budget || "Not provided"}`,
-        "",
-        "Message:",
-        message || "(no message)",
-      ];
-
-  // CRM first, email second, and the email is sent whatever the CRM did.
-  const crmResult = isSmoke
-    ? await forwardToCrm({ name: "Goober smoke test", email: "smoke@goober.com.au", message: "Connector smoke test", source: "smoke_test" })
-    : await forwardToCrm({
-        name,
-        email,
-        phone,
-        message,
-        source: `website_form:${(req.headers && req.headers.referer) || "/contact"}`,
-        fields: { suburb, project_type: projectType, budget },
-        meta: attribution ? { attr: attribution } : undefined,
-      });
-  if (!crmResult.ok) {
-    console.error("[enquiry] crm forward:", crmResult.reason || crmResult.skipped);
-  }
-
-  let sendResult = { ok: false, skipped: true };
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10000);
   try {
-    sendResult = await sendEmail({
-      from,
-      to,
-      replyTo: email || undefined,
-      subject,
-      text: lines.join("\n"),
-      html: `<p>${lines.map(esc).join("<br>")}</p>`,
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      signal: controller.signal,
+      body: JSON.stringify({
+        name, email, phone, message, fields, attribution,
+        form_title: 'Request a free consultation',
+        idempotency_key: submissionId,
+        meta: { page: '/contact/', attr: attribution },
+      }),
     });
-    if (!sendResult.ok) {
-      console.error("[enquiry] send failed:", sendResult.reason || sendResult.status || "no provider key set");
-    }
-  } catch (e) {
-    // Never block the visitor on a mail failure — log and still say thanks.
-    console.error("[enquiry] send failed:", e);
+    const result = await response.json().catch(() => null);
+    if (!response.ok || result?.ok !== true) return fail(503, 'Your enquiry could not be sent. Please try again or contact Bond Design Studio directly.');
+  } catch (_) {
+    return fail(503, 'Your enquiry could not be sent. Please try again or contact Bond Design Studio directly.');
+  } finally {
+    clearTimeout(timeout);
   }
 
-  if (isSmoke) {
-    return res.status(200).json({
-      ok: true,
-      smoke: true,
-      emailed: !!sendResult.ok,
-      crm: crmResult.ok ? "ok" : crmResult.reason || crmResult.skipped || "failed",
-    });
-  }
-
-  if (!crmResult.ok && !sendResult.ok) {
-    return res.status(503).send("Your enquiry could not be sent. Please try again or contact Bond Design Studio directly.");
-  }
-
-  res.setHeader("Set-Cookie", "bond_enquiry_completed=1; Path=/; Max-Age=300; SameSite=Lax; Secure");
-  return res.redirect(303, THANK_YOU);
+  res.setHeader('Set-Cookie', 'bond_enquiry_completed=1; Path=/; Max-Age=300; SameSite=Lax; Secure');
+  return json ? res.status(200).json({ ok: true }) : res.redirect(303, THANK_YOU);
 }

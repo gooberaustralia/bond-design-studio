@@ -219,15 +219,13 @@ Every service this site needs is provisioned as a Vercel environment variable, n
 ### Hosting: verified
 - The site deploys to Vercel from this folder. `.vercel/project.json` links it to the right Vercel project. Never delete it or hand-edit the ids.
 
-### Email: verified
-Env vars: `EMAIL_PROVIDER`, `SENDGRID_API_KEY`, `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL`
-- Every contact or quote form POSTs to `/api/enquiry`. Never a third-party form service, never a `mailto:` action.
-- Never hardcode an email address or an API key in HTML or JS. `api/enquiry.js` and `api/_autoreply.js` already read these env vars, with the baked defaults kept as a fallback.
-
-### CRM connector (optional): verified
-Env vars: `GOOBER_CONNECTOR_ID`, `GOOBER_CONNECTOR_KEY`, `GOOBER_CONNECTOR_ENDPOINT`
-- Lead hooks POST to `/api/lead` with no key in the page. `window.gooberLead()` already does this. Never add a connector key to HTML or JS.
-- Sites Goober does not manage after launch leave this item off. It is optional.
+### Enquiries and CRM
+Env var: `GOOBER_FORM_WEBHOOK_URL` (server only).
+- The contact form POSTs to `/api/enquiry`. `/api/contact` and `/api/lead` are compatibility aliases for the same CRM relay.
+- The CRM is the sole owner of enquiry notifications and acknowledgements. Do not add site-side email sends or the retired Hub connector.
+- Preserve qualifying fields, campaign attribution and the submission idempotency key.
+- Only confirmed CRM acceptance may set the completion cookie or redirect to `/thank-you/`.
+- The public analytics loader uses business `9d6fb045-bb86-47e8-8c26-bb499ba4164b` with `data-goober-form-capture="off"`. Browser capture must stay off to avoid duplicate form records.
 
 ### Analytics (optional): saved locally
 - GA4 and Google Ads ids live in `site/tracking.json` and are rendered into `partials/tracking-head.html`. They are not secret and are safe in the page.

@@ -48,5 +48,11 @@
   },
   "linkedin": {
     "enabled": false
+  },
+  "goober_crm": {
+    "business_id": "9d6fb045-bb86-47e8-8c26-bb499ba4164b",
+    "form_capture": false,
+    "delivery": "Server relay using GOOBER_FORM_WEBHOOK_URL. CRM owns enquiry email.",
+    "updated": "2026-11-18"
   }
 }
