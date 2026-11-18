@@ -32,6 +32,7 @@
           <p class="label">Request a free consultation</p>
           <form class="form" action="/api/enquiry" method="POST" data-no-goober>
             <input type="hidden" name="attribution" value="">
+            <input type="hidden" name="idempotency_key" value="">
             <div class="honey" aria-hidden="true">
               <label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
             </div>
